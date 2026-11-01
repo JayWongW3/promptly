@@ -75,19 +75,86 @@ It then runs every day at 06:17 UTC. To change the time, edit the `cron` line in
 4. Double-click **`index.html`**. It opens in your web browser.
 5. Choose a course, then tap the first lesson circle to start.
 
-## How to put it online for free (so others can use it)
+Opened this way, it works for trying things out, but the install button, offline mode and analytics only work on the live link (see **Go live** below).
 
-The simplest option is **GitHub Pages**:
+## Go live (put it online for free)
 
-1. Merge this branch into `main`. (If you're not sure how, ask Claude to open a pull request, then click **Merge** on GitHub.)
-2. On GitHub, open the repository and click **Settings** in the top menu.
+The app is hosted free on **GitHub Pages**. Do these steps once.
+
+1. **Merge this branch into `main`.** Ask Claude to open a pull request, then on GitHub click **Pull requests** → the pull request → **Merge pull request** → **Confirm merge**.
+2. On GitHub, open the repository and click **Settings** (top menu).
 3. In the left sidebar, click **Pages**.
 4. Under **Build and deployment → Source**, choose **Deploy from a branch**.
 5. Under **Branch**, choose `main` and folder `/ (root)`, then click **Save**.
-6. Wait 1–2 minutes and refresh the page. GitHub shows a link like `https://<your-username>.github.io/test/`.
-7. Add `app/` to the end of that link, for example `https://<your-username>.github.io/test/app/`. That's your live app.
+6. Wait 1–2 minutes and refresh. GitHub shows **"Your site is live at …"** with a link like `https://<your-username>.github.io/test/`. That's the link to share. It opens the app directly.
+7. Then switch on the daily spotlight (see **Turn on the daily update** above).
 
-Note: GitHub Pages on a **private** repository needs a paid GitHub plan. On a free plan, the repository has to be public.
+Notes:
+- GitHub Pages on a **private** repository needs a paid GitHub plan. On a free plan, make the repository public (**Settings → General → Danger Zone → Change visibility**).
+- Every change merged into `main` goes live automatically within a couple of minutes.
+- You can use your own web address later (Settings → Pages → **Custom domain**).
+
+## Install on a phone or computer
+
+Once the app is online, learners can add it to their home screen. It then opens full-screen like a normal app and works offline. They don't need an app store.
+
+- **Android (Chrome)** and **computers (Chrome or Edge):** an **"Add Promptly to your home screen → Install"** banner appears at the bottom of the screen. Alternatively, use the browser menu (⋮) → **Install app** or **Add to Home screen**.
+- **iPhone / iPad:** open the link in **Safari**, tap the **Share** button (square with an arrow), then **Add to Home Screen**. The app shows a banner with these instructions.
+
+Installing only works on the live link (https), not when opening `index.html` from your computer.
+
+## Analytics (see how people use it)
+
+The app can send **anonymous** usage events to a privacy-friendly analytics service: which course people pick, where they stop, which questions they get wrong, and whether they come back. No names, emails or personal details are sent, and neither service below uses cookies, so you don't need a cookie banner. Analytics is **off** until you set it up.
+
+`TESTING-GUIDE.md` → section 6 lists every event and what it tells you.
+
+Pick **one** service:
+
+| | Umami Cloud | Plausible |
+|---|---|---|
+| Cost | Has a free tier (check their current limits) | Paid (roughly $9/month), free trial |
+| Custom events | Appear automatically | You add each one as a "goal" (steps below) |
+
+### Option A: Umami (free to start)
+
+1. Go to <https://cloud.umami.is> and create an account.
+2. Click **Add website**. Name: `Promptly`. Domain: your live address without `https://`, e.g. `yourname.github.io`. Click **Save**.
+3. Open the website's **Settings** (or **Edit**) and copy the **Website ID**. It's a long code like `1a2b3c4d-1234-…`.
+4. In this repository, open `app/config.js` on GitHub and click the pencil ✏️ icon to edit.
+5. Change `provider: "none"` to `provider: "umami"`, and paste the ID between the quotes in `umamiWebsiteId: ""`.
+6. Click **Commit changes**. Within a couple of minutes, open your live app and check that a visitor appears in the Umami dashboard.
+
+### Option B: Plausible
+
+1. Go to <https://plausible.io>, start a trial, and **add a site** with your live domain, e.g. `yourname.github.io`.
+2. If Plausible shows you a script address that isn't `https://plausible.io/js/script.js`, copy it.
+3. Edit `app/config.js` on GitHub: set `provider: "plausible"`, put your domain in `plausibleDomain: ""`, and if you copied a different script address in step 2, paste it into `plausibleScript`. Commit.
+4. In Plausible, go to **Site settings → Goals → Add goal → Custom event** and add each of these names exactly:
+   `App Opened`, `Course Selected`, `Lesson Started`, `Lesson Completed`, `Lesson Quit`, `Wrong Answer`, `Out Of Hearts`, `Course Completed`, `Spotlight Click`, `Install Prompt`, `App Installed`, `Feedback Clicked`.
+5. To see details such as which lesson or question, go to **Site settings → Custom properties** and add: `course`, `lesson`, `question`, `text`, `percent`, `accuracy`, `visitor`, `days_since_last_lesson`.
+
+### Checking it works
+
+Set `debug: true` in `app/config.js` and commit. Open the live app, then open the browser's developer console:
+- Chrome: menu ⋮ → **More tools** → **Developer tools** → **Console**.
+- Mac: press Cmd+Option+J.
+
+You'll see a line like `[analytics] Lesson Started {...}` for each event. Set it back to `false` afterwards.
+
+## Feedback link
+
+The app can show a **💬 Send feedback** button at the bottom of the course list.
+
+1. Create a form, for example at <https://forms.google.com> → **Blank form**. Useful questions: "What were you trying to do?", "What went wrong or was confusing?", "What would make you use this more?", and an optional email field.
+2. Click **Send** → the link icon 🔗 → **Copy**.
+3. Edit `app/config.js` on GitHub, paste the link between the quotes in `feedbackUrl: ""`, and commit.
+
+To use email instead, put `mailto:you@yourcompany.com` there.
+
+## User testing
+
+`TESTING-GUIDE.md` is a step-by-step plan for testing with 5–10 real people. It covers who to pick, what to say, the tasks to give them, the questions to ask, what to check in analytics a week later, and how to decide what to build next.
 
 ## How to edit or add lessons
 
@@ -112,18 +179,23 @@ Tip: if the app shows a blank page after an edit, a comma or quote mark is usual
 
 | File | What it does |
 |---|---|
+| `index.html` (top level) | Sends visitors from the main link straight to the app |
 | `app/index.html` | The page itself, and the list of course files to load |
+| `app/config.js` | **Settings: analytics and feedback link (edit this one)** |
+| `app/analytics.js` | Sends anonymous usage events (if switched on) |
+| `app/manifest.webmanifest`, `app/sw.js`, `app/icons/` | Make the app installable and work offline |
 | `app/styles.css` | Colours and layout |
 | `app/courses/*.js` | **Course content: one file per course (edit these)** |
 | `app/courses/README-question-types.txt` | Guide to writing questions and adding courses |
 | `app/app.js` | Game logic: course picker, scoring, hearts, streaks, saving progress, spotlight card |
 | `app/data/spotlight.js` | Today's "Built with Claude" project (updated automatically; don't edit) |
 | `scripts/daily-spotlight/` | The script that finds the daily project |
+| `TESTING-GUIDE.md` | How to run user tests and read the results |
 | `.github/workflows/daily-spotlight.yml` | Runs that script every day |
 
 ## Current limitations (what a full product would need next)
 
 - **Progress is per device and browser.** If a learner switches phone or clears their browser data, their progress is lost. Fixing this needs user accounts and a database (for example Firebase or Supabase).
 - **No real AI practice yet.** Learners don't type prompts into a live AI. Adding that needs an AI API key, such as Anthropic or OpenAI. This has a usage cost and needs a small server to keep the key secret.
-- **No app-store app.** It works on phone browsers. To list it in the Apple or Google app stores, it would need to be wrapped as a mobile app (for example with Capacitor) and published through developer accounts (Apple: $99/year, Google: $25 one-off).
+- **Not in the app stores.** It can be installed from the browser (see "Install on a phone or computer"). To list it in the Apple or Google app stores, it would need to be wrapped as a mobile app (for example with Capacitor) and published through developer accounts (Apple: $99/year, Google: $25 one-off).
 - **No reminders, leaderboards or payments.** These all need accounts and a server first.

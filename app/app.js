@@ -150,12 +150,18 @@ function renderSpotlightCard() {
 
   const actions = el("div", { class: "spot-actions" });
   const url = safeGitHubUrl(t.url);
-  if (url) actions.appendChild(el("a", { class: "btn small", href: url, target: "_blank", rel: "noopener noreferrer", text: "See it on GitHub" }));
+  if (url) actions.appendChild(el("a", {
+    class: "btn small", href: url, target: "_blank", rel: "noopener noreferrer", text: "See it on GitHub",
+    onclick: () => Analytics.track("Spotlight Click", { repo: t.full_name, target: "github" })
+  }));
   const course = COURSES.find(c => c.id === t.course);
   if (course && course.id !== state.courseId) {
     actions.appendChild(el("button", {
       class: "btn secondary small", text: `Learn the skills: ${course.title}`,
-      onclick: () => { state.courseId = course.id; saveState(); renderHome(); window.scrollTo(0, 0); }
+      onclick: () => {
+        Analytics.track("Spotlight Click", { repo: t.full_name, target: "course", course: course.id });
+        state.courseId = course.id; saveState(); renderHome(); window.scrollTo(0, 0);
+      }
     }));
   }
   box.appendChild(actions);
@@ -165,7 +171,10 @@ function renderSpotlightCard() {
     const list = el("ul", { class: "spot-others" });
     for (const o of others) {
       list.appendChild(el("li", {}, [
-        el("a", { href: o.url, target: "_blank", rel: "noopener noreferrer", text: o.full_name }),
+        el("a", {
+          href: o.url, target: "_blank", rel: "noopener noreferrer", text: o.full_name,
+          onclick: () => Analytics.track("Spotlight Click", { repo: o.full_name, target: "more" })
+        }),
         el("span", { text: ` ⭐ ${o.stars}: ${o.description || ""}` })
       ]));
     }
@@ -199,7 +208,10 @@ function renderCoursePicker() {
     const pct = Math.round((done / all.length) * 100);
     $app.appendChild(el("button", {
       class: "course-card" + (course.id === state.courseId ? " current" : ""),
-      onclick: () => { state.courseId = course.id; saveState(); renderHome(); }
+      onclick: () => {
+        Analytics.track("Course Selected", { course: course.id, switched: state.courseId && state.courseId !== course.id ? "yes" : "no" });
+        state.courseId = course.id; saveState(); renderHome();
+      }
     }, [
       el("div", { class: "course-icon", text: course.icon }),
       el("div", { class: "course-info" }, [
@@ -213,6 +225,7 @@ function renderCoursePicker() {
       ])
     ]));
   }
+  $app.appendChild(footerActions(false));
   saveState();
 }
 
@@ -260,16 +273,31 @@ function renderHome() {
     ]));
   }
 
-  $app.appendChild(el("div", { class: "footer-actions" }, el("button", {
-    class: "link-btn", text: "Reset all progress",
-    onclick: () => {
-      if (confirm("This deletes all XP, streaks and completed lessons on this device. Continue?")) {
-        localStorage.removeItem(SETTINGS.storageKey);
-        state = loadState(); saveState(); renderCoursePicker();
-      }
-    }
-  })));
+  $app.appendChild(footerActions(true));
   saveState();
+}
+
+function footerActions(withReset) {
+  const box = el("div", { class: "footer-actions" });
+  const feedbackUrl = (window.PROMPTLY_CONFIG || {}).feedbackUrl;
+  if (feedbackUrl) {
+    box.appendChild(el("a", {
+      class: "btn secondary small feedback-btn", href: feedbackUrl, target: "_blank", rel: "noopener noreferrer",
+      text: "💬 Send feedback", onclick: () => Analytics.track("Feedback Clicked", { course: state.courseId || "none" })
+    }));
+  }
+  if (withReset) {
+    box.appendChild(el("div", {}, el("button", {
+      class: "link-btn", text: "Reset all progress",
+      onclick: () => {
+        if (confirm("This deletes all XP, streaks and completed lessons on this device. Continue?")) {
+          localStorage.removeItem(SETTINGS.storageKey);
+          state = loadState(); saveState(); renderCoursePicker();
+        }
+      }
+    })));
+  }
+  return box;
 }
 
 function onLessonClick(lesson, done, unlocked) {
@@ -293,6 +321,8 @@ function startLesson(lesson, practice) {
     doneCount: 0,
     mistakes: 0
   };
+  document.getElementById("install-banner")?.remove();
+  Analytics.track("Lesson Started", { course: run.courseId, lesson: lesson.id, mode: practice ? "practice" : "new" });
   document.getElementById("topbar").style.display = "none";
   nextStep();
 }
@@ -416,6 +446,11 @@ function renderStep(step) {
     } else {
       run.mistakes++;
       run.queue.push(step); // ask it again at the end of the lesson
+      Analytics.track("Wrong Answer", {
+        course: run.courseId, lesson: run.lesson.id,
+        question: `${run.lesson.id}-q${run.lesson.steps.indexOf(step) + 1}`,
+        text: step.question
+      });
       if (!run.practice) {
         state.hearts = Math.max(0, state.hearts - 1); saveState();
         document.getElementById("lesson-hearts").textContent = `❤️ ${state.hearts}`;
@@ -431,10 +466,17 @@ function renderStep(step) {
 }
 
 function quitLesson() {
-  if (confirm("Quit this lesson? Your progress in this lesson will be lost.")) { run = null; renderHome(); }
+  if (confirm("Quit this lesson? Your progress in this lesson will be lost.")) {
+    Analytics.track("Lesson Quit", {
+      course: run.courseId, lesson: run.lesson.id,
+      progress: `${run.doneCount} of ${run.total}`, percent: Math.round((run.doneCount / run.total) * 100)
+    });
+    run = null; renderHome();
+  }
 }
 
 function outOfHearts() {
+  Analytics.track("Out Of Hearts", { course: run.courseId, lesson: run.lesson.id });
   $app.innerHTML = "";
   $app.appendChild(el("div", { class: "result" }, [
     el("div", { class: "big", text: "💔" }),
@@ -459,6 +501,15 @@ function finishLesson() {
 
   const questions = lesson.steps.filter(s => s.type !== "info").length;
   const accuracy = questions ? Math.round((questions / (questions + mistakes)) * 100) : 100;
+  const course = COURSES.find(c => c.id === run.courseId);
+  const courseDone = course && lessonsOf(course).every(l => doneMap(course.id)[l.id]);
+  Analytics.track("Lesson Completed", {
+    course: run.courseId, lesson: lesson.id, mode: practice ? "practice" : "new",
+    accuracy, mistakes, streak: state.streak
+  });
+  if (courseDone && !practice && lessonsOf(course).slice(-1)[0].id === lesson.id) {
+    Analytics.track("Course Completed", { course: course.id });
+  }
 
   $app.innerHTML = "";
   $app.appendChild(el("div", { class: "result" }, [
@@ -483,5 +534,69 @@ document.addEventListener("keydown", e => {
   if (b && !b.disabled && document.activeElement !== b) { e.preventDefault(); b.click(); }
 });
 
+// ---------- Install on phone / computer (Progressive Web App) ----------
+let deferredInstallPrompt = null;
+const INSTALL_DISMISSED_KEY = "promptly-install-dismissed";
+const isStandalone = () =>
+  window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+const isIos = () => /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+window.addEventListener("beforeinstallprompt", e => {
+  e.preventDefault(); // show our own button instead of the browser's mini-bar
+  deferredInstallPrompt = e;
+  showInstallBanner();
+});
+window.addEventListener("appinstalled", () => {
+  Analytics.track("App Installed", {});
+  document.getElementById("install-banner")?.remove();
+});
+
+function showInstallBanner() {
+  if (run || isStandalone() || localStorage.getItem(INSTALL_DISMISSED_KEY)) return;
+  if (!deferredInstallPrompt && !isIos()) return;
+  if (!location.protocol.startsWith("http")) return;
+  document.getElementById("install-banner")?.remove();
+  const banner = el("div", { class: "install-banner", id: "install-banner" }, [
+    el("div", { class: "install-text" }, [
+      el("b", { text: "📲 Add Promptly to your home screen" }),
+      el("div", { text: deferredInstallPrompt
+        ? "Opens like an app and works offline."
+        : "On iPhone or iPad: tap the Share button ⬆️ in Safari, then \"Add to Home Screen\"." })
+    ]),
+    deferredInstallPrompt ? el("button", {
+      class: "btn small", text: "Install",
+      onclick: async () => {
+        deferredInstallPrompt.prompt();
+        const choice = await deferredInstallPrompt.userChoice;
+        Analytics.track("Install Prompt", { outcome: choice.outcome });
+        deferredInstallPrompt = null;
+        banner.remove();
+      }
+    }) : null,
+    el("button", {
+      class: "close-btn", text: "✕", "aria-label": "Dismiss",
+      onclick: () => { localStorage.setItem(INSTALL_DISMISSED_KEY, "1"); banner.remove(); }
+    })
+  ]);
+  document.body.appendChild(banner);
+}
+
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}
+
+// ---------- Start ----------
+(function trackAppOpened() {
+  const last = state.lastActiveDate;
+  const daysSince = last ? Math.round((new Date(todayStr()) - new Date(last)) / 86400000) : null;
+  Analytics.track("App Opened", {
+    visitor: last ? "returning" : "new",
+    days_since_last_lesson: daysSince === null ? "never" : daysSince,
+    streak: state.streak,
+    installed: isStandalone() ? "yes" : "no"
+  });
+})();
+
 document.getElementById("courses-btn").addEventListener("click", renderCoursePicker);
 renderHome();
+setTimeout(showInstallBanner, 1500);
