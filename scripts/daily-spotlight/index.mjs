@@ -210,8 +210,10 @@ async function main() {
     course: blurb.course,
     ai_written: blurb.ai_written
   };
+  // Runners-up are shown with their creator's own description (no AI rewrite),
+  // so only list ones written mostly in Latin script.
   const others = candidates
-    .filter(r => r.id !== repo.id)
+    .filter(r => r.id !== repo.id && mostlyLatin(r.description))
     .slice(0, 4)
     .map(r => ({ full_name: r.full_name, url: r.html_url, stars: r.stargazers_count, description: clip(r.description, 140) }));
 
