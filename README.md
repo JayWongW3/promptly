@@ -1,1 +1,201 @@
-# test
+# Promptly – learn to use AI in bite-sized lessons
+
+A gamified learning app (in the style of language-learning apps) that teaches everyday people how to use AI tools such as ChatGPT, Claude, Gemini and Copilot.
+
+This is a **working prototype**. It runs entirely in a web browser. It has no server, no logins and no costs.
+
+## What's included
+
+Learners pick a course on the first screen and can switch at any time. Progress is kept separately for each course.
+
+| Course | For | Lessons | Topics |
+|---|---|---|---|
+| 🌱 **AI Basics** | Individuals, beginner | 16 | What AI is, hallucinations, writing good prompts, everyday uses, staying safe, **which tool and model to use for which job** |
+| 🚀 **AI Power User** | Individuals, advanced | 10 | Custom instructions and memory, projects, files and data analysis, images and voice, research with sources, thinking modes, self-critique, prompt chains, learning with AI, **model tiers and matching tools to tasks** |
+| 💼 **AI for Business Owners** | Business owners | 14 | Business brief formula, prompt templates, **loops** (improvement loops, automation loops, AI agents), **building a second brain** (capture, organise, distil, use; connecting it to AI), AI in marketing, sales, customer service, operations and finance, AI policy and measuring return on investment, **choosing assistants and specialist tools for your team** |
+| 👩‍💻 **AI for Developers** | Developers | 13 | Tokens and context windows, non-determinism, model APIs and system prompts, structured output, tool use, RAG, agent loops, coding assistants, evals, prompt injection, cost and latency, **model selection, routing, fallbacks and choosing coding tools** |
+
+Each course ends with a **"choosing the right model and tool" unit**. Every answer explains **why** that tool or model fits, not just which one is right.
+
+**Question types:** teaching cards, multiple choice, "which prompt is better?", true/false, and put-in-order. Developer lessons also show code examples.
+
+**Game features:**
+- XP: 10 per lesson, plus 5 bonus for no mistakes
+- Daily goal of 20 XP
+- Day streak
+- 5 hearts: you lose one per wrong answer, and they refill each day
+- Lessons unlock in order
+- Replaying a finished lesson is "practice" and earns a heart back
+- Wrong answers come back at the end of the lesson
+
+XP, streak and hearts are shared across all courses. Progress saves automatically in the learner's browser.
+
+## Daily "Built with Claude" spotlight
+
+The course picker and each course's home screen show a card like:
+
+> ✨ **Built with Claude today**
+> **Someone made an app that turns a sentence into an architecture diagram today!**
+> owner/project · ⭐ 252
+> A short plain-English explanation, plus a tip on what learners can take from it, a link to the project and a button to the course that teaches the skills behind it.
+
+A "More projects people built with Claude" list sits under it, and finishing a lesson shows a short "someone built this today, keep going" message.
+
+### How it works
+
+1. Once a day, a GitHub Action (`.github/workflows/daily-spotlight.yml`) runs a small script (`scripts/daily-spotlight/index.mjs`).
+2. The script searches public GitHub projects created in the last day that were built with Claude. It looks for topics like `claude-code`, or READMEs that mention Claude Code or "built with Claude". If there are none, it widens to 3, then 7 days.
+3. It picks the project with the most stars, skipping awesome-lists, prompt collections and config files.
+4. **If you add an Anthropic API key**, Claude reads the project's README and writes the headline, a 2-sentence explanation, a learning tip and which course fits. It also rejects anything offensive, malicious or unclear. **Without a key**, the card shows the project's own description, and only English-language descriptions are used.
+5. The result is saved to `app/data/spotlight.js`, which the app loads.
+
+If that file is more than 2 days old, the app asks GitHub directly for a fresh pick when someone opens it, so the card stays current even if the Action stops running. If GitHub can't be reached, the card is simply hidden.
+
+### Turn on the daily update (one-time setup)
+
+GitHub only runs scheduled Actions from the repository's main branch, so this starts working after the branch is merged into `main`.
+
+1. Merge this branch into `main`.
+2. On GitHub, open the repository → **Settings** → **Actions** → **General**. Under **Workflow permissions**, choose **Read and write permissions**, then click **Save**. This lets the Action save the daily file.
+3. *(Optional, recommended)* Add your Anthropic API key so Claude writes the explanations:
+   1. Get a key at <https://console.anthropic.com> → **API Keys** → **Create Key**. You need a small amount of credit on the account. One short request a day costs a few cents a month at most.
+   2. In the repository, go to **Settings** → **Secrets and variables** → **Actions** → **New repository secret**.
+   3. Name: `ANTHROPIC_API_KEY`. Value: paste the key. Click **Add secret**.
+4. To test it straight away: open the **Actions** tab → **Daily Built-with-Claude spotlight** → **Run workflow**. After about a minute, `app/data/spotlight.js` will have a new commit.
+
+It then runs every day at 06:17 UTC. To change the time, edit the `cron` line in `.github/workflows/daily-spotlight.yml`.
+
+**A word of caution:** the projects come from strangers on the internet. With an API key, Claude screens out unsuitable ones. Without a key there is no content check, so the key is strongly recommended if the app is public.
+
+## How to open it on your computer
+
+1. On the GitHub page for this repository, click the green **Code** button, then **Download ZIP**.
+2. Find the ZIP file in your Downloads folder and double-click it to unzip it.
+3. Open the unzipped folder, then open the **`app`** folder inside it.
+4. Double-click **`index.html`**. It opens in your web browser.
+5. Choose a course, then tap the first lesson circle to start.
+
+Opened this way, it works for trying things out, but the install button, offline mode and analytics only work on the live link (see **Go live** below).
+
+## Go live (put it online for free)
+
+The app is hosted free on **GitHub Pages**. Do these steps once.
+
+1. **Merge this branch into `main`.** Ask Claude to open a pull request, then on GitHub click **Pull requests** → the pull request → **Merge pull request** → **Confirm merge**.
+2. On GitHub, open the repository and click **Settings** (top menu).
+3. In the left sidebar, click **Pages**.
+4. Under **Build and deployment → Source**, choose **Deploy from a branch**.
+5. Under **Branch**, choose `main` and folder `/ (root)`, then click **Save**.
+6. Wait 1–2 minutes and refresh. GitHub shows **"Your site is live at …"** with a link like `https://<your-username>.github.io/test/`. That's the link to share. It opens the app directly.
+7. Then switch on the daily spotlight (see **Turn on the daily update** above).
+
+Notes:
+- GitHub Pages on a **private** repository needs a paid GitHub plan. On a free plan, make the repository public (**Settings → General → Danger Zone → Change visibility**).
+- Every change merged into `main` goes live automatically within a couple of minutes.
+- You can use your own web address later (Settings → Pages → **Custom domain**).
+
+## Install on a phone or computer
+
+Once the app is online, learners can add it to their home screen. It then opens full-screen like a normal app and works offline. They don't need an app store.
+
+- **Android (Chrome)** and **computers (Chrome or Edge):** an **"Add Promptly to your home screen → Install"** banner appears at the bottom of the screen. Alternatively, use the browser menu (⋮) → **Install app** or **Add to Home screen**.
+- **iPhone / iPad:** open the link in **Safari**, tap the **Share** button (square with an arrow), then **Add to Home Screen**. The app shows a banner with these instructions.
+
+Installing only works on the live link (https), not when opening `index.html` from your computer.
+
+## Analytics (see how people use it)
+
+The app can send **anonymous** usage events to a privacy-friendly analytics service: which course people pick, where they stop, which questions they get wrong, and whether they come back. No names, emails or personal details are sent, and neither service below uses cookies, so you don't need a cookie banner. Analytics is **off** until you set it up.
+
+`TESTING-GUIDE.md` → section 6 lists every event and what it tells you.
+
+Pick **one** service:
+
+| | Umami Cloud | Plausible |
+|---|---|---|
+| Cost | Has a free tier (check their current limits) | Paid (roughly $9/month), free trial |
+| Custom events | Appear automatically | You add each one as a "goal" (steps below) |
+
+### Option A: Umami (free to start)
+
+1. Go to <https://cloud.umami.is> and create an account.
+2. Click **Add website**. Name: `Promptly`. Domain: your live address without `https://`, e.g. `yourname.github.io`. Click **Save**.
+3. Open the website's **Settings** (or **Edit**) and copy the **Website ID**. It's a long code like `1a2b3c4d-1234-…`.
+4. In this repository, open `app/config.js` on GitHub and click the pencil ✏️ icon to edit.
+5. Change `provider: "none"` to `provider: "umami"`, and paste the ID between the quotes in `umamiWebsiteId: ""`.
+6. Click **Commit changes**. Within a couple of minutes, open your live app and check that a visitor appears in the Umami dashboard.
+
+### Option B: Plausible
+
+1. Go to <https://plausible.io>, start a trial, and **add a site** with your live domain, e.g. `yourname.github.io`.
+2. If Plausible shows you a script address that isn't `https://plausible.io/js/script.js`, copy it.
+3. Edit `app/config.js` on GitHub: set `provider: "plausible"`, put your domain in `plausibleDomain: ""`, and if you copied a different script address in step 2, paste it into `plausibleScript`. Commit.
+4. In Plausible, go to **Site settings → Goals → Add goal → Custom event** and add each of these names exactly:
+   `App Opened`, `Course Selected`, `Lesson Started`, `Lesson Completed`, `Lesson Quit`, `Wrong Answer`, `Out Of Hearts`, `Course Completed`, `Spotlight Click`, `Install Prompt`, `App Installed`, `Feedback Clicked`.
+5. To see details such as which lesson or question, go to **Site settings → Custom properties** and add: `course`, `lesson`, `question`, `text`, `percent`, `accuracy`, `visitor`, `days_since_last_lesson`.
+
+### Checking it works
+
+Set `debug: true` in `app/config.js` and commit. Open the live app, then open the browser's developer console:
+- Chrome: menu ⋮ → **More tools** → **Developer tools** → **Console**.
+- Mac: press Cmd+Option+J.
+
+You'll see a line like `[analytics] Lesson Started {...}` for each event. Set it back to `false` afterwards.
+
+## Feedback link
+
+The app can show a **💬 Send feedback** button at the bottom of the course list.
+
+1. Create a form, for example at <https://forms.google.com> → **Blank form**. Useful questions: "What were you trying to do?", "What went wrong or was confusing?", "What would make you use this more?", and an optional email field.
+2. Click **Send** → the link icon 🔗 → **Copy**.
+3. Edit `app/config.js` on GitHub, paste the link between the quotes in `feedbackUrl: ""`, and commit.
+
+To use email instead, put `mailto:you@yourcompany.com` there.
+
+## User testing
+
+`TESTING-GUIDE.md` is a step-by-step plan for testing with 5–10 real people. It covers who to pick, what to say, the tasks to give them, the questions to ask, what to check in analytics a week later, and how to decide what to build next.
+
+## How to edit or add lessons
+
+Each course is its own file in the **`app/courses/`** folder:
+
+- `beginner.js`: AI Basics
+- `advanced.js`: AI Power User
+- `business.js`: AI for Business Owners
+- `developer.js`: AI for Developers
+
+You don't need to touch any other file.
+
+1. Open the course file in any text editor. On GitHub, you can click the file, then the pencil ✏️ icon.
+2. `app/courses/README-question-types.txt` explains each question type, the course layout, and how to add a whole new course.
+3. To add a question, copy an existing one (from `{` to `},`), paste it below, and change the text.
+4. For multiple choice, `answer: 0` means the **first** option is correct, `answer: 1` the second, and so on. The app shuffles the options for the learner.
+5. Save the file, or click **Commit changes** on GitHub, then refresh the app.
+
+Tip: if the app shows a blank page after an edit, a comma or quote mark is usually missing. Undo your last change and try again.
+
+## Files
+
+| File | What it does |
+|---|---|
+| `index.html` (top level) | Sends visitors from the main link straight to the app |
+| `app/index.html` | The page itself, and the list of course files to load |
+| `app/config.js` | **Settings: analytics and feedback link (edit this one)** |
+| `app/analytics.js` | Sends anonymous usage events (if switched on) |
+| `app/manifest.webmanifest`, `app/sw.js`, `app/icons/` | Make the app installable and work offline |
+| `app/styles.css` | Colours and layout |
+| `app/courses/*.js` | **Course content: one file per course (edit these)** |
+| `app/courses/README-question-types.txt` | Guide to writing questions and adding courses |
+| `app/app.js` | Game logic: course picker, scoring, hearts, streaks, saving progress, spotlight card |
+| `app/data/spotlight.js` | Today's "Built with Claude" project (updated automatically; don't edit) |
+| `scripts/daily-spotlight/` | The script that finds the daily project |
+| `TESTING-GUIDE.md` | How to run user tests and read the results |
+| `.github/workflows/daily-spotlight.yml` | Runs that script every day |
+
+## Current limitations (what a full product would need next)
+
+- **Progress is per device and browser.** If a learner switches phone or clears their browser data, their progress is lost. Fixing this needs user accounts and a database (for example Firebase or Supabase).
+- **No real AI practice yet.** Learners don't type prompts into a live AI. Adding that needs an AI API key, such as Anthropic or OpenAI. This has a usage cost and needs a small server to keep the key secret.
+- **Not in the app stores.** It can be installed from the browser (see "Install on a phone or computer"). To list it in the Apple or Google app stores, it would need to be wrapped as a mobile app (for example with Capacitor) and published through developer accounts (Apple: $99/year, Google: $25 one-off).
+- **No reminders, leaderboards or payments.** These all need accounts and a server first.

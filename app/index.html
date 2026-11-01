@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Promptly – Learn to use AI, one bite at a time</title>
+  <meta name="description" content="Bite-sized, game-style lessons that teach you how to use AI." />
+  <meta name="theme-color" content="#6c4cf5" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" href="icons/favicon-32.png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Promptly" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar" id="topbar">
+    <div class="brand">⚡ Promptly <button id="courses-btn" class="link-btn">Courses</button></div>
+    <div class="stats">
+      <span class="stat" title="Day streak">🔥 <b id="stat-streak">0</b></span>
+      <span class="stat" title="Total XP">⭐ <b id="stat-xp">0</b></span>
+      <span class="stat" title="Hearts">❤️ <b id="stat-hearts">5</b></span>
+    </div>
+  </header>
+
+  <main id="app"></main>
+
+  <!-- Courses: one file each. To add a course, create a file in courses/ and add a line here. -->
+  <!-- Settings (analytics, feedback link). Edit config.js. -->
+  <script src="config.js"></script>
+  <script src="analytics.js"></script>
+  <script>var COURSES = [];</script>
+  <script src="courses/beginner.js"></script>
+  <script src="courses/advanced.js"></script>
+  <script src="courses/business.js"></script>
+  <script src="courses/developer.js"></script>
+  <!-- Daily "Built with Claude" spotlight, updated automatically by a GitHub Action -->
+  <script src="data/spotlight.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
