@@ -659,6 +659,121 @@ COURSES.push({
         ]
       }
     ]
-  }
+  },
+    {
+      id: "u6",
+      title: "Unit 6: Choosing the right AI tool",
+      description: "Different tools and models are built for different jobs. Learn which to use, and why.",
+      lessons: [
+        {
+          id: "u6l1",
+          title: "Different tools, different jobs",
+          icon: "🧰",
+          steps: [
+            {
+              type: "info",
+              title: "The main types of AI tool",
+              body: "<b>Chat assistants</b> (ChatGPT, Claude, Gemini, Microsoft Copilot): writing, explaining, brainstorming, planning.<br><br><b>Search-first tools</b> (e.g. Perplexity, or a chat assistant with web search turned on): up-to-date facts with links to sources.<br><br><b>Built-in assistants</b> (Copilot in Word and Outlook, Gemini in Gmail and Docs): work directly on the files you already have.<br><br><b>Image generators</b>: create pictures from a description.<br><br><b>Meeting note-takers</b> (e.g. Otter, Fireflies, Granola): record calls and write the notes.<br><br><b>Why it matters:</b> each tool is connected to different things (the web, your files, your calendar), and that connection often matters more than how clever the AI is."
+            },
+            {
+              type: "mc",
+              question: "You want this morning's news about a train strike, with links to sources. Which tool is best?",
+              options: [
+                "A search-first tool, or a chat assistant with web search turned on",
+                "An image generator",
+                "A chat assistant with web search turned off",
+                "A meeting note-taker"
+              ],
+              answer: 0,
+              explain: "Why: AI models only know what they learned up to a cut-off date. Search tools fetch today's web pages and show you the links, so you can check them."
+            },
+            {
+              type: "mc",
+              question: "Your office runs on Outlook, Word and Teams. Which AI is the most natural fit?",
+              options: [
+                "Microsoft Copilot",
+                "An image generator",
+                "A tool that doesn't connect to Microsoft apps",
+                "Whichever has the nicest logo"
+              ],
+              answer: 0,
+              explain: "Why: Copilot works inside the Microsoft apps and can use the emails and documents already there, so there's less copying and pasting."
+            },
+            {
+              type: "mc",
+              question: "You want automatic notes and action points from your video calls. What should you use?",
+              options: [
+                "An AI meeting note-taker",
+                "A regular chat assistant, by describing the meeting from memory",
+                "An image generator",
+                "A spell checker"
+              ],
+              answer: 0,
+              explain: "Why: a note-taker listens to and transcribes the actual call. A chat assistant can't hear your meeting. Tell people on the call that it's being recorded."
+            },
+            {
+              type: "tf",
+              question: "One AI tool is the best at everything.",
+              answer: false,
+              explain: "Why: tools differ in features (web search, file access, images, voice) and in what they connect to. Pick the one that fits the job."
+            }
+          ]
+        },
+        {
+          id: "u6l2",
+          title: "Fast models vs smart models",
+          icon: "⚡",
+          steps: [
+            {
+              type: "info",
+              title: "Many apps let you choose a model",
+              body: "Inside one app there are often several <b>models</b> (the AI \"brain\" behind it):<br><br><b>Fast / lighter models</b>: quick replies, often free or unlimited. Good for simple jobs.<br><b>More powerful models</b>: slower and often limited on free plans. Better for complex jobs.<br><b>Thinking / reasoning mode</b>: the model works through the problem step by step before answering. Best for tricky problems.<br><br><b>Why:</b> more powerful models do much more computing for every word they write, which takes longer and costs the provider more."
+            },
+            {
+              type: "mc",
+              question: "You want to fix the spelling in a two-line message. Which model?",
+              options: [
+                "A fast, lighter model",
+                "The most powerful model with thinking mode on",
+                "It must be done by hand",
+                "An image model"
+              ],
+              answer: 0,
+              explain: "Why: it's a simple task. A bigger model won't do it noticeably better; it will just be slower and use up your limits."
+            },
+            {
+              type: "mc",
+              question: "You want help comparing three job offers on salary, pension, commute and career growth. Which model?",
+              options: [
+                "A more powerful model, ideally with thinking mode",
+                "The fastest model available",
+                "A search-only tool",
+                "A meeting note-taker"
+              ],
+              answer: 0,
+              explain: "Why: the task has many factors that affect each other. Powerful and thinking models are better at weighing several things at once without missing steps."
+            },
+            {
+              type: "tf",
+              question: "Free plans often limit how much you can use the most powerful models.",
+              answer: true,
+              explain: "Why: powerful models cost more to run, so providers usually limit free use of them and offer more on paid plans."
+            },
+            {
+              type: "mc",
+              question: "What's the most reliable way to find which AI tool is best for YOUR task?",
+              options: [
+                "Try the same prompt in two tools and compare the results",
+                "Use whichever one was in the news this week",
+                "Pick the most expensive",
+                "Ask a friend who uses AI for something different"
+              ],
+              answer: 0,
+              explain: "Why: AI tools change and leapfrog each other every few months. Testing on your real task beats any ranking."
+            }
+          ]
+        }
+      ]
+    }
   ]
 });

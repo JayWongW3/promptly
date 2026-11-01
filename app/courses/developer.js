@@ -511,6 +511,132 @@ COURSES.push({
           ]
         }
       ]
+    },
+    {
+      id: "d6",
+      title: "Unit 6: Choosing models & tools",
+      description: "Pick models by capability, latency and cost, and pick the right coding tool for the job.",
+      lessons: [
+        {
+          id: "d6l1",
+          title: "Selecting a model",
+          icon: "🎛️",
+          steps: [
+            {
+              type: "info",
+              title: "The dimensions that matter",
+              body: "• <b>Capability</b> on your task (not on a generic benchmark)<br>• <b>Latency</b>: time to first token and total time<br>• <b>Cost</b> per input and output token<br>• <b>Context window</b> and max output length<br>• <b>Features</b>: vision, tool use, structured output, thinking or effort controls<br>• <b>Deployment</b>: first-party API or cloud platforms (e.g. Amazon Bedrock, Google Vertex AI), data residency<br>• <b>Open-weight models</b> you host yourself: full control, but you run the infrastructure<br><br>Tiers are typical, for example Claude Haiku (fast and cheap), Sonnet (balanced) and Opus (most capable).<br><br><b>Why:</b> no model wins on every dimension. The right choice depends on which constraint dominates your use case."
+            },
+            {
+              type: "mc",
+              question: "Inline code autocomplete with a ~300 ms latency budget. Which model choice fits?",
+              options: [
+                "A small, fast model",
+                "The largest model with maximum reasoning",
+                "A deep research agent",
+                "A batch API job"
+              ],
+              answer: 0,
+              explain: "Why: latency dominates and each completion is small and local. A large reasoning model would blow the budget without a matching quality gain."
+            },
+            {
+              type: "mc",
+              question: "An agent will refactor many files over a long session. Which model choice fits?",
+              options: [
+                "The most capable model",
+                "The cheapest model, to save money",
+                "Whichever responds fastest",
+                "A model without tool use"
+              ],
+              answer: 0,
+              explain: "Why: errors compound over many steps. A stronger model needs fewer retries and fixes, so it's often cheaper per completed task even though each token costs more."
+            },
+            {
+              type: "mc",
+              question: "A public leaderboard says model X is best. What should you do next?",
+              options: [
+                "Run your own evals on representative tasks before switching",
+                "Switch production immediately",
+                "Ignore all benchmarks forever",
+                "Ask the model if it's the best"
+              ],
+              answer: 0,
+              explain: "Why: benchmarks measure generic tasks. Your prompts, data and success criteria are what matter, and only your evals measure those."
+            },
+            {
+              type: "mc",
+              question: "When does a self-hosted, open-weight model make most sense?",
+              options: [
+                "When you need full data control, offline use or deep customisation, and have the infrastructure skills to run it",
+                "When you want zero operational work",
+                "Always; it's free",
+                "When you need the very highest capability with no effort"
+              ],
+              answer: 0,
+              explain: "Why: you trade convenience (and often top-end capability) for control. Hosting, scaling and updating become your job."
+            },
+            {
+              type: "tf",
+              question: "Compare model cost per completed task, not cost per request.",
+              answer: true,
+              explain: "Why: a cheaper model that needs more turns, retries or human fixes can cost more overall."
+            }
+          ]
+        },
+        {
+          id: "d6l2",
+          title: "Routing, fallbacks & coding tools",
+          icon: "🔀",
+          steps: [
+            {
+              type: "info",
+              title: "Use more than one model, carefully",
+              body: "<b>Routing</b>: send easy requests to a small model and hard ones to a larger one.<br><b>Simpler first</b>: many models expose an effort or thinking setting. Try one capable model at lower effort before building a multi-model router.<br><b>Fallbacks</b>: retry on another model or region on rate limits or outages.<br><br><b>Coding tools by job:</b><br>• Inline completion: next few lines as you type<br>• IDE chat and agents: edit within your editor<br>• Terminal agents (e.g. Claude Code): multi-step repo tasks that run commands and tests<br>• Cloud agents: work in the background and open pull requests<br><br><b>Why:</b> each layer adds autonomy and scope. Use the lightest tool that can finish the job."
+            },
+            {
+              type: "mc",
+              question: "Before building a multi-model router to cut costs, what should you measure first?",
+              options: [
+                "One capable model at a lower effort or thinking setting on the same tasks",
+                "Nothing; routers are always cheaper",
+                "The largest model at maximum effort",
+                "A random choice of model per request"
+              ],
+              answer: 0,
+              explain: "Why: one model is simpler to run and test, and prompt caching works across all requests. Lower effort on a strong model often matches a cascade's quality."
+            },
+            {
+              type: "mc",
+              question: "\"Migrate our test suite to a new framework across 200 files and get it passing.\" Which tool fits?",
+              options: [
+                "An agentic coding tool that can edit many files and run the tests",
+                "Inline autocomplete",
+                "A chat window, copying files in one at a time",
+                "An image model"
+              ],
+              answer: 0,
+              explain: "Why: the job spans many files and needs a run-fix-run loop. Agents can execute commands and iterate; autocomplete and copy-paste chat can't."
+            },
+            {
+              type: "tf",
+              question: "Falling back to another model or region on 429 and 5xx errors improves reliability.",
+              answer: true,
+              explain: "Why: rate limits and outages happen. A fallback keeps users served, but test that your prompts work on the fallback model."
+            },
+            {
+              type: "order",
+              question: "Order a basic routing setup:",
+              pieces: [
+                "Classify request difficulty",
+                "Send easy requests to the small model",
+                "Send hard requests to the large model",
+                "Log outcomes and tune the thresholds"
+              ],
+              explain: "Why: logging which route produced good or bad results is how you tune the router over time."
+            }
+          ]
+        }
+      ]
     }
   ]
 });

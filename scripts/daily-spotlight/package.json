@@ -1,0 +1,8 @@
+{
+  "name": "daily-spotlight",
+  "private": true,
+  "type": "module",
+  "description": "Finds the most interesting new GitHub project built with Claude and writes app/data/spotlight.js",
+  "scripts": { "start": "node index.mjs" },
+  "dependencies": { "@anthropic-ai/sdk": "*" }
+}

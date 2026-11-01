@@ -10,10 +10,12 @@ Learners pick a course on the first screen and can switch at any time. Progress 
 
 | Course | For | Lessons | Topics |
 |---|---|---|---|
-| 🌱 **AI Basics** | Individuals, beginner | 14 | What AI is, hallucinations, writing good prompts, everyday uses, staying safe |
-| 🚀 **AI Power User** | Individuals, advanced | 8 | Custom instructions and memory, projects, files and data analysis, images and voice, research with sources, thinking modes, self-critique, prompt chains, learning with AI |
-| 💼 **AI for Business Owners** | Business owners | 12 | Business brief formula, prompt templates, **loops** (improvement loops, automation loops, AI agents), **building a second brain** (capture, organise, distil, use; connecting it to AI), AI in marketing, sales, customer service, operations and finance, AI policy and measuring return on investment |
-| 👩‍💻 **AI for Developers** | Developers | 11 | Tokens and context windows, non-determinism, model APIs and system prompts, structured output, tool use, RAG, agent loops, coding assistants, evals, prompt injection, cost and latency |
+| 🌱 **AI Basics** | Individuals, beginner | 16 | What AI is, hallucinations, writing good prompts, everyday uses, staying safe, **which tool and model to use for which job** |
+| 🚀 **AI Power User** | Individuals, advanced | 10 | Custom instructions and memory, projects, files and data analysis, images and voice, research with sources, thinking modes, self-critique, prompt chains, learning with AI, **model tiers and matching tools to tasks** |
+| 💼 **AI for Business Owners** | Business owners | 14 | Business brief formula, prompt templates, **loops** (improvement loops, automation loops, AI agents), **building a second brain** (capture, organise, distil, use; connecting it to AI), AI in marketing, sales, customer service, operations and finance, AI policy and measuring return on investment, **choosing assistants and specialist tools for your team** |
+| 👩‍💻 **AI for Developers** | Developers | 13 | Tokens and context windows, non-determinism, model APIs and system prompts, structured output, tool use, RAG, agent loops, coding assistants, evals, prompt injection, cost and latency, **model selection, routing, fallbacks and choosing coding tools** |
+
+Each course ends with a **"choosing the right model and tool" unit**. Every answer explains **why** that tool or model fits, not just which one is right.
 
 **Question types:** teaching cards, multiple choice, "which prompt is better?", true/false, and put-in-order. Developer lessons also show code examples.
 
@@ -27,6 +29,43 @@ Learners pick a course on the first screen and can switch at any time. Progress 
 - Wrong answers come back at the end of the lesson
 
 XP, streak and hearts are shared across all courses. Progress saves automatically in the learner's browser.
+
+## Daily "Built with Claude" spotlight
+
+The course picker and each course's home screen show a card like:
+
+> ✨ **Built with Claude today**
+> **Someone made an app that turns a sentence into an architecture diagram today!**
+> owner/project · ⭐ 252
+> A short plain-English explanation, plus a tip on what learners can take from it, a link to the project and a button to the course that teaches the skills behind it.
+
+A "More projects people built with Claude" list sits under it, and finishing a lesson shows a short "someone built this today, keep going" message.
+
+### How it works
+
+1. Once a day, a GitHub Action (`.github/workflows/daily-spotlight.yml`) runs a small script (`scripts/daily-spotlight/index.mjs`).
+2. The script searches public GitHub projects created in the last day that were built with Claude. It looks for topics like `claude-code`, or READMEs that mention Claude Code or "built with Claude". If there are none, it widens to 3, then 7 days.
+3. It picks the project with the most stars, skipping awesome-lists, prompt collections and config files.
+4. **If you add an Anthropic API key**, Claude reads the project's README and writes the headline, a 2-sentence explanation, a learning tip and which course fits. It also rejects anything offensive, malicious or unclear. **Without a key**, the card shows the project's own description, and only English-language descriptions are used.
+5. The result is saved to `app/data/spotlight.js`, which the app loads.
+
+If that file is more than 2 days old, the app asks GitHub directly for a fresh pick when someone opens it, so the card stays current even if the Action stops running. If GitHub can't be reached, the card is simply hidden.
+
+### Turn on the daily update (one-time setup)
+
+GitHub only runs scheduled Actions from the repository's main branch, so this starts working after the branch is merged into `main`.
+
+1. Merge this branch into `main`.
+2. On GitHub, open the repository → **Settings** → **Actions** → **General**. Under **Workflow permissions**, choose **Read and write permissions**, then click **Save**. This lets the Action save the daily file.
+3. *(Optional, recommended)* Add your Anthropic API key so Claude writes the explanations:
+   1. Get a key at <https://console.anthropic.com> → **API Keys** → **Create Key**. You need a small amount of credit on the account. One short request a day costs a few cents a month at most.
+   2. In the repository, go to **Settings** → **Secrets and variables** → **Actions** → **New repository secret**.
+   3. Name: `ANTHROPIC_API_KEY`. Value: paste the key. Click **Add secret**.
+4. To test it straight away: open the **Actions** tab → **Daily Built-with-Claude spotlight** → **Run workflow**. After about a minute, `app/data/spotlight.js` will have a new commit.
+
+It then runs every day at 06:17 UTC. To change the time, edit the `cron` line in `.github/workflows/daily-spotlight.yml`.
+
+**A word of caution:** the projects come from strangers on the internet. With an API key, Claude screens out unsuitable ones. Without a key there is no content check, so the key is strongly recommended if the app is public.
 
 ## How to open it on your computer
 
@@ -77,7 +116,10 @@ Tip: if the app shows a blank page after an edit, a comma or quote mark is usual
 | `app/styles.css` | Colours and layout |
 | `app/courses/*.js` | **Course content: one file per course (edit these)** |
 | `app/courses/README-question-types.txt` | Guide to writing questions and adding courses |
-| `app/app.js` | Game logic: course picker, scoring, hearts, streaks, saving progress |
+| `app/app.js` | Game logic: course picker, scoring, hearts, streaks, saving progress, spotlight card |
+| `app/data/spotlight.js` | Today's "Built with Claude" project (updated automatically; don't edit) |
+| `scripts/daily-spotlight/` | The script that finds the daily project |
+| `.github/workflows/daily-spotlight.yml` | Runs that script every day |
 
 ## Current limitations (what a full product would need next)
 

@@ -91,12 +91,108 @@ function isUnlocked(course, lessonId) {
   return i === 0 || !!doneMap(course.id)[all[i - 1].id];
 }
 
+// ---------- Daily "Built with Claude" spotlight ----------
+// Data normally comes from data/spotlight.js (written daily by a GitHub Action).
+// If that file is missing or more than 2 days old, the app asks GitHub directly
+// (no AI explanation in that case, just the project's own description).
+const SPOTLIGHT_CACHE_KEY = "promptly-spotlight-live";
+let spotlight = window.DAILY_SPOTLIGHT || null;
+
+function spotlightIsStale(s) {
+  return !s || !s.today || s.today.date < todayStr(-2);
+}
+
+async function refreshSpotlightFromGitHub() {
+  try {
+    const cached = JSON.parse(localStorage.getItem(SPOTLIGHT_CACHE_KEY) || "null");
+    if (cached && cached.today && cached.today.date === todayStr()) { spotlight = cached; return true; }
+  } catch (e) { /* ignore broken cache */ }
+  try {
+    const since = todayStr(-2);
+    const q = encodeURIComponent(`topic:claude-code created:>=${since} fork:false`);
+    const res = await fetch(`https://api.github.com/search/repositories?q=${q}&sort=stars&order=desc&per_page=20`);
+    if (!res.ok) return false;
+    const items = ((await res.json()).items || []).filter(r =>
+      r.description && r.description.length >= 15 &&
+      (r.description.match(/[A-Za-z]/g) || []).length / r.description.replace(/\s/g, "").length > 0.6);
+    if (!items.length) return false;
+    const r = items[0];
+    spotlight = {
+      today: {
+        date: todayStr(), full_name: r.full_name, name: r.name, url: r.html_url,
+        stars: r.stargazers_count, language: r.language || "",
+        headline: "Someone made a project with Claude today!",
+        summary: r.description, takeaway: "", course: "", ai_written: false
+      },
+      others: items.slice(1, 5).map(o => ({ full_name: o.full_name, url: o.html_url, stars: o.stargazers_count, description: o.description }))
+    };
+    localStorage.setItem(SPOTLIGHT_CACHE_KEY, JSON.stringify(spotlight));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function safeGitHubUrl(u) {
+  return typeof u === "string" && u.startsWith("https://github.com/") ? u : null;
+}
+
+function renderSpotlightCard() {
+  const box = el("div", { class: "spotlight", id: "spotlight" });
+  if (!spotlight || !spotlight.today) return box; // empty; filled in later if a live fetch succeeds
+  const t = spotlight.today;
+  const isToday = t.date >= todayStr(-1);
+  box.appendChild(el("div", { class: "spot-label", text: isToday ? "✨ Built with Claude today" : `✨ Built with Claude recently (${t.date})` }));
+  box.appendChild(el("div", { class: "spot-headline", text: t.headline || "Someone made a project with Claude today!" }));
+  box.appendChild(el("div", { class: "spot-meta", text: [t.full_name, t.stars != null ? `⭐ ${t.stars}` : "", t.language].filter(Boolean).join("  ·  ") }));
+  if (t.summary) box.appendChild(el("p", { class: "spot-summary", text: t.summary }));
+  if (t.takeaway) box.appendChild(el("p", { class: "spot-take", text: "💡 " + t.takeaway }));
+
+  const actions = el("div", { class: "spot-actions" });
+  const url = safeGitHubUrl(t.url);
+  if (url) actions.appendChild(el("a", { class: "btn small", href: url, target: "_blank", rel: "noopener noreferrer", text: "See it on GitHub" }));
+  const course = COURSES.find(c => c.id === t.course);
+  if (course && course.id !== state.courseId) {
+    actions.appendChild(el("button", {
+      class: "btn secondary small", text: `Learn the skills: ${course.title}`,
+      onclick: () => { state.courseId = course.id; saveState(); renderHome(); window.scrollTo(0, 0); }
+    }));
+  }
+  box.appendChild(actions);
+
+  const others = (spotlight.others || []).filter(o => safeGitHubUrl(o.url));
+  if (others.length) {
+    const list = el("ul", { class: "spot-others" });
+    for (const o of others) {
+      list.appendChild(el("li", {}, [
+        el("a", { href: o.url, target: "_blank", rel: "noopener noreferrer", text: o.full_name }),
+        el("span", { text: ` ⭐ ${o.stars}: ${o.description || ""}` })
+      ]));
+    }
+    box.appendChild(el("details", {}, [el("summary", { text: "More projects people built with Claude" }), list]));
+  }
+  if (!t.ai_written) box.appendChild(el("div", { class: "spot-note", text: "Description written by the project's creator." }));
+  return box;
+}
+
+function mountSpotlight() {
+  $app.insertBefore(renderSpotlightCard(), $app.querySelector(".spot-anchor"));
+  if (spotlightIsStale(spotlight)) {
+    refreshSpotlightFromGitHub().then(ok => {
+      const old = document.getElementById("spotlight");
+      if (ok && old) old.replaceWith(renderSpotlightCard());
+    });
+  }
+}
+
 // ---------- Course picker ----------
 function renderCoursePicker() {
   document.getElementById("topbar").style.display = "";
   $app.innerHTML = "";
   $app.appendChild(el("h1", { class: "picker-title", text: "Choose your course" }));
   $app.appendChild(el("p", { class: "picker-sub", text: "Pick the one that fits you best. You can switch at any time and your progress in each course is kept." }));
+  $app.appendChild(el("div", { class: "spot-anchor" }));
+  mountSpotlight();
   for (const course of COURSES) {
     const all = lessonsOf(course);
     const done = all.filter(l => doneMap(course.id)[l.id]).length;
@@ -138,6 +234,8 @@ function renderHome() {
     el("div", { html: `<b>Daily goal</b>: ${state.todayXp} / ${SETTINGS.dailyGoalXp} XP ${pct >= 100 ? "✅" : ""}` }),
     el("div", { class: "goal-bar" }, el("div", { class: "goal-fill", style: `width:${pct}%` }))
   ]));
+  $app.appendChild(el("div", { class: "spot-anchor" }));
+  mountSpotlight();
 
   for (const unit of course.units) {
     const path = el("div", { class: "path" });
@@ -373,6 +471,7 @@ function finishLesson() {
       el("div", { class: "result-box", html: `<b>🔥 ${state.streak}</b><span>Day streak</span>` })
     ]),
     practice ? el("p", { text: "You earned back a heart ❤️" }) : null,
+    spotlight && spotlight.today ? el("p", { class: "spot-nudge", text: `🚀 ${spotlight.today.headline || "Someone built something with Claude today!"} Keep learning and you could be next.` }) : null,
     el("button", { class: "btn", text: "CONTINUE", onclick: () => { run = null; renderHome(); } })
   ]));
 }

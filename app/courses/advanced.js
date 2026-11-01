@@ -373,6 +373,126 @@ COURSES.push({
           ]
         }
       ]
+    },
+    {
+      id: "a5",
+      title: "Unit 5: Pick the right model & tool",
+      description: "Understand model tiers, context size and specialist features, and why they matter.",
+      lessons: [
+        {
+          id: "a5l1",
+          title: "Model families & tiers",
+          icon: "🏷️",
+          steps: [
+            {
+              type: "info",
+              title: "Small, medium, large",
+              body: "Most AI companies offer a family of models in tiers. For example, Anthropic's Claude comes as <b>Haiku</b> (fast), <b>Sonnet</b> (balanced) and <b>Opus</b> (most capable). Other providers use names like \"mini\", \"flash\" or \"pro\".<br><br>The trade-offs:<br>• <b>Speed</b>: smaller is faster<br>• <b>Usage limits / cost</b>: smaller is cheaper<br>• <b>Quality on hard tasks</b>: larger is better at complex reasoning, nuance and long tasks<br>• <b>Context window</b>: how much text the model can read at once (varies by model)<br><br><b>Why:</b> larger models have more capacity and do more computing for every word they write."
+            },
+            {
+              type: "mc",
+              question: "You need 300 short customer comments sorted into categories, quickly. Which tier?",
+              options: [
+                "A small, fast model",
+                "The largest model with maximum thinking",
+                "An image generation model",
+                "Do it by hand"
+              ],
+              answer: 0,
+              explain: "Why: sorting short comments is simple and repetitive. A small model handles it well and finishes much faster, and it uses less of your limit."
+            },
+            {
+              type: "mc",
+              question: "You're planning a house move around a budget, school deadlines and three contractors' schedules. Which tier?",
+              options: [
+                "The most capable model, with thinking mode on",
+                "The smallest model",
+                "Any model; they're all the same",
+                "A voice-only model"
+              ],
+              answer: 0,
+              explain: "Why: many constraints interact. Larger and thinking models keep track of all of them and catch conflicts that smaller models miss."
+            },
+            {
+              type: "mc",
+              question: "What does a larger context window let you do?",
+              options: [
+                "Give the model longer documents, or more of them, in one go",
+                "Make replies arrive faster",
+                "Make the model more creative",
+                "Use the model offline"
+              ],
+              answer: 0,
+              explain: "Why: the context window is the model's working memory for one conversation. Bigger means a whole contract or several reports fit at once."
+            },
+            {
+              type: "tf",
+              question: "The newest, biggest model is always the best choice.",
+              answer: false,
+              explain: "Why: on simple tasks it's no better, just slower and it uses more of your limits. Match the model to how hard the task is."
+            }
+          ]
+        },
+        {
+          id: "a5l2",
+          title: "Match the tool to the task",
+          icon: "🧭",
+          steps: [
+            {
+              type: "info",
+              title: "Features matter as much as the model",
+              body: "<b>Deep research modes</b>: search many sources over several minutes and write a cited report.<br><b>Data analysis</b>: the AI writes and runs code on your spreadsheet, so its calculations are exact.<br><b>App builders</b> (e.g. Claude artifacts, ChatGPT canvas, Lovable, Replit): describe a small app or web page and get a working version you can try straight away.<br><b>Coding agents</b> (e.g. Claude Code): build and change larger software projects.<br><b>Image and voice</b>: create pictures, or talk instead of type.<br><br><b>Why:</b> the same model gives very different results depending on what tools it has. Searching, running code and previewing apps all add abilities that plain chat doesn't have."
+            },
+            {
+              type: "mc",
+              question: "You want a simple habit-tracker web page but can't code. What's the best tool?",
+              options: [
+                "An AI app builder or artifacts feature that writes and previews the app for you",
+                "A meeting note-taker",
+                "A search-first tool",
+                "An image generator"
+              ],
+              answer: 0,
+              explain: "Why: app builders write the code and show you a working version you can test and adjust by chatting, with no coding knowledge needed."
+            },
+            {
+              type: "mc",
+              question: "You need a detailed report comparing home solar panel options, with sources. Which feature?",
+              options: [
+                "Deep research mode",
+                "A quick reply from a small model with no web access",
+                "Voice mode",
+                "Image generation"
+              ],
+              answer: 0,
+              explain: "Why: deep research reads many pages and cites them. It takes minutes rather than seconds, but it's far more thorough than one quick answer."
+            },
+            {
+              type: "mc",
+              question: "You need exact averages from a 5,000-row spreadsheet. What should you use?",
+              options: [
+                "An AI tool that can run code to analyse the data",
+                "A chat with no file or code tools, by pasting a few rows",
+                "Guessing from a chart",
+                "An image generator"
+              ],
+              answer: 0,
+              explain: "Why: when the AI runs code, the maths is done by the computer, which is exact. Without code, the AI estimates from reading the text, which can go wrong."
+            },
+            {
+              type: "order",
+              question: "Put the steps for choosing a tool in order:",
+              pieces: [
+                "Define the task",
+                "List the features it needs (web, files, code, images)",
+                "Shortlist tools that have them",
+                "Test the same prompt in two and compare"
+              ],
+              explain: "Why: starting from the task, not the brand, stops you choosing a tool that's missing a feature you need."
+            }
+          ]
+        }
+      ]
     }
   ]
 });

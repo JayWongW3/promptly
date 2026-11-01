@@ -537,6 +537,126 @@ COURSES.push({
           ]
         }
       ]
+    },
+    {
+      id: "b6",
+      title: "Unit 6: Choosing your AI tools",
+      description: "Which tools and plans suit which business needs, and why.",
+      lessons: [
+        {
+          id: "b6l1",
+          title: "Picking an assistant for your team",
+          icon: "🏢",
+          steps: [
+            {
+              type: "info",
+              title: "Five things to compare",
+              body: "<b>1. Fit with your systems</b>: Microsoft 365 → Copilot is built in. Google Workspace → Gemini is built in. Standalone assistants like Claude and ChatGPT offer business plans with connectors to both.<br><b>2. Data protection</b>: business and enterprise plans usually don't train on your data by default, and they add admin controls and single sign-on.<br><b>3. Quality on your tasks</b>: run a trial with real work.<br><b>4. Cost per seat vs time saved.</b><br><b>5. Connectors</b>: can it reach your CRM, Drive, helpdesk and so on?<br><br><b>Why:</b> the \"best\" AI on a leaderboard is worth little if it can't reach your files or your data policy forbids using it."
+            },
+            {
+              type: "mc",
+              question: "Your business runs on Gmail, Google Docs and Drive. What's the most natural starting point?",
+              options: [
+                "Gemini in Google Workspace, or an assistant with a strong Google Drive connector",
+                "A tool that can't access Google files",
+                "An image generator",
+                "Whatever a competitor uses"
+              ],
+              answer: 0,
+              explain: "Why: an assistant that can already see your emails and documents saves copying and pasting, and staff adopt it faster."
+            },
+            {
+              type: "mc",
+              question: "Why pay for a business plan instead of letting staff use free personal accounts?",
+              options: [
+                "Stronger data-protection terms, admin controls and central billing",
+                "The AI is always smarter on paid plans",
+                "Free accounts can't write emails",
+                "There's no difference"
+              ],
+              answer: 0,
+              explain: "Why: on business plans, company and customer data is covered by the provider's business terms, and you control who has access. With personal accounts, you have neither."
+            },
+            {
+              type: "mc",
+              question: "What's the fairest way to choose between two AI assistants?",
+              options: [
+                "A 2-week trial on 3–5 real tasks, using the same prompts, with staff scoring the results",
+                "Read one online review",
+                "Choose the one with the most features listed",
+                "Choose the cheapest without testing"
+              ],
+              answer: 0,
+              explain: "Why: real tasks and the same prompts give a like-for-like comparison, and the people who'll use it judge the quality."
+            },
+            {
+              type: "tf",
+              question: "The most expensive plan is always the best value.",
+              answer: false,
+              explain: "Why: value is time saved compared with cost. Many teams get most of the benefit from a standard business plan."
+            }
+          ]
+        },
+        {
+          id: "b6l2",
+          title: "Specialist tools vs general assistants",
+          icon: "🧩",
+          steps: [
+            {
+              type: "info",
+              title: "General first, specialist where it pays",
+              body: "A general assistant covers most everyday tasks. Specialist tools win when they're built into a workflow you run every day:<br>• <b>Meeting notes</b>: e.g. Fireflies, Granola, Otter<br>• <b>Customer support</b>: the AI built into helpdesks such as Intercom or Zendesk<br>• <b>Design</b>: e.g. Canva's AI features<br>• <b>Automation</b>: Zapier or Make with AI steps<br>• <b>Software</b>: coding tools like Claude Code or GitHub Copilot<br><br><b>Why:</b> specialists are already connected to your data and process, so there's less copying and pasting. The downside is more subscriptions, more logins and more places your data goes."
+            },
+            {
+              type: "mc",
+              question: "Your support team answers 200 tickets a day in a helpdesk system. What's the best fit?",
+              options: [
+                "The helpdesk's built-in AI, or one integrated with it",
+                "Copying each ticket into a separate chat app",
+                "An image generator",
+                "No tools; hire more people first"
+              ],
+              answer: 0,
+              explain: "Why: it can see ticket history and your help articles, and it drafts replies right where the team works. At 200 tickets a day, removing copy-and-paste matters."
+            },
+            {
+              type: "mc",
+              question: "You need to write one job advert. Which tool?",
+              options: [
+                "Your general AI assistant",
+                "A new specialist recruitment-AI subscription",
+                "A meeting note-taker",
+                "A coding agent"
+              ],
+              answer: 0,
+              explain: "Why: it's a one-off writing task. A general assistant does it well, and a new subscription isn't worth it."
+            },
+            {
+              type: "mc",
+              question: "What's the main downside of adding lots of specialist AI tools?",
+              options: [
+                "More costs and logins, and more companies holding your data",
+                "They make staff slower",
+                "They don't work on computers",
+                "There is no downside"
+              ],
+              answer: 0,
+              explain: "Why: each tool is another bill, another login and another data-protection review. Add one only where it clearly pays off."
+            },
+            {
+              type: "order",
+              question: "Put a sensible rollout in order:",
+              pieces: [
+                "Start with one general assistant",
+                "Find repetitive, high-volume tasks",
+                "Trial a specialist tool for those",
+                "Keep it only if it saves measurable time"
+              ],
+              explain: "Why: you learn what you actually need before paying for extras, and you only keep the tools that prove their value."
+            }
+          ]
+        }
+      ]
     }
   ]
 });
