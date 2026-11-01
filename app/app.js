@@ -310,6 +310,24 @@ function onLessonClick(lesson, done, unlocked) {
   startLesson(lesson, false);
 }
 
+// ---------- Sound on/off button ----------
+function soundToggle() {
+  const b = el("button", { class: "sound-btn" });
+  const paint = () => {
+    b.textContent = Sounds.isEnabled() ? "🔊" : "🔇";
+    b.setAttribute("aria-label", Sounds.isEnabled() ? "Turn sound off" : "Turn sound on");
+    b.title = b.getAttribute("aria-label");
+  };
+  b.onclick = () => {
+    Sounds.setEnabled(!Sounds.isEnabled());
+    document.querySelectorAll(".sound-btn").forEach(x => x.dispatchEvent(new Event("repaint")));
+    Analytics.track("Sound Toggled", { sound: Sounds.isEnabled() ? "on" : "off" });
+  };
+  b.addEventListener("repaint", paint);
+  paint();
+  return b;
+}
+
 // ---------- Lesson player ----------
 let run = null;
 
@@ -319,7 +337,8 @@ function startLesson(lesson, practice) {
     queue: lesson.steps.slice(),
     total: lesson.steps.length,
     doneCount: 0,
-    mistakes: 0
+    mistakes: 0,
+    combo: 0 // correct answers in a row, for the rising "streak" sound
   };
   document.getElementById("install-banner")?.remove();
   Analytics.track("Lesson Started", { course: run.courseId, lesson: lesson.id, mode: practice ? "practice" : "new" });
@@ -338,6 +357,7 @@ function renderStep(step) {
   $app.appendChild(el("div", { class: "lesson-top" }, [
     el("button", { class: "close-btn", text: "✕", "aria-label": "Quit lesson", onclick: quitLesson }),
     el("div", { class: "progress" }, el("div", { class: "progress-fill", style: `width:${pct}%` })),
+    soundToggle(),
     el("span", { id: "lesson-hearts", text: run.practice ? "🏋️ Practice" : `❤️ ${state.hearts}` })
   ]));
 
@@ -381,6 +401,7 @@ function renderStep(step) {
         buttons.forEach(x => x.classList.remove("selected"));
         b.classList.add("selected");
         selected = o; btn.disabled = false;
+        Sounds.tap();
       };
       box.appendChild(b);
       return b;
@@ -416,6 +437,7 @@ function renderStep(step) {
       c.onclick = () => {
         if (c.classList.contains("used")) return;
         c.classList.add("used"); chosen.push(idx); redrawLine();
+        Sounds.tap();
       };
       bankChips[idx] = c;
       bank.appendChild(c);
@@ -432,10 +454,23 @@ function renderStep(step) {
   btn.onclick = () => {
     const correct = getAnswerCorrect();
     bar.classList.add(correct ? "good" : "bad");
+    if (correct) {
+      run.combo++;
+      Sounds.correct(run.combo);
+      card.classList.add("pop");
+    } else {
+      run.combo = 0;
+      Sounds.wrong();
+      card.classList.add("shake");
+    }
     inner.innerHTML = "";
     let detail = step.explain || "";
     if (!correct && step.type === "order") detail = "Correct order: " + step.pieces.join(" → ") + ". " + detail;
-    inner.appendChild(el("div", { class: "feedback-title", text: correct ? PRAISE[Math.floor(Math.random() * PRAISE.length)] : "Not quite" }));
+    const praise = PRAISE[Math.floor(Math.random() * PRAISE.length)];
+    inner.appendChild(el("div", { class: "feedback-title" }, [
+      el("span", { text: correct ? praise : "Not quite" }),
+      correct && run.combo >= 3 ? el("span", { class: "combo", text: `🔥 ${run.combo} in a row!` }) : null
+    ]));
     if (detail) inner.appendChild(el("div", { class: "feedback-text", text: detail }));
     const cont = el("button", { class: "btn", text: "CONTINUE" });
     inner.appendChild(cont);
@@ -497,6 +532,7 @@ function finishLesson() {
     doneMap(run.courseId)[lesson.id] = true;
   }
   addXp(earned);
+  Sounds.complete(mistakes === 0);
   saveState();
 
   const questions = lesson.steps.filter(s => s.type !== "info").length;
@@ -598,5 +634,6 @@ if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
 })();
 
 document.getElementById("courses-btn").addEventListener("click", renderCoursePicker);
+document.querySelector(".stats").prepend(soundToggle());
 renderHome();
 setTimeout(showInstallBanner, 1500);

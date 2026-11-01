@@ -168,3 +168,18 @@ main { max-width: 640px; margin: 0 auto; padding: 20px 16px 220px; }
 }
 .install-text { flex: 1; line-height: 1.4; }
 .install-banner .close-btn { font-size: 18px; }
+
+/* Sound button + answer feedback animations */
+.sound-btn { background: none; border: none; font-size: 18px; cursor: pointer; padding: 0 4px; line-height: 1; }
+.lesson-top .sound-btn { font-size: 20px; }
+.feedback-title { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.combo {
+  font-size: 14px; font-weight: 800; color: #b45309; background: #fff3d6;
+  border-radius: 99px; padding: 3px 10px; animation: combo-in .35s ease-out;
+}
+.card.pop { animation: pop .3s ease-out; }
+.card.shake { animation: shake .35s ease-in-out; }
+@keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.03); } 100% { transform: scale(1); } }
+@keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
+@keyframes combo-in { 0% { transform: scale(.5); opacity: 0; } 70% { transform: scale(1.12); opacity: 1; } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .card.pop, .card.shake, .combo { animation: none; } }
