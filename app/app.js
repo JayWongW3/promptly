@@ -51,8 +51,10 @@ function loadState() {
   s = Object.assign({
     xp: 0, hearts: SETTINGS.maxHearts, heartsDate: todayStr(),
     streak: 0, lastActiveDate: null, todayXp: 0, todayDate: todayStr(),
-    completed: {}
+    completed: {}, courseId: null
   }, s || {});
+  // Older saves stored completed lessons without a course; move them to the beginner course.
+  if (Object.values(s.completed).some(v => v === true)) s.completed = { beginner: s.completed };
   // New day: refill hearts, reset daily XP, and break the streak if a day was missed.
   if (s.heartsDate !== todayStr()) { s.hearts = SETTINGS.maxHearts; s.heartsDate = todayStr(); }
   if (s.todayDate !== todayStr()) { s.todayXp = 0; s.todayDate = todayStr(); }
@@ -79,28 +81,69 @@ function addXp(amount) {
 }
 
 // ---------- Course structure ----------
-const ALL_LESSONS = COURSE.flatMap(u => u.lessons);
+function currentCourse() { return COURSES.find(c => c.id === state.courseId) || null; }
+function lessonsOf(course) { return course.units.flatMap(u => u.lessons); }
+function doneMap(courseId) { return state.completed[courseId] || (state.completed[courseId] = {}); }
 
-function isUnlocked(lessonId) {
-  const i = ALL_LESSONS.findIndex(l => l.id === lessonId);
-  return i === 0 || !!state.completed[ALL_LESSONS[i - 1].id];
+function isUnlocked(course, lessonId) {
+  const all = lessonsOf(course);
+  const i = all.findIndex(l => l.id === lessonId);
+  return i === 0 || !!doneMap(course.id)[all[i - 1].id];
+}
+
+// ---------- Course picker ----------
+function renderCoursePicker() {
+  document.getElementById("topbar").style.display = "";
+  $app.innerHTML = "";
+  $app.appendChild(el("h1", { class: "picker-title", text: "Choose your course" }));
+  $app.appendChild(el("p", { class: "picker-sub", text: "Pick the one that fits you best. You can switch at any time and your progress in each course is kept." }));
+  for (const course of COURSES) {
+    const all = lessonsOf(course);
+    const done = all.filter(l => doneMap(course.id)[l.id]).length;
+    const pct = Math.round((done / all.length) * 100);
+    $app.appendChild(el("button", {
+      class: "course-card" + (course.id === state.courseId ? " current" : ""),
+      onclick: () => { state.courseId = course.id; saveState(); renderHome(); }
+    }, [
+      el("div", { class: "course-icon", text: course.icon }),
+      el("div", { class: "course-info" }, [
+        el("div", { class: "course-audience", text: course.audience }),
+        el("div", { class: "course-title", text: course.title }),
+        el("div", { class: "course-desc", text: course.description }),
+        el("div", { class: "course-progress" }, [
+          el("div", { class: "goal-bar" }, el("div", { class: "goal-fill", style: `width:${pct}%` })),
+          el("span", { text: `${done} / ${all.length} lessons` })
+        ])
+      ])
+    ]));
+  }
+  saveState();
 }
 
 // ---------- Home screen ----------
 function renderHome() {
+  const course = currentCourse();
+  if (!course) return renderCoursePicker();
   document.getElementById("topbar").style.display = "";
   $app.innerHTML = "";
+  $app.appendChild(el("div", { class: "course-banner" }, [
+    el("div", {}, [
+      el("div", { class: "course-audience", text: course.audience }),
+      el("div", { class: "course-title", text: `${course.icon} ${course.title}` })
+    ]),
+    el("button", { class: "btn secondary small", text: "Change course", onclick: renderCoursePicker })
+  ]));
   const pct = Math.min(100, Math.round((state.todayXp / SETTINGS.dailyGoalXp) * 100));
   $app.appendChild(el("div", { class: "goal" }, [
     el("div", { html: `<b>Daily goal</b>: ${state.todayXp} / ${SETTINGS.dailyGoalXp} XP ${pct >= 100 ? "✅" : ""}` }),
     el("div", { class: "goal-bar" }, el("div", { class: "goal-fill", style: `width:${pct}%` }))
   ]));
 
-  for (const unit of COURSE) {
+  for (const unit of course.units) {
     const path = el("div", { class: "path" });
     for (const lesson of unit.lessons) {
-      const done = !!state.completed[lesson.id];
-      const unlocked = isUnlocked(lesson.id);
+      const done = !!doneMap(course.id)[lesson.id];
+      const unlocked = isUnlocked(course, lesson.id);
       const cls = done ? "node done" : unlocked ? "node" : "node locked";
       path.appendChild(el("div", { class: "node-wrap" }, [
         el("button", {
@@ -124,7 +167,7 @@ function renderHome() {
     onclick: () => {
       if (confirm("This deletes all XP, streaks and completed lessons on this device. Continue?")) {
         localStorage.removeItem(SETTINGS.storageKey);
-        state = loadState(); saveState(); renderHome();
+        state = loadState(); saveState(); renderCoursePicker();
       }
     }
   })));
@@ -146,7 +189,7 @@ let run = null;
 
 function startLesson(lesson, practice) {
   run = {
-    lesson, practice,
+    lesson, practice, courseId: state.courseId,
     queue: lesson.steps.slice(),
     total: lesson.steps.length,
     doneCount: 0,
@@ -184,7 +227,7 @@ function renderStep(step) {
     card.appendChild(el("div", { class: "q-type", text: "New concept" }));
     card.appendChild(el("h2", { class: "q-text", text: step.title }));
     card.appendChild(el("div", { class: "info-body", html: step.body }));
-    if (step.example) card.appendChild(el("div", { class: "example", text: step.example }));
+    if (step.example) card.appendChild(el("div", { class: step.code ? "example code" : "example", text: step.example }));
     btn.textContent = "CONTINUE";
     btn.disabled = false;
     btn.onclick = () => { run.queue.shift(); run.doneCount++; nextStep(); };
@@ -311,7 +354,7 @@ function finishLesson() {
     state.hearts = Math.min(SETTINGS.maxHearts, state.hearts + 1);
   } else {
     earned = SETTINGS.xpPerLesson + (mistakes === 0 ? SETTINGS.perfectBonusXp : 0);
-    state.completed[lesson.id] = true;
+    doneMap(run.courseId)[lesson.id] = true;
   }
   addXp(earned);
   saveState();
@@ -341,4 +384,5 @@ document.addEventListener("keydown", e => {
   if (b && !b.disabled && document.activeElement !== b) { e.preventDefault(); b.click(); }
 });
 
+document.getElementById("courses-btn").addEventListener("click", renderCoursePicker);
 renderHome();

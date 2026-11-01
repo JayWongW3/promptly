@@ -8,7 +8,7 @@
 </head>
 <body>
   <header class="topbar" id="topbar">
-    <div class="brand">⚡ Promptly</div>
+    <div class="brand">⚡ Promptly <button id="courses-btn" class="link-btn">Courses</button></div>
     <div class="stats">
       <span class="stat" title="Day streak">🔥 <b id="stat-streak">0</b></span>
       <span class="stat" title="Total XP">⭐ <b id="stat-xp">0</b></span>
@@ -18,7 +18,12 @@
 
   <main id="app"></main>
 
-  <script src="lessons.js"></script>
+  <!-- Courses: one file each. To add a course, create a file in courses/ and add a line here. -->
+  <script>var COURSES = [];</script>
+  <script src="courses/beginner.js"></script>
+  <script src="courses/advanced.js"></script>
+  <script src="courses/business.js"></script>
+  <script src="courses/developer.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

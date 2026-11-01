@@ -1,30 +1,15 @@
 /*
-  LESSON CONTENT
-  ==============
-  This file holds every unit, lesson and question in the app.
-  You can edit the text here without touching app.js.
-
-  Each lesson has a list of "steps". A step can be:
-
-  { type: "info", title: "...", body: "...", example: "optional example text" }
-      A teaching card. No right or wrong answer; the learner just taps Continue.
-
-  { type: "mc", question: "...", options: ["A", "B", "C"], answer: 0, explain: "..." }
-      Multiple choice. "answer" is the position of the correct option, counting from 0.
-      (0 = first option, 1 = second, and so on.) Options are shuffled automatically.
-
-  { type: "better", question: "...", options: ["prompt A", "prompt B"], answer: 1, explain: "..." }
-      "Which prompt is better?" Works the same way as multiple choice.
-
-  { type: "tf", question: "...", answer: true, explain: "..." }
-      True or false.
-
-  { type: "order", question: "...", pieces: ["first", "second", "third"], explain: "..." }
-      Put the pieces in the right order. Write them here in the CORRECT order;
-      the app shuffles them for the learner.
+  COURSE: Individual users (beginner)
+  See courses/README-question-types.txt for how to write questions.
 */
 
-const COURSE = [
+COURSES.push({
+  id: "beginner",
+  icon: "🌱",
+  title: "AI Basics",
+  audience: "Individuals – beginner",
+  description: "Never used AI before? Start here. What AI is, how to ask it things, and how to stay safe.",
+  units: [
   {
     id: "u1",
     title: "Unit 1: What is AI?",
@@ -675,4 +660,5 @@ const COURSE = [
       }
     ]
   }
-];
+  ]
+});
