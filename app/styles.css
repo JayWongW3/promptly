@@ -183,3 +183,8 @@ main { max-width: 640px; margin: 0 auto; padding: 20px 16px 220px; }
 @keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
 @keyframes combo-in { 0% { transform: scale(.5); opacity: 0; } 70% { transform: scale(1.12); opacity: 1; } 100% { transform: scale(1); } }
 @media (prefers-reduced-motion: reduce) { .card.pop, .card.shake, .combo { animation: none; } }
+
+/* Course picker groups */
+.group-title { font-size: 18px; margin: 26px 0 2px; }
+.group-sub { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+.tool-note { font-size: 12px; color: var(--muted); line-height: 1.45; margin: 4px 0 8px; }

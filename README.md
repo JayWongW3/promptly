@@ -15,6 +15,16 @@ Learners pick a course on the first screen and can switch at any time. Progress 
 | 💼 **AI for Business Owners** | Business owners | 14 | Business brief formula, prompt templates, **loops** (improvement loops, automation loops, AI agents), **building a second brain** (capture, organise, distil, use; connecting it to AI), AI in marketing, sales, customer service, operations and finance, AI policy and measuring return on investment, **choosing assistants and specialist tools for your team** |
 | 👩‍💻 **AI for Developers** | Developers | 13 | Tokens and context windows, non-determinism, model APIs and system prompts, structured output, tool use, RAG, agent loops, coding assistants, evals, prompt injection, cost and latency, **model selection, routing, fallbacks and choosing coding tools** |
 
+**Tool courses**, each with three levels (Beginner → Intermediate → Advanced, 2 lessons per level). Learners can start at any level.
+
+| Course | Covers |
+|---|---|
+| 🟠 **Mastering Claude** | Models (Haiku, Sonnet, Opus), good prompting, Styles, Projects, memory and incognito chats, Artifacts and file creation, Research, connectors, extended thinking, Claude Code, Cowork and Skills |
+| 🟢 **Mastering ChatGPT** | Fast vs Thinking models, temporary chats, voice, images and search, custom instructions, memory, Projects, Canvas, data analysis, custom GPTs, deep research, agent mode and scheduled tasks |
+| ⚫ **Mastering Grok** | Where to use Grok, real-time X insights (and how to verify them), Think, DeepSearch, Imagine (images and video) used responsibly, X privacy and training settings, combining Grok with other tools |
+
+The tool courses teach features and good habits, not prices or plan limits, because those change often. Review them every few months. The course picker notes that Promptly isn't affiliated with Anthropic, OpenAI or xAI.
+
 Each course ends with a **"choosing the right model and tool" unit**. Every answer explains **why** that tool or model fits, not just which one is right.
 
 **Question types:** teaching cards, multiple choice, "which prompt is better?", true/false, and put-in-order. Developer lessons also show code examples.

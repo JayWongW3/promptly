@@ -86,6 +86,8 @@ function lessonsOf(course) { return course.units.flatMap(u => u.lessons); }
 function doneMap(courseId) { return state.completed[courseId] || (state.completed[courseId] = {}); }
 
 function isUnlocked(course, lessonId) {
+  // Courses with levelJump let learners start at the first lesson of any level.
+  if (course.levelJump && course.units.some(u => u.lessons[0].id === lessonId)) return true;
   const all = lessonsOf(course);
   const i = all.findIndex(l => l.id === lessonId);
   return i === 0 || !!doneMap(course.id)[all[i - 1].id];
@@ -202,15 +204,33 @@ function renderCoursePicker() {
   $app.appendChild(el("p", { class: "picker-sub", text: "Pick the one that fits you best. You can switch at any time and your progress in each course is kept." }));
   $app.appendChild(el("div", { class: "spot-anchor" }));
   mountSpotlight();
-  for (const course of COURSES) {
+  const groups = [
+    { id: "audience", title: "Courses by who you are", sub: "Broad AI skills, whichever tool you use." },
+    { id: "tool", title: "Master a specific AI tool", sub: "Beginner, intermediate and advanced levels for each tool." }
+  ];
+  for (const g of groups) {
+    const inGroup = COURSES.filter(c => (c.group || "audience") === g.id);
+    if (!inGroup.length) continue;
+    $app.appendChild(el("h2", { class: "group-title", text: g.title }));
+    $app.appendChild(el("p", { class: "group-sub", text: g.sub }));
+    for (const course of inGroup) $app.appendChild(courseCard(course));
+    if (g.id === "tool") {
+      $app.appendChild(el("p", { class: "tool-note", text: "Promptly is independent and not affiliated with Anthropic, OpenAI or xAI. AI tools change often, so if an app looks different from a lesson, the idea is usually the same." }));
+    }
+  }
+  $app.appendChild(footerActions(false));
+  saveState();
+}
+
+function courseCard(course) {
     const all = lessonsOf(course);
     const done = all.filter(l => doneMap(course.id)[l.id]).length;
     const pct = Math.round((done / all.length) * 100);
-    $app.appendChild(el("button", {
+    return el("button", {
       class: "course-card" + (course.id === state.courseId ? " current" : ""),
       onclick: () => {
         Analytics.track("Course Selected", { course: course.id, switched: state.courseId && state.courseId !== course.id ? "yes" : "no" });
-        state.courseId = course.id; saveState(); renderHome();
+        state.courseId = course.id; saveState(); renderHome(); window.scrollTo(0, 0);
       }
     }, [
       el("div", { class: "course-icon", text: course.icon }),
@@ -223,10 +243,7 @@ function renderCoursePicker() {
           el("span", { text: `${done} / ${all.length} lessons` })
         ])
       ])
-    ]));
-  }
-  $app.appendChild(footerActions(false));
-  saveState();
+    ]);
 }
 
 // ---------- Home screen ----------
