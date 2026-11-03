@@ -4,7 +4,7 @@
   and fall back to the saved copy when offline.
   If you add a new file the app needs, add it to APP_FILES below.
 */
-const CACHE = "promptly-v4";
+const CACHE = "promptly-v5";
 const APP_FILES = [
   "./",
   "index.html",
@@ -12,6 +12,7 @@ const APP_FILES = [
   "config.js",
   "analytics.js",
   "sounds.js",
+  "accounts.js",
   "app.js",
   "manifest.webmanifest",
   "courses/beginner.js",

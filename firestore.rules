@@ -1,0 +1,19 @@
+// Firestore security rules for Promptly accounts.
+// Copy everything in this file into Firebase console → Firestore Database → Rules, then click Publish.
+// Each signed-in learner can read and write only their own progress document.
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid} {
+      allow read, delete: if request.auth != null && request.auth.uid == uid;
+      allow create, update: if request.auth != null
+                            && request.auth.uid == uid
+                            && request.resource.data.keys().hasOnly(['progress', 'updatedAt'])
+                            && request.resource.data.progress is map;
+    }
+    // Everything else is closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

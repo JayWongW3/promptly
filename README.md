@@ -151,7 +151,7 @@ Pick **one** service:
 2. If Plausible shows you a script address that isn't `https://plausible.io/js/script.js`, copy it.
 3. Edit `app/config.js` on GitHub: set `provider: "plausible"`, put your domain in `plausibleDomain: ""`, and if you copied a different script address in step 2, paste it into `plausibleScript`. Commit.
 4. In Plausible, go to **Site settings → Goals → Add goal → Custom event** and add each of these names exactly:
-   `App Opened`, `Course Selected`, `Lesson Started`, `Lesson Completed`, `Lesson Quit`, `Wrong Answer`, `Out Of Hearts`, `Course Completed`, `Spotlight Click`, `Install Prompt`, `App Installed`, `Feedback Clicked`, `Sound Toggled`.
+   `App Opened`, `Course Selected`, `Lesson Started`, `Lesson Completed`, `Lesson Quit`, `Wrong Answer`, `Out Of Hearts`, `Course Completed`, `Spotlight Click`, `Install Prompt`, `App Installed`, `Feedback Clicked`, `Sound Toggled`, `Signed In`, `Signed Out`, `Account Deleted`.
 5. To see details such as which lesson or question, go to **Site settings → Custom properties** and add: `course`, `lesson`, `question`, `text`, `percent`, `accuracy`, `visitor`, `days_since_last_lesson`.
 
 ### Checking it works
@@ -161,6 +161,50 @@ Set `debug: true` in `app/config.js` and commit. Open the live app, then open th
 - Mac: press Cmd+Option+J.
 
 You'll see a line like `[analytics] Lesson Started {...}` for each event. Set it back to `false` afterwards.
+
+## Accounts ("Sign in with Google")
+
+Learners can sign in with their Google (Gmail) account so their XP, streak and completed lessons are saved online and follow them to any device. Signing in is optional; the app works without it.
+
+**How it works**
+- Sign-in and storage use **Google Firebase**. The free "Spark" plan is plenty: tens of thousands of saves per day at no cost, and no card needed.
+- A 👤 button appears in the top bar. After a lesson, signed-out learners see "Save progress with Google".
+- When someone signs in on a new device, progress from both is combined: every completed lesson, XP added together without double counting, and the most recent streak.
+- Only learning progress is stored in the database. Learners can sign out (optionally removing progress from that device) or delete their account and online data from the account screen.
+- Accounts stay **switched off** until you complete the setup below.
+
+### One-time setup (about 15 minutes)
+
+**1. Create a Firebase project**
+1. Go to <https://console.firebase.google.com> and sign in with your Google account.
+2. Click **Create a project** (or **Add project**). Name it `Promptly`, then click **Continue**.
+3. When asked about Google Analytics, switch it **off** (Umami already does this), then click **Create project**. Wait, then click **Continue**.
+
+**2. Turn on Google sign-in**
+1. In the left menu, open **Build → Authentication**, then click **Get started**.
+2. On the **Sign-in method** tab, click **Google**, switch on **Enable**, choose your email as the **Project support email**, and click **Save**.
+3. Open the **Settings** tab → **Authorized domains** → **Add domain**, type `orpheusjam.github.io`, and click **Add**.
+
+**3. Create the database**
+1. In the left menu, open **Build → Firestore Database**, then click **Create database**.
+2. Choose a location close to your learners (for the UK, `europe-west2 (London)`) and click **Next**.
+3. Choose **Start in production mode**, then click **Create**.
+4. Open the **Rules** tab. Delete what's there, paste the entire contents of `firestore.rules` from this repository, and click **Publish**. This makes sure each learner can only see their own progress.
+
+**4. Connect the app**
+1. Click the ⚙️ gear (top left) → **Project settings**.
+2. Under **Your apps**, click the **web** icon `</>`. Nickname: `Promptly web`. Leave "Firebase Hosting" unticked, and click **Register app**.
+3. You'll see a block of code containing `firebaseConfig`. Copy the four values `apiKey`, `authDomain`, `projectId` and `appId` into `app/config.js` under `accounts → firebase`, or paste the whole block to Claude to do it for you.
+4. Commit or merge the change. Within a couple of minutes the 👤 button appears in the app.
+
+**5. Make the Google sign-in screen show your app's name**
+In Firebase, go to ⚙️ **Project settings → General** and set **Public-facing name** to `Promptly`. That's the name people see on Google's "Choose an account" screen.
+
+These Firebase values are designed to be public. They identify your project, and the security rules from step 3 control who can read and write what.
+
+**Privacy:** because you'll now hold people's names and email addresses (via Google sign-in), publish a short privacy notice. It should say what you store (learning progress), why, how to delete it (account screen → Delete my account), and how to contact you. A UK GDPR template from the ICO website is a good starting point.
+
+**Known limitation:** on iPhone, an app added to the home screen sometimes can't complete Google's sign-in pop-up. If that happens, sign in once in Safari. The app shows this tip if sign-in fails.
 
 ## Feedback link
 
@@ -204,6 +248,8 @@ Tip: if the app shows a blank page after an edit, a comma or quote mark is usual
 | `app/config.js` | **Settings: analytics and feedback link (edit this one)** |
 | `app/analytics.js` | Sends anonymous usage events (if switched on) |
 | `app/sounds.js` | Sound effects for correct and wrong answers and lesson completion |
+| `app/accounts.js` | "Sign in with Google" and online progress sync (Firebase) |
+| `firestore.rules` | Database security rules to paste into Firebase |
 | `app/manifest.webmanifest`, `app/sw.js`, `app/icons/` | Make the app installable and work offline |
 | `app/styles.css` | Colours and layout |
 | `app/courses/*.js` | **Course content: one file per course (edit these)** |
@@ -216,7 +262,7 @@ Tip: if the app shows a blank page after an edit, a comma or quote mark is usual
 
 ## Current limitations (what a full product would need next)
 
-- **Progress is per device and browser.** If a learner switches phone or clears their browser data, their progress is lost. Fixing this needs user accounts and a database (for example Firebase or Supabase).
+- **Progress is per device unless the learner signs in** (see "Accounts").
 - **No real AI practice yet.** Learners don't type prompts into a live AI. Adding that needs an AI API key, such as Anthropic or OpenAI. This has a usage cost and needs a small server to keep the key secret.
 - **Not in the app stores.** It can be installed from the browser (see "Install on a phone or computer"). To list it in the Apple or Google app stores, it would need to be wrapped as a mobile app (for example with Capacitor) and published through developer accounts (Apple: $99/year, Google: $25 one-off).
 - **No reminders, leaderboards or payments.** These all need accounts and a server first.
