@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-04T07:27:27.992Z",
+  "generated_at": "2026-11-05T07:29:00.635Z",
   "today": {
-    "date": "2026-11-04",
-    "name": "agent-autoloop",
-    "full_name": "KKKKhazix/agent-autoloop",
-    "owner": "KKKKhazix",
-    "url": "https://github.com/KKKKhazix/agent-autoloop",
-    "homepage": "",
-    "stars": 1408,
+    "date": "2026-11-05",
+    "name": "shorts-kit",
+    "full_name": "howznguyen/shorts-kit",
+    "owner": "howznguyen",
+    "url": "https://github.com/howznguyen/shorts-kit",
+    "homepage": "https://howznguyen.dev/projects/shorts-kit",
+    "stars": 27,
     "language": "TypeScript",
-    "created_at": "2026-11-03T08:02:11Z",
-    "headline": "Someone made a helper that lets AI assistants work in the background and ask before big decisions today!",
-    "summary": "Agent Autoloop runs AI coding assistants on your own computer to handle tasks like daily briefings or website checks, and sends you a message card only when it needs your decision. It's aimed at people already comfortable using AI tools from the command line.",
-    "takeaway": "A good lesson is to let AI handle routine work on its own while keeping a person in charge of risky choices like deleting data or spending money.",
+    "created_at": "2026-11-04T19:41:42Z",
+    "headline": "Someone made a kit that helps an AI assistant build narrated short videos today!",
+    "summary": "You tell an AI assistant a topic, and this kit guides it through checking facts, writing a script, adding a voice, and building a vertical video for TikTok, YouTube Shorts or Reels. It's for people who want to make short explainer videos and are comfortable installing a few tools.",
+    "takeaway": "Breaking a big creative task into clear steps, with facts checked first and your own review at each stage, is a good habit for getting reliable results from AI.",
     "course": "developer",
     "ai_written": true
   },
   "others": [
     {
-      "full_name": "govijr/terminal-mac",
-      "url": "https://github.com/govijr/terminal-mac",
-      "stars": 664,
-      "description": "Entire MacOS running in your terminal."
+      "full_name": "Phucanh-MRT/mrtkeyword",
+      "url": "https://github.com/Phucanh-MRT/mrtkeyword",
+      "stars": 18,
+      "description": "MRT Keyword: Claude Code / Codex tự dựng video dọc 9:16 từ video quay hoặc file giọng đọc — 62 hiệu ứng có code, phụ đề, nhạc nền, ảnh bìa,…"
     },
     {
-      "full_name": "abouchedidxcode/open-source-hands",
-      "url": "https://github.com/abouchedidxcode/open-source-hands",
-      "stars": 97,
-      "description": "Make webcam hand games in the browser, or point your coding agent here and have it make one. MediaPipe hand tracking + a gesture engine + a…"
+      "full_name": "denonmaryland/omarchy-dotfiles",
+      "url": "https://github.com/denonmaryland/omarchy-dotfiles",
+      "stars": 29,
+      "description": "My Omarchy setup: Pebble Shell rail, control corner, search-first menu, recessed windows and a fastfetch dashboard"
     },
     {
-      "full_name": "capri-com/Capri-AI",
-      "url": "https://github.com/capri-com/Capri-AI",
-      "stars": 83,
-      "description": "🌃 Capri — Edgerunners-inspired AI agent for your desktop. Works with Claude Code, Codex, Antigravity & more."
+      "full_name": "almonk/rexpad",
+      "url": "https://github.com/almonk/rexpad",
+      "stars": 26,
+      "description": "A live todo list for coding agents, drawn in a Rex pane with the kitty graphics protocol"
     },
     {
-      "full_name": "kubai087/kubai-icons",
-      "url": "https://github.com/kubai087/kubai-icons",
-      "stars": 112,
-      "description": "A Claude skill that draws dynamic icons in one consistent style, with hover motion or as static SVG."
+      "full_name": "iampedii/herdr-redline",
+      "url": "https://github.com/iampedii/herdr-redline",
+      "stars": 25,
+      "description": "Redline: code review inside the Herdr app. Review GitLab MRs and GitHub PRs in a git worktree next to an AI agent: inline comments, pending…"
     }
   ],
   "history": [
+    {
+      "date": "2026-11-05",
+      "name": "shorts-kit",
+      "full_name": "howznguyen/shorts-kit",
+      "owner": "howznguyen",
+      "url": "https://github.com/howznguyen/shorts-kit",
+      "homepage": "https://howznguyen.dev/projects/shorts-kit",
+      "stars": 27,
+      "language": "TypeScript",
+      "created_at": "2026-11-04T19:41:42Z",
+      "headline": "Someone made a kit that helps an AI assistant build narrated short videos today!",
+      "summary": "You tell an AI assistant a topic, and this kit guides it through checking facts, writing a script, adding a voice, and building a vertical video for TikTok, YouTube Shorts or Reels. It's for people who want to make short explainer videos and are comfortable installing a few tools.",
+      "takeaway": "Breaking a big creative task into clear steps, with facts checked first and your own review at each stage, is a good habit for getting reliable results from AI.",
+      "course": "developer",
+      "ai_written": true
+    },
     {
       "date": "2026-11-04",
       "name": "agent-autoloop",
