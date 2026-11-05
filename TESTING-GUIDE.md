@@ -80,6 +80,7 @@ Tip: questions 5 and 7 are where people are most likely to be polite. If someone
 | **App Installed** / **Install Prompt** | Do people want it on their phone? |
 | **Feedback Clicked** | Are people motivated to give feedback? |
 | **Sound Toggled** | Do people turn the sounds off? If many do, the sounds may be too loud or annoying. |
+| **Signed In** / **Signed Out** / **Account Deleted** | How many learners create accounts, a sign of commitment |
 
 In Plausible, each event appears only after you add it as a **goal**; see README → "Analytics". In Umami, events appear automatically under **Events**.
 

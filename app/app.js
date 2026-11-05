@@ -55,7 +55,11 @@ function loadState() {
   }, s || {});
   // Older saves stored completed lessons without a course; move them to the beginner course.
   if (Object.values(s.completed).some(v => v === true)) s.completed = { beginner: s.completed };
-  // New day: refill hearts, reset daily XP, and break the streak if a day was missed.
+  return normaliseDay(s);
+}
+
+// New day: refill hearts, reset daily XP, and break the streak if a day was missed.
+function normaliseDay(s) {
   if (s.heartsDate !== todayStr()) { s.hearts = SETTINGS.maxHearts; s.heartsDate = todayStr(); }
   if (s.todayDate !== todayStr()) { s.todayXp = 0; s.todayDate = todayStr(); }
   if (s.lastActiveDate && s.lastActiveDate !== todayStr() && s.lastActiveDate !== todayStr(-1)) s.streak = 0;
@@ -65,7 +69,8 @@ function loadState() {
 let state = loadState();
 
 function saveState() {
-  localStorage.setItem(SETTINGS.storageKey, JSON.stringify(state));
+  try { localStorage.setItem(SETTINGS.storageKey, JSON.stringify(state)); } catch (e) { /* storage blocked */ }
+  Accounts.queueSave(state);
   document.getElementById("stat-streak").textContent = state.streak;
   document.getElementById("stat-xp").textContent = state.xp;
   document.getElementById("stat-hearts").textContent = state.hearts;
@@ -86,6 +91,8 @@ function lessonsOf(course) { return course.units.flatMap(u => u.lessons); }
 function doneMap(courseId) { return state.completed[courseId] || (state.completed[courseId] = {}); }
 
 function isUnlocked(course, lessonId) {
+  // Courses with levelJump let learners start at the first lesson of any level.
+  if (course.levelJump && course.units.some(u => u.lessons[0].id === lessonId)) return true;
   const all = lessonsOf(course);
   const i = all.findIndex(l => l.id === lessonId);
   return i === 0 || !!doneMap(course.id)[all[i - 1].id];
@@ -196,21 +203,40 @@ function mountSpotlight() {
 
 // ---------- Course picker ----------
 function renderCoursePicker() {
+  onAccountScreen = false;
   document.getElementById("topbar").style.display = "";
   $app.innerHTML = "";
   $app.appendChild(el("h1", { class: "picker-title", text: "Choose your course" }));
   $app.appendChild(el("p", { class: "picker-sub", text: "Pick the one that fits you best. You can switch at any time and your progress in each course is kept." }));
   $app.appendChild(el("div", { class: "spot-anchor" }));
   mountSpotlight();
-  for (const course of COURSES) {
+  const groups = [
+    { id: "audience", title: "Courses by who you are", sub: "Broad AI skills, whichever tool you use." },
+    { id: "tool", title: "Master a specific AI tool", sub: "Beginner, intermediate and advanced levels for each tool." }
+  ];
+  for (const g of groups) {
+    const inGroup = COURSES.filter(c => (c.group || "audience") === g.id);
+    if (!inGroup.length) continue;
+    $app.appendChild(el("h2", { class: "group-title", text: g.title }));
+    $app.appendChild(el("p", { class: "group-sub", text: g.sub }));
+    for (const course of inGroup) $app.appendChild(courseCard(course));
+    if (g.id === "tool") {
+      $app.appendChild(el("p", { class: "tool-note", text: "Promptly is independent and not affiliated with Anthropic, OpenAI or xAI. AI tools change often, so if an app looks different from a lesson, the idea is usually the same." }));
+    }
+  }
+  $app.appendChild(footerActions(false));
+  saveState();
+}
+
+function courseCard(course) {
     const all = lessonsOf(course);
     const done = all.filter(l => doneMap(course.id)[l.id]).length;
     const pct = Math.round((done / all.length) * 100);
-    $app.appendChild(el("button", {
+    return el("button", {
       class: "course-card" + (course.id === state.courseId ? " current" : ""),
       onclick: () => {
         Analytics.track("Course Selected", { course: course.id, switched: state.courseId && state.courseId !== course.id ? "yes" : "no" });
-        state.courseId = course.id; saveState(); renderHome();
+        state.courseId = course.id; saveState(); renderHome(); window.scrollTo(0, 0);
       }
     }, [
       el("div", { class: "course-icon", text: course.icon }),
@@ -223,14 +249,12 @@ function renderCoursePicker() {
           el("span", { text: `${done} / ${all.length} lessons` })
         ])
       ])
-    ]));
-  }
-  $app.appendChild(footerActions(false));
-  saveState();
+    ]);
 }
 
 // ---------- Home screen ----------
 function renderHome() {
+  onAccountScreen = false;
   const course = currentCourse();
   if (!course) return renderCoursePicker();
   document.getElementById("topbar").style.display = "";
@@ -308,6 +332,100 @@ function onLessonClick(lesson, done, unlocked) {
     return;
   }
   startLesson(lesson, false);
+}
+
+// ---------- Accounts (Sign in with Google) ----------
+let onAccountScreen = false;
+
+function accountButton() {
+  const b = el("button", { class: "account-btn", id: "account-btn", onclick: renderAccount });
+  const u = Accounts.user();
+  b.textContent = u ? (u.name || u.email || "?").trim().charAt(0).toUpperCase() : "👤";
+  b.classList.toggle("signed-in", !!u);
+  b.title = u ? "Your account" : "Sign in";
+  b.setAttribute("aria-label", b.title);
+  return b;
+}
+
+function refreshAccountButton() {
+  const old = document.getElementById("account-btn");
+  if (old) old.replaceWith(accountButton());
+}
+
+function googleButton(label) {
+  return el("button", {
+    class: "btn google-btn", text: label || "Sign in with Google",
+    onclick: async e => {
+      const btn = e.currentTarget;
+      btn.disabled = true; btn.textContent = "Opening Google…";
+      try { await Accounts.signIn(); }
+      catch (err) {
+        btn.disabled = false; btn.textContent = label || "Sign in with Google";
+        if (!(err && err.code === "auth/popup-closed-by-user")) {
+          alert("Sign-in didn't work. Please try again.\n\nIf you're using the app from your home screen, try signing in once in Safari or Chrome instead.");
+        }
+      }
+    }
+  });
+}
+
+function signInNudge() {
+  if (!Accounts.isConfigured() || Accounts.user()) return null;
+  return el("div", { class: "signin-nudge" }, [
+    el("div", { text: "💾 Keep your streak and progress on every device." }),
+    googleButton("Save progress with Google")
+  ]);
+}
+
+function renderAccount() {
+  if (run) return;
+  onAccountScreen = true;
+  document.getElementById("topbar").style.display = "";
+  $app.innerHTML = "";
+  const u = Accounts.user();
+  const box = el("div", { class: "card account-card" });
+  if (!u) {
+    box.appendChild(el("h1", { class: "picker-title", text: "Your account" }));
+    box.appendChild(el("p", { text: "Sign in to save your XP, streak and completed lessons online, so they follow you to any phone or computer." }));
+    box.appendChild(googleButton());
+    box.appendChild(el("p", { class: "privacy-note", text: "We store only your learning progress. Google shares your name and email with us to sign you in; we don't send you emails or share your details. You can delete your account at any time." }));
+  } else {
+    box.appendChild(el("h1", { class: "picker-title", text: `Hi${u.name ? ", " + u.name.split(" ")[0] : ""}! 👋` }));
+    box.appendChild(el("p", { class: "account-email", text: u.email }));
+    box.appendChild(el("p", { text: "✅ Your progress is saved to your account and syncs across your devices." }));
+    const totalDone = Object.values(state.completed).reduce((a, c) => a + Object.keys(c).length, 0);
+    box.appendChild(el("div", { class: "result-stats" }, [
+      el("div", { class: "result-box", html: `<b>⭐ ${state.xp}</b><span>XP</span>` }),
+      el("div", { class: "result-box", html: `<b>🔥 ${state.streak}</b><span>Day streak</span>` }),
+      el("div", { class: "result-box", html: `<b>📚 ${totalDone}</b><span>Lessons done</span>` })
+    ]));
+    box.appendChild(el("button", {
+      class: "btn secondary", text: "Sign out",
+      onclick: async () => {
+        const wipe = confirm("Signed out. Also remove your progress from this device?\n\nOK = remove it (good for shared devices)\nCancel = keep it here");
+        await Accounts.signOut();
+        Analytics.track("Signed Out", {});
+        if (wipe) { try { localStorage.removeItem(SETTINGS.storageKey); } catch (e) {} state = loadState(); saveState(); }
+        renderAccount();
+      }
+    }));
+    box.appendChild(el("button", {
+      class: "link-btn danger", text: "Delete my account",
+      onclick: async () => {
+        if (!confirm("Delete your account and the progress saved online? This can't be undone. Progress on this device stays unless you reset it.")) return;
+        try {
+          await Accounts.deleteAccount();
+          Analytics.track("Account Deleted", {});
+          alert("Your account and online progress have been deleted.");
+        } catch (e) {
+          alert("Couldn't delete the account. Please sign in again and retry.");
+        }
+        renderAccount();
+      }
+    }));
+  }
+  $app.appendChild(box);
+  $app.appendChild(el("div", { class: "footer-actions" }, el("button", { class: "link-btn", text: "← Back to lessons", onclick: () => { onAccountScreen = false; renderHome(); } })));
 }
 
 // ---------- Sound on/off button ----------
@@ -533,6 +651,7 @@ function finishLesson() {
   }
   addXp(earned);
   Sounds.complete(mistakes === 0);
+  Accounts.saveNow(state);
   saveState();
 
   const questions = lesson.steps.filter(s => s.type !== "info").length;
@@ -558,6 +677,7 @@ function finishLesson() {
       el("div", { class: "result-box", html: `<b>🔥 ${state.streak}</b><span>Day streak</span>` })
     ]),
     practice ? el("p", { text: "You earned back a heart ❤️" }) : null,
+    signInNudge(),
     spotlight && spotlight.today ? el("p", { class: "spot-nudge", text: `🚀 ${spotlight.today.headline || "Someone built something with Claude today!"} Keep learning and you could be next.` }) : null,
     el("button", { class: "btn", text: "CONTINUE", onclick: () => { run = null; renderHome(); } })
   ]));
@@ -635,5 +755,29 @@ if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
 
 document.getElementById("courses-btn").addEventListener("click", renderCoursePicker);
 document.querySelector(".stats").prepend(soundToggle());
+
+// Accounts: only shown once Firebase is set up in config.js
+if (Accounts.isConfigured()) {
+  document.getElementById("courses-btn").after(accountButton());
+  Accounts.onChange(u => {
+    refreshAccountButton();
+    if (u) Analytics.track("Signed In", {});
+    // On the lesson-complete screen, swap the sign-in prompt for a confirmation
+    const nudge = document.querySelector(".signin-nudge");
+    if (nudge && u) nudge.replaceWith(el("div", { class: "signin-nudge done", text: "✅ Signed in. Your progress is saved to your account." }));
+    if (run) return;                 // don't interrupt a lesson
+    if (onAccountScreen) renderAccount();
+    else if (state.courseId) renderHome(); else renderCoursePicker();
+  });
+  Accounts.init({
+    getLocal: () => state,
+    applyMerged: merged => { state = normaliseDay(Object.assign({}, state, merged)); saveState(); },
+    // Remember how much XP is already online, so it's never counted twice
+    synced: xp => { state.syncedXp = xp; try { localStorage.setItem(SETTINGS.storageKey, JSON.stringify(state)); } catch (e) {} }
+  });
+  // Save straight away if the app is closed or put in the background
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") Accounts.saveNow(state); });
+}
+
 renderHome();
 setTimeout(showInstallBanner, 1500);

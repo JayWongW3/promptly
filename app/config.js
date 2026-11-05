@@ -24,6 +24,19 @@ window.PROMPTLY_CONFIG = {
     debug: false
   },
 
+  // Accounts ("Sign in with Google"). Paste the values from your Firebase project:
+  // Firebase console → ⚙️ Project settings → General → Your apps → Web app → "SDK setup and configuration".
+  // Leave them empty to keep accounts switched off. (These values are safe to be public;
+  // access is protected by the Firestore security rules in firestore.rules.)
+  accounts: {
+    firebase: {
+      apiKey: "",
+      authDomain: "",
+      projectId: "",
+      appId: ""
+    }
+  },
+
   // A link for the "Send feedback" button, e.g. a Google Form address,
   // or "mailto:you@example.com". Leave empty to hide the button.
   feedbackUrl: ""

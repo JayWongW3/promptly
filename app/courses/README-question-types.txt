@@ -47,6 +47,12 @@
     ]
   });
 
+  Optional course settings:
+    group: "tool"      shows the course under "Master a specific AI tool" on the course
+                       picker (leave it out for the "Courses by who you are" section)
+    levelJump: true    lets learners start at the first lesson of any unit (level),
+                       instead of having to finish earlier units first
+
   Lesson ids must be unique within a course. Don't change an id after people have
   started the course, or their progress for that lesson will be lost.
 
