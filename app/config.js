@@ -30,10 +30,10 @@ window.PROMPTLY_CONFIG = {
   // access is protected by the Firestore security rules in firestore.rules.)
   accounts: {
     firebase: {
-      apiKey: "",
-      authDomain: "",
-      projectId: "",
-      appId: ""
+      apiKey: "AIzaSyCMfmp5TSAr9H5lnTqUmtsdZ5z5z6pPBCc",
+      authDomain: "ai-promptly.firebaseapp.com",
+      projectId: "ai-promptly",
+      appId: "1:1061915933906:web:eb2c77835d947b4c13c10b"
     }
   },
 

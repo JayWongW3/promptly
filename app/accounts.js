@@ -132,6 +132,8 @@ const Accounts = (() => {
   return {
     isConfigured,
     isReady: () => ready,
+    // True once Firebase has loaded; account buttons are only shown then.
+    isAvailable: () => !!backend,
     user: () => user,
 
     /*
