@@ -350,6 +350,7 @@ function accountButton() {
 function refreshAccountButton() {
   const old = document.getElementById("account-btn");
   if (old) old.replaceWith(accountButton());
+  else document.getElementById("courses-btn").after(accountButton());
 }
 
 function googleButton(label) {
@@ -370,7 +371,7 @@ function googleButton(label) {
 }
 
 function signInNudge() {
-  if (!Accounts.isConfigured() || Accounts.user()) return null;
+  if (!Accounts.isAvailable() || Accounts.user()) return null;
   return el("div", { class: "signin-nudge" }, [
     el("div", { text: "💾 Keep your streak and progress on every device." }),
     googleButton("Save progress with Google")
@@ -757,8 +758,8 @@ document.getElementById("courses-btn").addEventListener("click", renderCoursePic
 document.querySelector(".stats").prepend(soundToggle());
 
 // Accounts: only shown once Firebase is set up in config.js
+// (The account button appears once Firebase has loaded and reported who's signed in.)
 if (Accounts.isConfigured()) {
-  document.getElementById("courses-btn").after(accountButton());
   Accounts.onChange(u => {
     refreshAccountButton();
     if (u) Analytics.track("Signed In", {});
