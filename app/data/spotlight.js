@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-05T07:29:00.635Z",
+  "generated_at": "2026-11-06T07:27:49.456Z",
   "today": {
-    "date": "2026-11-05",
-    "name": "shorts-kit",
-    "full_name": "howznguyen/shorts-kit",
-    "owner": "howznguyen",
-    "url": "https://github.com/howznguyen/shorts-kit",
-    "homepage": "https://howznguyen.dev/projects/shorts-kit",
-    "stars": 27,
-    "language": "TypeScript",
-    "created_at": "2026-11-04T19:41:42Z",
-    "headline": "Someone made a kit that helps an AI assistant build narrated short videos today!",
-    "summary": "You tell an AI assistant a topic, and this kit guides it through checking facts, writing a script, adding a voice, and building a vertical video for TikTok, YouTube Shorts or Reels. It's for people who want to make short explainer videos and are comfortable installing a few tools.",
-    "takeaway": "Breaking a big creative task into clear steps, with facts checked first and your own review at each stage, is a good habit for getting reliable results from AI.",
+    "date": "2026-11-06",
+    "name": "poki",
+    "full_name": "JosssphZhou/poki",
+    "owner": "JosssphZhou",
+    "url": "https://github.com/JosssphZhou/poki",
+    "homepage": "https://poki.bot",
+    "stars": 306,
+    "language": "JavaScript",
+    "created_at": "2026-11-05T15:04:31Z",
+    "headline": "Someone made a tool that lets AI tap and type on a real iPhone today!",
+    "summary": "Poki lets an AI assistant use your iPhone the way you would, opening apps, searching, and typing, all run from a Mac. It is aimed at tech-savvy Mac users who want an AI helper to carry out phone tasks for them.",
+    "takeaway": "It shows how AI assistants can be connected to everyday tools to take real actions, and why it matters to stay careful about what you let them do on your accounts.",
     "course": "developer",
     "ai_written": true
   },
   "others": [
     {
-      "full_name": "Phucanh-MRT/mrtkeyword",
-      "url": "https://github.com/Phucanh-MRT/mrtkeyword",
-      "stars": 18,
-      "description": "MRT Keyword: Claude Code / Codex tự dựng video dọc 9:16 từ video quay hoặc file giọng đọc — 62 hiệu ứng có code, phụ đề, nhạc nền, ảnh bìa,…"
+      "full_name": "HerdBuilderEstimate/roblox-studio-mcp",
+      "url": "https://github.com/HerdBuilderEstimate/roblox-studio-mcp",
+      "stars": 425,
+      "description": "Model Context Protocol server for Roblox Studio. Connect AI assistants (Claude, Cursor) to read object trees, edit scripts, and run playtes…"
     },
     {
-      "full_name": "denonmaryland/omarchy-dotfiles",
-      "url": "https://github.com/denonmaryland/omarchy-dotfiles",
-      "stars": 29,
-      "description": "My Omarchy setup: Pebble Shell rail, control corner, search-first menu, recessed windows and a fastfetch dashboard"
+      "full_name": "Glen-Web-App/best-agent-memory-mcp",
+      "url": "https://github.com/Glen-Web-App/best-agent-memory-mcp",
+      "stars": 117,
+      "description": "Best Agent Memory MCP servers, ranked and compared: long-term memory for Claude Code, Codex, Cursor and any MCP client. Glen, Mem0, Superme…"
     },
     {
-      "full_name": "almonk/rexpad",
-      "url": "https://github.com/almonk/rexpad",
-      "stars": 26,
-      "description": "A live todo list for coding agents, drawn in a Rex pane with the kitty graphics protocol"
+      "full_name": "yucezerey/turkish-anti-ai-skill",
+      "url": "https://github.com/yucezerey/turkish-anti-ai-skill",
+      "stars": 126,
+      "description": "Türkçe metinlerdeki yapay zeka izlerini (AI slop, translationese, çeviri kokan cümle mimarisi ve TDK hatalarını) temizleyen Agent Skill ve…"
     },
     {
-      "full_name": "iampedii/herdr-redline",
-      "url": "https://github.com/iampedii/herdr-redline",
-      "stars": 25,
-      "description": "Redline: code review inside the Herdr app. Review GitLab MRs and GitHub PRs in a git worktree next to an AI agent: inline comments, pending…"
+      "full_name": "ZSeven-W/dsh-game-studio",
+      "url": "https://github.com/ZSeven-W/dsh-game-studio",
+      "stars": 85,
+      "description": "Describe a small game in one sentence, play it in the DeepSeek Harness sidebar, swap in AI art, export one HTML file."
     }
   ],
   "history": [
+    {
+      "date": "2026-11-06",
+      "name": "poki",
+      "full_name": "JosssphZhou/poki",
+      "owner": "JosssphZhou",
+      "url": "https://github.com/JosssphZhou/poki",
+      "homepage": "https://poki.bot",
+      "stars": 306,
+      "language": "JavaScript",
+      "created_at": "2026-11-05T15:04:31Z",
+      "headline": "Someone made a tool that lets AI tap and type on a real iPhone today!",
+      "summary": "Poki lets an AI assistant use your iPhone the way you would, opening apps, searching, and typing, all run from a Mac. It is aimed at tech-savvy Mac users who want an AI helper to carry out phone tasks for them.",
+      "takeaway": "It shows how AI assistants can be connected to everyday tools to take real actions, and why it matters to stay careful about what you let them do on your accounts.",
+      "course": "developer",
+      "ai_written": true
+    },
     {
       "date": "2026-11-05",
       "name": "shorts-kit",
