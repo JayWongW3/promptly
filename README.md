@@ -8,6 +8,8 @@ This is a **working prototype**. It runs entirely in a web browser. It has no se
 
 Learners pick a course on the first screen and can switch at any time. Progress is kept separately for each course.
 
+There are **7 courses, 71 lessons and 568 questions**. Every lesson has a short teaching card followed by **8 questions**, each with an explanation of the right answer.
+
 | Course | For | Lessons | Topics |
 |---|---|---|---|
 | 🌱 **AI Basics** | Individuals, beginner | 16 | What AI is, hallucinations, writing good prompts, everyday uses, staying safe, **which tool and model to use for which job** |
@@ -15,7 +17,7 @@ Learners pick a course on the first screen and can switch at any time. Progress 
 | 💼 **AI for Business Owners** | Business owners | 14 | Business brief formula, prompt templates, **loops** (improvement loops, automation loops, AI agents), **building a second brain** (capture, organise, distil, use; connecting it to AI), AI in marketing, sales, customer service, operations and finance, AI policy and measuring return on investment, **choosing assistants and specialist tools for your team** |
 | 👩‍💻 **AI for Developers** | Developers | 13 | Tokens and context windows, non-determinism, model APIs and system prompts, structured output, tool use, RAG, agent loops, coding assistants, evals, prompt injection, cost and latency, **model selection, routing, fallbacks and choosing coding tools** |
 
-**Tool courses**, each with three levels (Beginner → Intermediate → Advanced, 2 lessons per level). Learners can start at any level.
+**Tool courses**, each with three levels (Beginner → Intermediate → Advanced, 2 lessons per level, 8 questions per lesson). Learners can start at any level.
 
 | Course | Covers |
 |---|---|
@@ -52,14 +54,14 @@ XP, streak and hearts are shared across all courses. Progress saves automaticall
 
 ## Daily "Built with Claude" spotlight
 
-The course picker and each course's home screen show a card like:
+The course picker and each course's home screen show a slim one-line strip ("✨ Built with Claude today · project-name ›") underneath the main "Up next" lesson card, so learning stays the focus. Tapping it opens a panel with small, separate boxes:
 
-> ✨ **Built with Claude today**
-> **Someone made an app that turns a sentence into an architecture diagram today!**
-> owner/project · ⭐ 252
-> A short plain-English explanation, plus a tip on what learners can take from it, a link to the project and a button to the course that teaches the skills behind it.
+- **What they built**, **How it works** and **What you can learn** (written by Claude when an API key is set)
+- Quick facts: ⭐ stars, language, creator
+- **See it on GitHub** and **Learn the skills** buttons
+- **More people built with Claude**: up to 4 short project cards
 
-A "More projects people built with Claude" list sits under it, and finishing a lesson shows a short "someone built this today, keep going" message.
+Finishing a lesson also shows a one-line "someone built this today, keep going" message.
 
 ### How it works
 
@@ -151,7 +153,7 @@ Pick **one** service:
 2. If Plausible shows you a script address that isn't `https://plausible.io/js/script.js`, copy it.
 3. Edit `app/config.js` on GitHub: set `provider: "plausible"`, put your domain in `plausibleDomain: ""`, and if you copied a different script address in step 2, paste it into `plausibleScript`. Commit.
 4. In Plausible, go to **Site settings → Goals → Add goal → Custom event** and add each of these names exactly:
-   `App Opened`, `Course Selected`, `Lesson Started`, `Lesson Completed`, `Lesson Quit`, `Wrong Answer`, `Out Of Hearts`, `Course Completed`, `Spotlight Click`, `Install Prompt`, `App Installed`, `Feedback Clicked`, `Sound Toggled`, `Signed In`, `Signed Out`, `Account Deleted`.
+   `App Opened`, `Course Selected`, `Lesson Started`, `Lesson Completed`, `Lesson Quit`, `Wrong Answer`, `Out Of Hearts`, `Course Completed`, `Spotlight Click`, `Install Prompt`, `App Installed`, `Feedback Clicked`, `Sound Toggled`, `Signed In`, `Signed Out`, `Account Deleted`, `Spotlight Opened`.
 5. To see details such as which lesson or question, go to **Site settings → Custom properties** and add: `course`, `lesson`, `question`, `text`, `percent`, `accuracy`, `visitor`, `days_since_last_lesson`.
 
 ### Checking it works
@@ -183,7 +185,7 @@ Learners can sign in with their Google (Gmail) account so their XP, streak and c
 **2. Turn on Google sign-in**
 1. In the left menu, open **Build → Authentication**, then click **Get started**.
 2. On the **Sign-in method** tab, click **Google**, switch on **Enable**, choose your email as the **Project support email**, and click **Save**.
-3. Open the **Settings** tab → **Authorized domains** → **Add domain**, type `orpheusjam.github.io`, and click **Add**.
+3. Open the **Settings** tab → **Authorized domains** → **Add domain**, type `jaywongw3.github.io`, and click **Add**.
 
 **3. Create the database**
 1. In the left menu, open **Build → Firestore Database**, then click **Create database**.

@@ -7,7 +7,7 @@
 COURSES.push({
   id: "grok",
   group: "tool",
-  levelJump: true, // learners can start at any level
+  levelJump: true,
   icon: "⚫",
   title: "Mastering Grok",
   audience: "Tool course · Grok by xAI",
@@ -57,6 +57,53 @@ COURSES.push({
               question: "Like other AI assistants, Grok can state wrong information confidently.",
               answer: true,
               explain: "Why: all AI models can hallucinate. Check important facts, whichever tool you use."
+            },
+            {
+              type: "mc",
+              question: "Which company makes Grok?",
+              options: ["xAI", "OpenAI", "Anthropic", "Google"],
+              answer: 0,
+              explain: "Grok is made by xAI, which is closely linked to X (formerly Twitter)."
+            },
+            {
+              type: "tf",
+              question: "You can use Grok without opening the X app, at grok.com or in the Grok apps.",
+              answer: true,
+              explain: "Why: Grok is available on the web and as standalone apps, as well as inside X."
+            },
+            {
+              type: "mc",
+              question: "What's a SuperGrok subscription for?",
+              options: [
+                "Higher limits and more features than the free tier",
+                "A different social network",
+                "A phone contract",
+                "Free advertising on X"
+              ],
+              answer: 0,
+              explain: "Why: paid plans raise usage limits and unlock extra features. Check the current details in the app."
+            },
+            {
+              type: "better",
+              question: "Which first prompt to Grok is better?",
+              options: [
+                "What are people on X saying about the new iPhone battery life this week? Summarise the main views with example posts.",
+                "iPhone?"
+              ],
+              answer: 0,
+              explain: "Why: the topic, timeframe and format make use of Grok's live X access."
+            },
+            {
+              type: "mc",
+              question: "Grok's answers can sound more casual than other assistants. What's the right response?",
+              options: [
+                "Ask for the tone you want, such as \"formal and concise\"",
+                "Assume it can't be formal",
+                "Stop using it",
+                "Switch your phone language"
+              ],
+              answer: 0,
+              explain: "Why: you can steer tone in any assistant by asking."
             }
           ]
         },
@@ -104,6 +151,58 @@ COURSES.push({
               ],
               answer: 0,
               explain: "Why: sentiment and trend tracking is where live social data helps most. Treat it as a signal, not proof."
+            },
+            {
+              type: "mc",
+              question: "Which is a sign an X post might be unreliable?",
+              options: [
+                "A dramatic claim with no source from a brand-new account",
+                "A link to an official announcement",
+                "A verified news outlet with a link",
+                "A company's own press release"
+              ],
+              answer: 0,
+              explain: "Why: new accounts, no sources and dramatic claims are common signs of rumour."
+            },
+            {
+              type: "tf",
+              question: "When a story is breaking, early posts are often wrong or incomplete.",
+              answer: true,
+              explain: "Why: facts take time to confirm. Give it time and check reliable outlets."
+            },
+            {
+              type: "better",
+              question: "Which prompt is better for brand monitoring?",
+              options: [
+                "Summarise X posts from the last 7 days mentioning [our brand]. Group by complaint type, count each, and link 2 example posts per group.",
+                "Are people talking about us?"
+              ],
+              answer: 0,
+              explain: "Why: timeframe, grouping and examples turn chatter into something you can act on."
+            },
+            {
+              type: "mc",
+              question: "Grok says a product is \"trending\". What does that mean?",
+              options: [
+                "Many people are posting about it, not that the claims are true",
+                "It's been officially verified",
+                "It's on sale",
+                "It's been banned"
+              ],
+              answer: 0,
+              explain: "Why: popularity measures attention, not accuracy."
+            },
+            {
+              type: "mc",
+              question: "What should you do before replying publicly to a viral complaint about your business?",
+              options: [
+                "Check the facts and the original post first",
+                "Reply instantly with Grok's summary",
+                "Delete your account",
+                "Ignore it forever"
+              ],
+              answer: 0,
+              explain: "Why: a calm reply based on checked facts avoids making things worse."
             }
           ]
         }
@@ -143,6 +242,58 @@ COURSES.push({
               question: "DeepSearch reports can include claims taken from social posts, so you should check where key facts came from.",
               answer: true,
               explain: "Why: a report can mix reliable sources with posts. Look at the source behind anything important."
+            },
+            {
+              type: "mc",
+              question: "What does DeepSearch give you that a quick reply doesn't?",
+              options: [
+                "A researched report with sources, built over a few minutes",
+                "A faster one-word answer",
+                "An image",
+                "A voice message"
+              ],
+              answer: 0,
+              explain: "Why: it searches widely and cites sources, trading speed for depth."
+            },
+            {
+              type: "tf",
+              question: "Think mode is slower but tends to be more careful on multi-step problems.",
+              answer: true,
+              explain: "Why: reasoning before answering reduces mistakes on complex questions."
+            },
+            {
+              type: "better",
+              question: "Which DeepSearch prompt is better?",
+              options: [
+                "Research how UK independent gyms are using social media to win members in 2026. Include examples, what works, and sources.",
+                "Gyms?"
+              ],
+              answer: 0,
+              explain: "Why: scope, location, timeframe and the output you want guide the research."
+            },
+            {
+              type: "mc",
+              question: "When is the quick default reply enough?",
+              options: [
+                "\"Rewrite this tweet to be friendlier.\"",
+                "\"Compare 10 suppliers with sources.\"",
+                "\"Plan a year-long budget.\"",
+                "\"Research a new regulation in depth.\""
+              ],
+              answer: 0,
+              explain: "Why: simple edits don't need research or extra reasoning."
+            },
+            {
+              type: "mc",
+              question: "A DeepSearch report cites a post as evidence for a statistic. What should you do?",
+              options: [
+                "Look for the original data source behind the statistic",
+                "Treat the post as proof",
+                "Ignore the report entirely",
+                "Repost it"
+              ],
+              answer: 0,
+              explain: "Why: statistics should come from the original study or official data."
             }
           ]
         },
@@ -183,6 +334,58 @@ COURSES.push({
               ],
               answer: 0,
               explain: "Why: honesty protects trust, and advertising rules in many countries require that images don't mislead."
+            },
+            {
+              type: "mc",
+              question: "Which is a good use of Grok Imagine?",
+              options: [
+                "Concept art for a new product idea",
+                "A realistic fake photo of a real politician",
+                "A forged ID document",
+                "A fake customer review screenshot"
+              ],
+              answer: 0,
+              explain: "Why: creative concepts are fine; fakes of real people or documents are harmful and often illegal."
+            },
+            {
+              type: "tf",
+              question: "You can animate an image you provide into a short video clip.",
+              answer: true,
+              explain: "Why: Imagine can generate video from text or from an existing image."
+            },
+            {
+              type: "better",
+              question: "Which video prompt is better?",
+              options: [
+                "A 5-second clip of steam rising from a coffee cup on a café counter, slow camera push-in, warm morning light.",
+                "Coffee video."
+              ],
+              answer: 0,
+              explain: "Why: length, subject, camera movement and lighting give a clear target."
+            },
+            {
+              type: "mc",
+              question: "Before using a generated image in an advert, what should you check?",
+              options: [
+                "It doesn't copy someone's trademark or artwork, and isn't misleading",
+                "That it's very colourful",
+                "That it has a famous face",
+                "Nothing"
+              ],
+              answer: 0,
+              explain: "Why: ads must not mislead or infringe others' rights."
+            },
+            {
+              type: "mc",
+              question: "A generated image includes a well-known company's logo by accident. What should you do?",
+              options: [
+                "Regenerate or edit it out before using it",
+                "Use it as is",
+                "Make the logo bigger",
+                "Claim a partnership"
+              ],
+              answer: 0,
+              explain: "Why: using another brand's logo can imply a false connection and break trademark law."
             }
           ]
         }
@@ -232,6 +435,58 @@ COURSES.push({
               question: "You can delete your Grok conversation history.",
               answer: true,
               explain: "Why: managing and deleting history is a basic control. Use it for anything you'd rather not keep."
+            },
+            {
+              type: "mc",
+              question: "Where is the setting that controls whether your X posts train Grok?",
+              options: [
+                "In X's Privacy and safety settings",
+                "In your phone's battery settings",
+                "In Grok Imagine",
+                "There is no such setting"
+              ],
+              answer: 0,
+              explain: "Why: it's an X account setting. Menus move, so look under Privacy and safety for the Grok / data-sharing option."
+            },
+            {
+              type: "tf",
+              question: "Deleting the Grok app removes all your past X posts from Grok's training data.",
+              answer: false,
+              explain: "Why: deleting an app doesn't change your X data settings or past data. Use the X privacy setting."
+            },
+            {
+              type: "mc",
+              question: "Which business information is safe to discuss with Grok?",
+              options: [
+                "Your public product launch announcement",
+                "Your payroll file",
+                "A client contract under NDA",
+                "Staff home addresses"
+              ],
+              answer: 0,
+              explain: "Why: public information is low risk; confidential and personal data isn't."
+            },
+            {
+              type: "better",
+              question: "Which way of getting help with a sensitive HR issue is safer?",
+              options: [
+                "Describe it in general terms with no names: 'An employee is often late. How do I raise it fairly?'",
+                "Paste the employee's full file and ask what to do."
+              ],
+              answer: 0,
+              explain: "Why: you get useful advice without sharing personal data."
+            },
+            {
+              type: "mc",
+              question: "Why check privacy settings on any AI tool?",
+              options: [
+                "To know how your data is stored, used and shared",
+                "To change the app's colour",
+                "To make it faster",
+                "To unlock games"
+              ],
+              answer: 0,
+              explain: "Why: settings decide what happens to your information."
             }
           ]
         },
@@ -273,6 +528,58 @@ COURSES.push({
               question: "Using more than one AI tool, each for what it does best, is a sensible strategy.",
               answer: true,
               explain: "Why: tools have different strengths and connections. Matching tool to task beats loyalty to one app."
+            },
+            {
+              type: "mc",
+              question: "Which job fits Grok best?",
+              options: [
+                "Spotting what people are saying about a competitor's launch today",
+                "Editing a 50-page Word document",
+                "Doing your bookkeeping",
+                "Writing legal contracts"
+              ],
+              answer: 0,
+              explain: "Why: live public conversation is Grok's main strength."
+            },
+            {
+              type: "tf",
+              question: "Grok models are also available to developers through the xAI API.",
+              answer: true,
+              explain: "Why: developers can build Grok into their own apps and tools."
+            },
+            {
+              type: "better",
+              question: "Which combined workflow is better?",
+              options: [
+                "Use Grok to gather this week's customer reactions on X, then use your main assistant to draft a response plan, then check it yourself.",
+                "Post whatever Grok says straight to your company account."
+              ],
+              answer: 0,
+              explain: "Why: each tool does what it's good at, and you stay in charge."
+            },
+            {
+              type: "mc",
+              question: "How should you judge which AI tool is best for you?",
+              options: [
+                "Test the same real task in two or three tools and compare",
+                "Pick the most talked-about one",
+                "Choose by logo",
+                "Use only one forever"
+              ],
+              answer: 0,
+              explain: "Why: your own tasks are the best test."
+            },
+            {
+              type: "mc",
+              question: "What's a good weekly habit with Grok for a business?",
+              options: [
+                "A Monday summary of last week's mentions and trends in your industry",
+                "Auto-posting replies to every mention",
+                "Sharing customer data for analysis",
+                "Ignoring all feedback"
+              ],
+              answer: 0,
+              explain: "Why: a regular, reviewed summary keeps you informed without risk."
             }
           ]
         }

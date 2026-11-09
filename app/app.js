@@ -144,16 +144,68 @@ function safeGitHubUrl(u) {
   return typeof u === "string" && u.startsWith("https://github.com/") ? u : null;
 }
 
+// A slim, one-line strip. Tapping it opens the full spotlight in a panel,
+// so the learning path stays the main focus of the screen.
 function renderSpotlightCard() {
-  const box = el("div", { class: "spotlight", id: "spotlight" });
+  const box = el("div", { class: "spot-strip-wrap", id: "spotlight" });
   if (!spotlight || !spotlight.today) return box; // empty; filled in later if a live fetch succeeds
   const t = spotlight.today;
   const isToday = t.date >= todayStr(-1);
-  box.appendChild(el("div", { class: "spot-label", text: isToday ? "✨ Built with Claude today" : `✨ Built with Claude recently (${t.date})` }));
-  box.appendChild(el("div", { class: "spot-headline", text: t.headline || "Someone made a project with Claude today!" }));
-  box.appendChild(el("div", { class: "spot-meta", text: [t.full_name, t.stars != null ? `⭐ ${t.stars}` : "", t.language].filter(Boolean).join("  ·  ") }));
-  if (t.summary) box.appendChild(el("p", { class: "spot-summary", text: t.summary }));
-  if (t.takeaway) box.appendChild(el("p", { class: "spot-take", text: "💡 " + t.takeaway }));
+  box.appendChild(el("button", {
+    class: "spot-strip",
+    "aria-label": "See today's project built with Claude",
+    onclick: () => openSpotlightSheet()
+  }, [
+    el("span", { class: "spot-strip-icon", text: "✨" }),
+    el("span", { class: "spot-strip-text" }, [
+      el("span", { class: "spot-strip-label", text: isToday ? "Built with Claude today" : "Built with Claude recently" }),
+      el("span", { class: "spot-strip-name", text: t.name || t.full_name })
+    ]),
+    el("span", { class: "spot-strip-go", text: "›" })
+  ]));
+  return box;
+}
+
+const clip = (str, n) => (str && str.length > n ? str.slice(0, n - 1).trimEnd() + "…" : str || "");
+
+function closeSpotlightSheet() {
+  document.getElementById("spot-sheet")?.remove();
+  document.body.classList.remove("sheet-open");
+}
+
+function openSpotlightSheet() {
+  if (!spotlight || !spotlight.today) return;
+  closeSpotlightSheet();
+  const t = spotlight.today;
+  const isToday = t.date >= todayStr(-1);
+  Analytics.track("Spotlight Opened", { repo: t.full_name });
+
+  const panel = el("div", { class: "sheet", role: "dialog", "aria-modal": "true", "aria-label": "Built with Claude" });
+  panel.appendChild(el("div", { class: "sheet-head" }, [
+    el("div", { class: "spot-label", text: isToday ? "✨ Built with Claude today" : `✨ Built with Claude recently (${t.date})` }),
+    el("button", { class: "close-btn", text: "✕", "aria-label": "Close", onclick: closeSpotlightSheet })
+  ]));
+
+  // Project name + small fact chips
+  panel.appendChild(el("div", { class: "sheet-title", text: t.name || t.full_name }));
+  const chips = el("div", { class: "chips" });
+  if (t.stars != null) chips.appendChild(el("span", { class: "chip-fact", text: `⭐ ${t.stars} stars` }));
+  if (t.language) chips.appendChild(el("span", { class: "chip-fact", text: `💻 ${t.language}` }));
+  if (t.owner) chips.appendChild(el("span", { class: "chip-fact", text: `👤 ${t.owner}` }));
+  panel.appendChild(chips);
+
+  // Small, separate boxes instead of one block of text
+  const boxes = [
+    ["🛠️", "What they built", t.headline && t.ai_written ? t.headline.replace(/^Someone made /i, "").replace(/ today!?$/i, "").replace(/^./, c => c.toUpperCase()) : ""],
+    ["⚙️", "How it works", t.summary],
+    ["💡", "What you can learn", t.takeaway]
+  ].filter(b => b[2]);
+  for (const [icon, title, text] of boxes) {
+    panel.appendChild(el("div", { class: "info-box" }, [
+      el("div", { class: "info-box-title", text: `${icon} ${title}` }),
+      el("div", { class: "info-box-text", text: clip(text, 220) })
+    ]));
+  }
 
   const actions = el("div", { class: "spot-actions" });
   const url = safeGitHubUrl(t.url);
@@ -167,29 +219,40 @@ function renderSpotlightCard() {
       class: "btn secondary small", text: `Learn the skills: ${course.title}`,
       onclick: () => {
         Analytics.track("Spotlight Click", { repo: t.full_name, target: "course", course: course.id });
+        closeSpotlightSheet();
+        if (run) return;
         state.courseId = course.id; saveState(); renderHome(); window.scrollTo(0, 0);
       }
     }));
   }
-  box.appendChild(actions);
+  panel.appendChild(actions);
 
-  const others = (spotlight.others || []).filter(o => safeGitHubUrl(o.url));
+  // More projects: one small card each
+  const others = (spotlight.others || []).filter(o => safeGitHubUrl(o.url)).slice(0, 4);
   if (others.length) {
-    const list = el("ul", { class: "spot-others" });
+    panel.appendChild(el("div", { class: "sheet-sub", text: "More people built with Claude" }));
     for (const o of others) {
-      list.appendChild(el("li", {}, [
-        el("a", {
-          href: o.url, target: "_blank", rel: "noopener noreferrer", text: o.full_name,
-          onclick: () => Analytics.track("Spotlight Click", { repo: o.full_name, target: "more" })
-        }),
-        el("span", { text: ` ⭐ ${o.stars}: ${o.description || ""}` })
+      panel.appendChild(el("a", {
+        class: "mini-card", href: o.url, target: "_blank", rel: "noopener noreferrer",
+        onclick: () => Analytics.track("Spotlight Click", { repo: o.full_name, target: "more" })
+      }, [
+        el("div", { class: "mini-card-top" }, [
+          el("span", { class: "mini-card-name", text: o.full_name.split("/")[1] || o.full_name }),
+          el("span", { class: "mini-card-stars", text: `⭐ ${o.stars}` })
+        ]),
+        el("div", { class: "mini-card-text", text: clip(o.description, 90) })
       ]));
     }
-    box.appendChild(el("details", {}, [el("summary", { text: "More projects people built with Claude" }), list]));
   }
-  if (!t.ai_written) box.appendChild(el("div", { class: "spot-note", text: "Description written by the project's creator." }));
-  return box;
+  if (!t.ai_written) panel.appendChild(el("div", { class: "spot-note", text: "Description written by the project's creator." }));
+
+  const overlay = el("div", { class: "sheet-overlay", id: "spot-sheet", onclick: e => { if (e.target === overlay) closeSpotlightSheet(); } }, panel);
+  document.body.appendChild(overlay);
+  document.body.classList.add("sheet-open");
+  panel.querySelector(".close-btn").focus();
 }
+
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeSpotlightSheet(); });
 
 function mountSpotlight() {
   $app.insertBefore(renderSpotlightCard(), $app.querySelector(".spot-anchor"));
@@ -253,6 +316,38 @@ function courseCard(course) {
 }
 
 // ---------- Home screen ----------
+// The main call to action on a course's home screen: the next lesson to do,
+// with today's goal underneath.
+function upNextCard(course) {
+  const all = lessonsOf(course);
+  const done = doneMap(course.id);
+  const next = all.find(l => !done[l.id] && isUnlocked(course, l.id));
+  const unit = next && course.units.find(u => u.lessons.includes(next));
+  const pct = Math.min(100, Math.round((state.todayXp / SETTINGS.dailyGoalXp) * 100));
+  const goal = el("div", { class: "up-goal" }, [
+    el("div", { class: "up-goal-text", text: `Daily goal: ${state.todayXp} / ${SETTINGS.dailyGoalXp} XP${pct >= 100 ? " ✅" : ""}` }),
+    el("div", { class: "goal-bar" }, el("div", { class: "goal-fill", style: `width:${pct}%` }))
+  ]);
+  if (!next) {
+    return el("div", { class: "up-next" }, [
+      el("div", { class: "up-label", text: "Course complete 🎉" }),
+      el("div", { class: "up-title", text: "You've finished every lesson" }),
+      el("div", { class: "up-meta", text: "Replay any lesson below to practise and earn hearts, or try another course." }),
+      el("button", { class: "btn", text: "CHOOSE ANOTHER COURSE", onclick: renderCoursePicker }),
+      goal
+    ]);
+  }
+  const questions = next.steps.filter(x => x.type !== "info").length;
+  const minutes = Math.max(1, Math.round(next.steps.length * 0.4));
+  return el("div", { class: "up-next" }, [
+    el("div", { class: "up-label", text: `Up next · ${unit ? unit.title : ""}` }),
+    el("div", { class: "up-title", text: `${next.icon} ${next.title}` }),
+    el("div", { class: "up-meta", text: `${questions} questions · about ${minutes} min · ${all.filter(l => done[l.id]).length}/${all.length} lessons done` }),
+    el("button", { class: "btn", text: "START LESSON", onclick: () => onLessonClick(next, false, true) }),
+    goal
+  ]);
+}
+
 function renderHome() {
   onAccountScreen = false;
   const course = currentCourse();
@@ -266,11 +361,7 @@ function renderHome() {
     ]),
     el("button", { class: "btn secondary small", text: "Change course", onclick: renderCoursePicker })
   ]));
-  const pct = Math.min(100, Math.round((state.todayXp / SETTINGS.dailyGoalXp) * 100));
-  $app.appendChild(el("div", { class: "goal" }, [
-    el("div", { html: `<b>Daily goal</b>: ${state.todayXp} / ${SETTINGS.dailyGoalXp} XP ${pct >= 100 ? "✅" : ""}` }),
-    el("div", { class: "goal-bar" }, el("div", { class: "goal-fill", style: `width:${pct}%` }))
-  ]));
+  $app.appendChild(upNextCard(course));
   $app.appendChild(el("div", { class: "spot-anchor" }));
   mountSpotlight();
 
@@ -679,7 +770,7 @@ function finishLesson() {
     ]),
     practice ? el("p", { text: "You earned back a heart ❤️" }) : null,
     signInNudge(),
-    spotlight && spotlight.today ? el("p", { class: "spot-nudge", text: `🚀 ${spotlight.today.headline || "Someone built something with Claude today!"} Keep learning and you could be next.` }) : null,
+    spotlight && spotlight.today ? el("p", { class: "spot-nudge", text: `🚀 Someone built ${spotlight.today.name || "a project"} with Claude today. Keep learning and you could be next.` }) : null,
     el("button", { class: "btn", text: "CONTINUE", onclick: () => { run = null; renderHome(); } })
   ]));
 }
