@@ -185,7 +185,7 @@ Learners can sign in with their Google (Gmail) account so their XP, streak and c
 **2. Turn on Google sign-in**
 1. In the left menu, open **Build → Authentication**, then click **Get started**.
 2. On the **Sign-in method** tab, click **Google**, switch on **Enable**, choose your email as the **Project support email**, and click **Save**.
-3. Open the **Settings** tab → **Authorized domains** → **Add domain**, type `orpheusjam.github.io`, and click **Add**.
+3. Open the **Settings** tab → **Authorized domains** → **Add domain**, type `jaywongw3.github.io`, and click **Add**.
 
 **3. Create the database**
 1. In the left menu, open **Build → Firestore Database**, then click **Create database**.
