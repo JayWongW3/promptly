@@ -48,6 +48,53 @@ COURSES.push({
               options: ["Constraints", "Role", "Context", "Task"],
               answer: 0,
               explain: "Constraints set limits: length, tone and things to avoid."
+            },
+            {
+              type: "mc",
+              question: "In the brief formula, what does \"Context\" cover?",
+              options: ["Your business, customer and situation", "The word count", "The AI's name", "Your password"],
+              answer: 0,
+              explain: "Context is the background a new hire would need to do the job well."
+            },
+            {
+              type: "better",
+              question: "Which brief is better for a price-increase email?",
+              options: [
+                "You're our customer success lead. We run a 12-person IT support firm. Write a short, respectful email telling clients prices rise 5% from 1 April, explaining why and thanking them.",
+                "Write a price rise email."
+              ],
+              answer: 0,
+              explain: "Role, context, task and tone let the AI handle a sensitive message well."
+            },
+            {
+              type: "tf",
+              question: "You don't have to use every part of the formula for small, simple tasks.",
+              answer: true,
+              explain: "Use as much of the brief as the task needs. A quick rewrite rarely needs a role."
+            },
+            {
+              type: "mc",
+              question: "Which is an example of a \"Format\" instruction?",
+              options: [
+                "\"A table with columns: Supplier, Price, Delivery time\"",
+                "\"You are a buyer\"",
+                "\"We sell furniture\"",
+                "\"Find suppliers\""
+              ],
+              answer: 0,
+              explain: "Format says how the output should be laid out."
+            },
+            {
+              type: "mc",
+              question: "The output keeps coming back too salesy. Which part of the brief should you adjust?",
+              options: [
+                "Constraints (tone and words to avoid)",
+                "Role only",
+                "Nothing; accept it",
+                "The company name"
+              ],
+              answer: 0,
+              explain: "Add constraints such as \"no hype, plain language, no exclamation marks\"."
             }
           ]
         },
@@ -91,6 +138,53 @@ COURSES.push({
               ],
               answer: 0,
               explain: "A shared, searchable location keeps templates up to date and easy to find."
+            },
+            {
+              type: "mc",
+              question: "What should a good prompt template include?",
+              options: [
+                "Fixed instructions plus clear blanks to fill in",
+                "Only blanks",
+                "Only the AI's name",
+                "Customer passwords"
+              ],
+              answer: 0,
+              explain: "The fixed part keeps quality consistent; the blanks make it reusable."
+            },
+            {
+              type: "tf",
+              question: "Templates should be reviewed and updated when your products, prices or policies change.",
+              answer: true,
+              explain: "Out-of-date templates produce out-of-date output."
+            },
+            {
+              type: "better",
+              question: "Which template line is better?",
+              options: [
+                "Product: [PRODUCT NAME]. Price: [£]. Main benefit for the customer: [BENEFIT].",
+                "Put product stuff here."
+              ],
+              answer: 0,
+              explain: "Clear labels tell staff exactly what to fill in."
+            },
+            {
+              type: "mc",
+              question: "Who should test a new template before it's shared with the team?",
+              options: ["A couple of people who'll actually use it", "Nobody", "Only the CEO", "A random customer"],
+              answer: 0,
+              explain: "Real users spot gaps and confusing blanks quickly."
+            },
+            {
+              type: "mc",
+              question: "Which task is a great candidate for a template?",
+              options: [
+                "Weekly client update emails",
+                "A one-off legal dispute",
+                "Your personal wedding speech",
+                "A task you do once a year with no pattern"
+              ],
+              answer: 0,
+              explain: "Frequent, repeatable tasks benefit most."
             }
           ]
         }
@@ -135,6 +229,54 @@ COURSES.push({
               question: "You should decide when to stop the loop; endless rounds don't always make it better.",
               answer: true,
               explain: "After 2–3 rounds, returns usually diminish. Stop when it meets your criteria."
+            },
+            {
+              type: "mc",
+              question: "Which is a clear quality criterion?",
+              options: [
+                "\"A new customer understands the offer in one read\"",
+                "\"Make it good\"",
+                "\"Better\"",
+                "\"Nicer\""
+              ],
+              answer: 0,
+              explain: "Criteria you can check make the critique step useful."
+            },
+            {
+              type: "tf",
+              question: "You can ask the AI to score its own draft against your criteria before rewriting.",
+              answer: true,
+              explain: "Scoring first shows exactly where it falls short."
+            },
+            {
+              type: "order",
+              question: "Put this proposal-improvement loop in order:",
+              pieces: [
+                "Ask for a first draft of the proposal",
+                "Ask it to score the draft on clarity, price justification and next steps",
+                "Ask for a rewrite fixing the lowest score",
+                "Read it yourself and decide if it's ready"
+              ],
+              explain: "Draft, score, fix the weakest part, then your judgement."
+            },
+            {
+              type: "mc",
+              question: "You've been round the loop 6 times and it's barely changing. What should you do?",
+              options: [
+                "Stop and finish it yourself, or change the criteria",
+                "Keep going forever",
+                "Start a new loop with no criteria",
+                "Send the first draft instead"
+              ],
+              answer: 0,
+              explain: "Diminishing returns mean the loop has done its job."
+            },
+            {
+              type: "mc",
+              question: "Who should define what \"good\" looks like?",
+              options: ["You, based on your customers and goals", "The AI only", "Your competitors", "Nobody"],
+              answer: 0,
+              explain: "The AI can help, but your business knowledge sets the bar."
             }
           ]
         },
@@ -176,6 +318,58 @@ COURSES.push({
               question: "\"Human in the loop\" means a person reviews or approves the AI's work before it takes effect.",
               answer: true,
               explain: "This is the safest way to automate anything customer-facing or financial."
+            },
+            {
+              type: "mc",
+              question: "In an automation, what is a \"trigger\"?",
+              options: [
+                "The event that starts it, like a new email or form",
+                "The final action",
+                "The AI's reply",
+                "A billing alert"
+              ],
+              answer: 0,
+              explain: "Triggers kick off the workflow automatically."
+            },
+            {
+              type: "tf",
+              question: "You can test an automation on a few sample items before switching it on for everything.",
+              answer: true,
+              explain: "Testing catches mistakes before they affect customers."
+            },
+            {
+              type: "better",
+              question: "Which automation idea is safer to start with?",
+              options: [
+                "New invoice in the inbox → AI extracts supplier, amount and due date → adds a row to a spreadsheet for review",
+                "AI reads invoices and pays them automatically with no checks"
+              ],
+              answer: 0,
+              explain: "Start with low-risk steps and keep a person reviewing money."
+            },
+            {
+              type: "mc",
+              question: "What should you check regularly once an automation is running?",
+              options: [
+                "A sample of its outputs and any errors",
+                "Nothing; it runs itself",
+                "Only the cost",
+                "The logo"
+              ],
+              answer: 0,
+              explain: "Spot-checks catch drift and edge cases."
+            },
+            {
+              type: "mc",
+              question: "Which tool type connects your apps and adds AI steps without coding?",
+              options: [
+                "Automation platforms like Zapier, Make or Power Automate",
+                "A word processor",
+                "A calculator",
+                "A screen saver"
+              ],
+              answer: 0,
+              explain: "These platforms link triggers, AI and actions across your apps."
             }
           ]
         },
@@ -218,6 +412,58 @@ COURSES.push({
               ],
               answer: 0,
               explain: "Least access, test first, review. The same rules you'd use for a new contractor."
+            },
+            {
+              type: "tf",
+              question: "An AI agent can make a mistake at any step, and errors can build up over many steps.",
+              answer: true,
+              explain: "That's why limited access and reviews matter more for agents."
+            },
+            {
+              type: "mc",
+              question: "Which is a sensible first task for an AI agent?",
+              options: [
+                "Researching 10 potential suppliers and putting findings in a spreadsheet",
+                "Signing a contract on your behalf",
+                "Moving money between accounts",
+                "Firing a staff member"
+              ],
+              answer: 0,
+              explain: "Research tasks are useful and low risk; actions with money or people are not."
+            },
+            {
+              type: "mc",
+              question: "What does \"least privilege\" mean for an agent?",
+              options: [
+                "It gets only the access it needs for the task",
+                "It gets admin access to everything",
+                "It can't do anything",
+                "It works only at night"
+              ],
+              answer: 0,
+              explain: "Smaller access means smaller damage if something goes wrong."
+            },
+            {
+              type: "better",
+              question: "Which instruction to an agent is safer?",
+              options: [
+                "Find 5 venues for our team day under £1,000 and list them with prices. Don't book or contact anyone.",
+                "Sort out our team day."
+              ],
+              answer: 0,
+              explain: "A clear goal, budget and a boundary on actions keep the agent in check."
+            },
+            {
+              type: "mc",
+              question: "An agent asks for your confirmation before sending an email. What should you do?",
+              options: [
+                "Read the email before approving",
+                "Always approve without reading",
+                "Turn confirmations off",
+                "Ignore it forever"
+              ],
+              answer: 0,
+              explain: "Confirmation steps only help if you actually check."
             }
           ]
         }
@@ -267,6 +513,60 @@ COURSES.push({
               question: "A second brain is mainly useful once you're too busy to remember everything, or when you want others to work without asking you.",
               answer: true,
               explain: "It gets knowledge out of your head so the business doesn't depend on your memory."
+            },
+            {
+              type: "mc",
+              question: "Which is an example of business knowledge worth capturing?",
+              options: [
+                "Why you chose your current supplier and the terms agreed",
+                "Today's weather",
+                "A random meme",
+                "Your staff's passwords"
+              ],
+              answer: 0,
+              explain: "Decisions and their reasons are easily forgotten and valuable later."
+            },
+            {
+              type: "tf",
+              question: "A second brain helps new staff learn how things are done without asking you every time.",
+              answer: true,
+              explain: "Written processes and decisions reduce the business's dependence on your memory."
+            },
+            {
+              type: "mc",
+              question: "What's the biggest risk of keeping all know-how in your head?",
+              options: [
+                "The business struggles when you're away or busy",
+                "You'll forget your name",
+                "Computers break",
+                "None"
+              ],
+              answer: 0,
+              explain: "Capturing knowledge makes the business resilient."
+            },
+            {
+              type: "mc",
+              question: "Which is a sensible structure for a second brain?",
+              options: [
+                "Projects, Areas, Resources, Archive",
+                "One giant folder for everything",
+                "Folders named after weekdays",
+                "No structure at all"
+              ],
+              answer: 0,
+              explain: "A simple, consistent structure makes things findable."
+            },
+            {
+              type: "mc",
+              question: "How often should you tidy your second brain?",
+              options: [
+                "Regularly, such as monthly, archiving old items",
+                "Never",
+                "Every hour",
+                "Only when it breaks"
+              ],
+              answer: 0,
+              explain: "Regular tidying keeps it accurate and useful for you and the AI."
             }
           ]
         },
@@ -309,6 +609,54 @@ COURSES.push({
               ],
               answer: 0,
               explain: "Short, clear summaries are faster for you and give the AI better material."
+            },
+            {
+              type: "mc",
+              question: "Which capture habit is easiest to keep?",
+              options: [
+                "A 2-minute AI summary saved after each important call",
+                "Writing a full report after every call",
+                "Recording nothing",
+                "Memorising everything"
+              ],
+              answer: 0,
+              explain: "Small, quick habits are the ones that last."
+            },
+            {
+              type: "tf",
+              question: "Voice notes are a fast way to capture ideas, and AI can turn them into tidy notes.",
+              answer: true,
+              explain: "Speak while it's fresh, then let AI structure it."
+            },
+            {
+              type: "order",
+              question: "Put this client-meeting habit in order:",
+              pieces: [
+                "Record or jot notes during the meeting",
+                "Ask AI for decisions, actions and owners",
+                "Save it in the client's folder",
+                "Use it to prepare for the next meeting"
+              ],
+              explain: "Capture, distil, organise, then use."
+            },
+            {
+              type: "mc",
+              question: "What should a good meeting summary include?",
+              options: ["Decisions, actions, owners and deadlines", "Every word said", "Only the date", "The weather"],
+              answer: 0,
+              explain: "That's what people need to act on."
+            },
+            {
+              type: "mc",
+              question: "Where should a captured note go so it's easy to find later?",
+              options: [
+                "In a clearly named folder for that client or project",
+                "Your desktop",
+                "A random email draft",
+                "Nowhere"
+              ],
+              answer: 0,
+              explain: "Consistent places make retrieval easy for you and the AI."
             }
           ]
         },
@@ -351,6 +699,58 @@ COURSES.push({
               ],
               answer: 0,
               explain: "Check how data is stored and used, and make sure staff only see what they're allowed to."
+            },
+            {
+              type: "mc",
+              question: "What does RAG mean in simple terms?",
+              options: [
+                "The AI looks up your documents first, then answers using them",
+                "A cleaning cloth",
+                "A type of spreadsheet",
+                "A file format"
+              ],
+              answer: 0,
+              explain: "Retrieval-augmented generation grounds answers in your own information."
+            },
+            {
+              type: "tf",
+              question: "Connecting AI to your company drive can let it see files staff shouldn't, if permissions aren't set up properly.",
+              answer: true,
+              explain: "Check sharing permissions before connecting so the AI only sees what each person should."
+            },
+            {
+              type: "better",
+              question: "Which question will get a better answer from your second brain?",
+              options: [
+                "Using our onboarding docs, list the steps for setting up a new client, with who does each step.",
+                "How do we do stuff?"
+              ],
+              answer: 0,
+              explain: "Pointing to the source and asking for a clear format gets a grounded answer."
+            },
+            {
+              type: "mc",
+              question: "The AI's answer from your documents seems wrong. What's the likely cause?",
+              options: [
+                "An outdated or conflicting document",
+                "The AI is always wrong",
+                "Your screen brightness",
+                "The weather"
+              ],
+              answer: 0,
+              explain: "Fix the source documents and the answers improve."
+            },
+            {
+              type: "mc",
+              question: "What's a sensible order to grow your setup?",
+              options: [
+                "Upload files to a project, then connectors, then a custom system if needed",
+                "Start with a custom system",
+                "Skip straight to hiring developers",
+                "Do nothing"
+              ],
+              answer: 0,
+              explain: "Start simple and only add complexity when it's justified."
             }
           ]
         }
@@ -400,6 +800,58 @@ COURSES.push({
               question: "Using AI to write fake customer reviews is a harmless marketing shortcut.",
               answer: false,
               explain: "Fake reviews are misleading to customers and illegal in many countries (including the UK and US)."
+            },
+            {
+              type: "mc",
+              question: "Which is a strong AI task for sales prospecting?",
+              options: [
+                "Summarising a prospect's public website into talking points for a call",
+                "Sending 1,000 identical cold emails",
+                "Inventing fake case studies",
+                "Guessing their budget"
+              ],
+              answer: 0,
+              explain: "Research and preparation save time and make calls more relevant."
+            },
+            {
+              type: "tf",
+              question: "AI-written marketing should still be checked for accuracy and brand tone before it's published.",
+              answer: true,
+              explain: "You're responsible for what you publish."
+            },
+            {
+              type: "better",
+              question: "Which prompt makes a better ad?",
+              options: [
+                "Write 3 Facebook ad versions for our 20% off spring boiler service. Audience: homeowners 35–60 in Leeds. Under 40 words, one clear call to action.",
+                "Write an ad."
+              ],
+              answer: 0,
+              explain: "Offer, audience, location, length and call to action make it ready to test."
+            },
+            {
+              type: "mc",
+              question: "What's A/B testing with AI-written ads?",
+              options: [
+                "Running two versions to see which performs better",
+                "Writing ads in two languages",
+                "Using two AI tools at once",
+                "Sending ads twice"
+              ],
+              answer: 0,
+              explain: "AI makes variations quickly; testing shows which works."
+            },
+            {
+              type: "mc",
+              question: "Which use of AI in marketing could breach rules?",
+              options: [
+                "Making up statistics or customer quotes",
+                "Drafting a newsletter",
+                "Suggesting subject lines",
+                "Repurposing a blog post"
+              ],
+              answer: 0,
+              explain: "Misleading claims can break advertising rules and damage trust."
             }
           ]
         },
@@ -434,14 +886,61 @@ COURSES.push({
             {
               type: "mc",
               question: "Your chatbot promises a refund your policy doesn't allow. Who is likely responsible?",
-              options: [
-                "Your business",
-                "The AI company",
-                "The customer",
-                "Nobody"
-              ],
+              options: ["Your business", "The AI company", "The customer", "Nobody"],
               answer: 0,
               explain: "Courts have held businesses responsible for what their chatbots tell customers. Test it and limit what it can promise."
+            },
+            {
+              type: "mc",
+              question: "What's a good way to build a help-centre FAQ with AI?",
+              options: [
+                "Give it a sample of real customer questions and ask for the top 10 with answers",
+                "Ask it to guess what customers ask",
+                "Copy a competitor's FAQ",
+                "Skip the FAQ"
+              ],
+              answer: 0,
+              explain: "Real questions make the FAQ relevant."
+            },
+            {
+              type: "tf",
+              question: "An AI chatbot should only answer from your approved help content and policies.",
+              answer: true,
+              explain: "Limiting it to approved content reduces wrong or made-up answers."
+            },
+            {
+              type: "better",
+              question: "Which prompt is better for replying to an angry customer?",
+              options: [
+                "Using our refund policy below, draft a calm, empathetic reply to this customer. Acknowledge the problem, explain the options, and offer a call. [policy] [message]",
+                "Reply to this angry person."
+              ],
+              answer: 0,
+              explain: "Policy, tone and structure make the reply accurate and calming."
+            },
+            {
+              type: "mc",
+              question: "Which support task should stay with a human?",
+              options: [
+                "A complaint involving a vulnerable or distressed customer",
+                "Tagging tickets by topic",
+                "Drafting a reply for review",
+                "Summarising a long email thread"
+              ],
+              answer: 0,
+              explain: "Sensitive situations need human judgement and care."
+            },
+            {
+              type: "mc",
+              question: "How can AI help a support team improve over time?",
+              options: [
+                "Summarise common complaints each month so you can fix root causes",
+                "Reply to everything automatically",
+                "Hide negative feedback",
+                "Delete old tickets"
+              ],
+              answer: 0,
+              explain: "Spotting patterns lets you fix problems, not just answer them."
             }
           ]
         },
@@ -484,6 +983,58 @@ COURSES.push({
               question: "AI-drafted job adverts should be checked for biased or exclusionary language.",
               answer: true,
               explain: "AI can reproduce biases. Check wording like age-coded or gendered terms."
+            },
+            {
+              type: "mc",
+              question: "Which finance task suits AI well?",
+              options: [
+                "Categorising transactions in a spreadsheet for you to check",
+                "Filing your tax return with no review",
+                "Moving money between accounts",
+                "Signing off audited accounts"
+              ],
+              answer: 0,
+              explain: "AI speeds up sorting and analysis; final financial decisions need review."
+            },
+            {
+              type: "tf",
+              question: "You can ask AI to turn a confusing supplier contract into a plain-English list of key terms and dates.",
+              answer: true,
+              explain: "Then check the important points against the original."
+            },
+            {
+              type: "better",
+              question: "Which prompt is better for a staff rota?",
+              options: [
+                "Create a weekly rota for 6 staff covering 8am–8pm, Mon–Sat. Nobody works more than 5 days. Sam can't do Saturdays. Show it as a table.",
+                "Make a rota."
+              ],
+              answer: 0,
+              explain: "Hours, rules and exceptions let the AI produce a usable draft."
+            },
+            {
+              type: "mc",
+              question: "What's a good use of AI in hiring?",
+              options: [
+                "Drafting job adverts and interview questions for you to edit",
+                "Deciding who to hire on its own",
+                "Rejecting candidates by age",
+                "Writing fake references"
+              ],
+              answer: 0,
+              explain: "AI helps with preparation; hiring decisions stay with people."
+            },
+            {
+              type: "mc",
+              question: "You've written an SOP with AI. What's the final step?",
+              options: [
+                "Have someone follow it and fix anything unclear",
+                "Publish it unread",
+                "Keep it secret",
+                "Delete the draft"
+              ],
+              answer: 0,
+              explain: "Real-world testing finds gaps in instructions."
             }
           ]
         }
@@ -533,6 +1084,58 @@ COURSES.push({
               question: "Staff may already be using personal AI accounts for work, so having a clear policy matters even if you haven't \"adopted\" AI.",
               answer: true,
               explain: "Many employees already use AI informally. A policy protects your business and customers' data."
+            },
+            {
+              type: "mc",
+              question: "What should an AI policy say about customer data?",
+              options: [
+                "What can and can't be pasted into AI tools",
+                "Nothing",
+                "That anything is allowed",
+                "Only the office opening hours"
+              ],
+              answer: 0,
+              explain: "Clear data rules protect customers and the business."
+            },
+            {
+              type: "tf",
+              question: "Training staff on 2–3 real tasks is usually more effective than a general AI lecture.",
+              answer: true,
+              explain: "People adopt tools they've used successfully on their own work."
+            },
+            {
+              type: "better",
+              question: "Which policy rule is clearer?",
+              options: [
+                "Don't paste customer names, contact details or payment information into AI tools. Use [Customer] instead.",
+                "Be careful with data."
+              ],
+              answer: 0,
+              explain: "Specific examples and an alternative make the rule easy to follow."
+            },
+            {
+              type: "mc",
+              question: "Which number best shows AI is paying off?",
+              options: [
+                "Hours saved on a task each week, with quality maintained",
+                "Number of AI apps installed",
+                "How often people mention AI",
+                "The subscription price"
+              ],
+              answer: 0,
+              explain: "Time saved without a drop in quality is real value."
+            },
+            {
+              type: "mc",
+              question: "How often should you review your AI policy?",
+              options: [
+                "Regularly, such as every 6 months, as tools change",
+                "Never",
+                "Once every 10 years",
+                "Only after a data breach"
+              ],
+              answer: 0,
+              explain: "AI tools change fast, so the policy needs updating too."
             }
           ]
         }
@@ -594,6 +1197,48 @@ COURSES.push({
               question: "The most expensive plan is always the best value.",
               answer: false,
               explain: "Why: value is time saved compared with cost. Many teams get most of the benefit from a standard business plan."
+            },
+            {
+              type: "mc",
+              question: "Which question matters most before buying AI seats for your team?",
+              options: [
+                "Which tasks will people actually use it for?",
+                "Which has the coolest name?",
+                "How many emojis does it support?",
+                "Is it trending online?"
+              ],
+              answer: 0,
+              explain: "Clear use cases decide which tool and plan you need."
+            },
+            {
+              type: "tf",
+              question: "Admin controls let you manage who has access and remove it when someone leaves.",
+              answer: true,
+              explain: "That's one reason business plans are worth it."
+            },
+            {
+              type: "mc",
+              question: "Your team uses both Gmail and Microsoft Excel heavily. What should you check?",
+              options: [
+                "Whether the assistant connects well to both",
+                "Only the price",
+                "Only the logo colour",
+                "Nothing"
+              ],
+              answer: 0,
+              explain: "Connections to the tools you use daily decide how useful it is."
+            },
+            {
+              type: "mc",
+              question: "After a trial, staff loved one tool but it costs more. How should you decide?",
+              options: [
+                "Compare cost against measured time saved",
+                "Pick the cheapest anyway",
+                "Pick the most expensive",
+                "Flip a coin"
+              ],
+              answer: 0,
+              explain: "Value for money is about results, not price alone."
             }
           ]
         },
@@ -653,6 +1298,41 @@ COURSES.push({
                 "Keep it only if it saves measurable time"
               ],
               explain: "Why: you learn what you actually need before paying for extras, and you only keep the tools that prove their value."
+            },
+            {
+              type: "mc",
+              question: "When does a specialist meeting note-taker beat a general assistant?",
+              options: [
+                "When you have many calls each week",
+                "For a single call a year",
+                "Never",
+                "Only for written documents"
+              ],
+              answer: 0,
+              explain: "Specialists pay off when they remove a frequent manual step."
+            },
+            {
+              type: "tf",
+              question: "Before adding a specialist tool, check whether your existing assistant can already do the job well enough.",
+              answer: true,
+              explain: "Avoid paying twice for the same capability."
+            },
+            {
+              type: "better",
+              question: "Which way of adding a tool is better?",
+              options: [
+                "Trial it with 2 people for 2 weeks on one workflow, then decide with numbers",
+                "Buy it for the whole company today"
+              ],
+              answer: 0,
+              explain: "A small, measured trial reduces risk and wasted spend."
+            },
+            {
+              type: "mc",
+              question: "What should you do with a tool nobody is using after 3 months?",
+              options: ["Cancel it", "Keep paying just in case", "Buy more seats", "Hide it from the budget"],
+              answer: 0,
+              explain: "Unused subscriptions are an easy saving."
             }
           ]
         }

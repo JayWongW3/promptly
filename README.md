@@ -8,6 +8,8 @@ This is a **working prototype**. It runs entirely in a web browser. It has no se
 
 Learners pick a course on the first screen and can switch at any time. Progress is kept separately for each course.
 
+There are **7 courses, 71 lessons and 568 questions**. Every lesson has a short teaching card followed by **8 questions**, each with an explanation of the right answer.
+
 | Course | For | Lessons | Topics |
 |---|---|---|---|
 | 🌱 **AI Basics** | Individuals, beginner | 16 | What AI is, hallucinations, writing good prompts, everyday uses, staying safe, **which tool and model to use for which job** |
@@ -15,7 +17,7 @@ Learners pick a course on the first screen and can switch at any time. Progress 
 | 💼 **AI for Business Owners** | Business owners | 14 | Business brief formula, prompt templates, **loops** (improvement loops, automation loops, AI agents), **building a second brain** (capture, organise, distil, use; connecting it to AI), AI in marketing, sales, customer service, operations and finance, AI policy and measuring return on investment, **choosing assistants and specialist tools for your team** |
 | 👩‍💻 **AI for Developers** | Developers | 13 | Tokens and context windows, non-determinism, model APIs and system prompts, structured output, tool use, RAG, agent loops, coding assistants, evals, prompt injection, cost and latency, **model selection, routing, fallbacks and choosing coding tools** |
 
-**Tool courses**, each with three levels (Beginner → Intermediate → Advanced, 2 lessons per level). Learners can start at any level.
+**Tool courses**, each with three levels (Beginner → Intermediate → Advanced, 2 lessons per level, 8 questions per lesson). Learners can start at any level.
 
 | Course | Covers |
 |---|---|

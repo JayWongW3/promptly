@@ -55,6 +55,60 @@ COURSES.push({
               ],
               answer: 0,
               explain: "Large repeated inputs add cost and latency. Consider retrieval (send only relevant parts) or prompt caching."
+            },
+            {
+              type: "mc",
+              question: "What happens if your input plus the requested output exceeds the context window?",
+              options: [
+                "The request is rejected or the output is cut short",
+                "The model silently reads only the first word",
+                "It automatically upgrades to a bigger model",
+                "Nothing; there's no limit"
+              ],
+              answer: 0,
+              explain: "You must fit within the window: trim input, chunk documents, or summarise history."
+            },
+            {
+              type: "tf",
+              question: "max_tokens limits how long the model's reply can be.",
+              answer: true,
+              explain: "If the reply hits max_tokens it stops mid-output, so set it high enough for the task."
+            },
+            {
+              type: "mc",
+              question: "Why do token counts differ between languages for the same meaning?",
+              options: [
+                "Tokenizers split some languages into more tokens than others",
+                "Some languages are banned",
+                "Tokens are counted by letters only",
+                "They don't differ"
+              ],
+              answer: 0,
+              explain: "Tokenization varies by language and model, which affects cost and context use."
+            },
+            {
+              type: "mc",
+              question: "Your chatbot's conversation grows over 200 turns. What's a sensible strategy?",
+              options: [
+                "Summarise or trim older turns to stay within the window",
+                "Send everything forever",
+                "Delete the system prompt",
+                "Restart the server each turn"
+              ],
+              answer: 0,
+              explain: "Long histories cost more and can overflow the window, so manage them deliberately."
+            },
+            {
+              type: "mc",
+              question: "What's the best way to know how many tokens a prompt uses?",
+              options: [
+                "Use the provider's token-counting tool or API",
+                "Count the words and divide by 10",
+                "Guess",
+                "Measure the file size in KB"
+              ],
+              answer: 0,
+              explain: "Providers expose token counting; word counts are only a rough estimate."
             }
           ]
         },
@@ -89,14 +143,57 @@ COURSES.push({
             {
               type: "mc",
               question: "Lower temperature generally makes output...",
-              options: [
-                "More focused and consistent",
-                "More creative and varied",
-                "Longer",
-                "Faster to generate"
-              ],
+              options: ["More focused and consistent", "More creative and varied", "Longer", "Faster to generate"],
               answer: 0,
               explain: "Lower temperature reduces randomness. Note that some newer models fix or restrict sampling parameters; check the docs."
+            },
+            {
+              type: "mc",
+              question: "Your extraction step occasionally returns invalid JSON. What's the most robust fix?",
+              options: [
+                "Use structured output or schema-constrained tools, and validate with a retry",
+                "Ask nicely in capitals",
+                "Lower max_tokens",
+                "Ignore the failures"
+              ],
+              answer: 0,
+              explain: "Constrained output plus validation and retries handles the rare bad response."
+            },
+            {
+              type: "tf",
+              question: "Asking the model to answer only from provided documents, and say when the answer isn't there, reduces hallucination.",
+              answer: true,
+              explain: "Grounding and permission to say \"not found\" cut down invented answers."
+            },
+            {
+              type: "mc",
+              question: "How should you test a prompt given that outputs vary?",
+              options: [
+                "Run it on many inputs, several times, and look at the spread",
+                "Run it once and ship",
+                "Only test on Fridays",
+                "Test only the happy path"
+              ],
+              answer: 0,
+              explain: "Non-determinism means one good run proves little."
+            },
+            {
+              type: "mc",
+              question: "A model cites an API method that doesn't exist. What's the right response in your coding workflow?",
+              options: [
+                "Check the official docs and type-check or run the code",
+                "Assume it's a hidden method",
+                "Rename your library to match",
+                "Ask the model to promise"
+              ],
+              answer: 0,
+              explain: "Compilers, tests and docs are the ground truth, not the model's memory."
+            },
+            {
+              type: "tf",
+              question: "Low temperature guarantees the model's facts are correct.",
+              answer: false,
+              explain: "It reduces randomness, not errors. A model can be consistently wrong."
             }
           ]
         }
@@ -143,6 +240,53 @@ COURSES.push({
               question: "To continue a conversation, you append the model's previous reply as an assistant message and the new user message, then send the full list.",
               answer: true,
               explain: "That's how multi-turn context is maintained with a stateless API."
+            },
+            {
+              type: "mc",
+              question: "What does the assistant role in the messages list contain?",
+              options: ["The model's previous replies", "Your API key", "The system prompt only", "Server logs"],
+              answer: 0,
+              explain: "User and assistant turns together form the conversation history you resend."
+            },
+            {
+              type: "tf",
+              question: "You should handle rate-limit (429) and server (5xx) errors with retries and backoff.",
+              answer: true,
+              explain: "Transient errors are normal at scale; exponential backoff is the standard fix."
+            },
+            {
+              type: "better",
+              question: "Which system prompt is better for a support bot?",
+              options: [
+                "You are Acme's support assistant. Answer only about Acme products using the provided docs. If unsure, say so and offer to connect a human. Keep answers under 120 words.",
+                "Be a helpful bot."
+              ],
+              answer: 0,
+              explain: "Scope, grounding, fallback behaviour and length make behaviour predictable."
+            },
+            {
+              type: "mc",
+              question: "Where should a long, stable reference document go for best caching?",
+              options: [
+                "Early in the prompt (e.g. system), before changing content",
+                "At the very end, after the user's question",
+                "Split randomly across messages",
+                "In an HTTP header"
+              ],
+              answer: 0,
+              explain: "Prompt caching matches prefixes, so stable content goes first."
+            },
+            {
+              type: "mc",
+              question: "Why stream responses in a chat UI?",
+              options: [
+                "Users see text as it's generated, so it feels faster",
+                "It lowers token cost",
+                "It improves accuracy",
+                "It's required for all requests"
+              ],
+              answer: 0,
+              explain: "Streaming improves perceived latency, not cost or quality."
             }
           ]
         },
@@ -185,6 +329,58 @@ COURSES.push({
               question: "Wrapping user-provided data in clear delimiters helps the model distinguish data from instructions.",
               answer: true,
               explain: "It reduces confusion, though it doesn't fully prevent prompt injection (covered later)."
+            },
+            {
+              type: "mc",
+              question: "What's the advantage of a provider's structured-output mode over \"please reply in JSON\"?",
+              options: [
+                "The response is constrained to match your schema",
+                "It's always cheaper",
+                "It removes the need for any validation",
+                "It makes the model faster"
+              ],
+              answer: 0,
+              explain: "Constraints greatly improve parse reliability, though values still need business validation."
+            },
+            {
+              type: "tf",
+              question: "Including an example of the exact JSON shape you want usually improves results.",
+              answer: true,
+              explain: "Examples remove ambiguity about field names, types and nesting."
+            },
+            {
+              type: "mc",
+              question: "How should you represent \"not found\" in an extraction schema?",
+              options: [
+                "Allow null for fields that may be missing",
+                "Make the model invent a value",
+                "Use the string \"unknown\" everywhere",
+                "Drop the field and hope"
+              ],
+              answer: 0,
+              explain: "Explicit nulls stop the model guessing and make downstream handling clear."
+            },
+            {
+              type: "better",
+              question: "Which classification prompt is better?",
+              options: [
+                "Classify the ticket as exactly one of: billing, bug, feature_request, other. Return JSON {\"label\": ..., \"confidence\": 0-1}.",
+                "What kind of ticket is this?"
+              ],
+              answer: 0,
+              explain: "A closed label set and a fixed output shape make the result machine-usable."
+            },
+            {
+              type: "mc",
+              question: "The model returns a valid date in the wrong format sometimes. Best fix?",
+              options: [
+                "Specify the format in the schema and normalise or validate in code",
+                "Accept any format",
+                "Ask for dates in words",
+                "Remove dates"
+              ],
+              answer: 0,
+              explain: "Be explicit, then enforce in code."
             }
           ]
         }
@@ -236,6 +432,53 @@ COURSES.push({
               question: "A tool that deletes records should require confirmation or be restricted, since the model might call it with wrong arguments.",
               answer: true,
               explain: "Treat tool arguments as untrusted, validate them, and gate destructive actions."
+            },
+            {
+              type: "mc",
+              question: "Who actually executes a tool the model calls (for a tool you define)?",
+              options: ["Your application code", "The model itself", "The end user's browser automatically", "Nobody"],
+              answer: 0,
+              explain: "The model only requests the call; you run it and return the result."
+            },
+            {
+              type: "tf",
+              question: "If a tool call fails, you should return an error result to the model rather than silently dropping it.",
+              answer: true,
+              explain: "The model can then retry, adjust arguments or explain the problem."
+            },
+            {
+              type: "mc",
+              question: "The model calls get_weather with city \"Londn\". What should your tool do?",
+              options: [
+                "Validate input and return a helpful error or a best match",
+                "Crash the server",
+                "Return random weather",
+                "Silently use New York"
+              ],
+              answer: 0,
+              explain: "Treat model-generated arguments like any untrusted input."
+            },
+            {
+              type: "better",
+              question: "Which tool description is better?",
+              options: [
+                "search_orders: Find a customer's orders by email. Returns up to 20 orders, newest first, with id, date, total and status. Use when the user asks about order history.",
+                "search_orders: searches."
+              ],
+              answer: 0,
+              explain: "Purpose, inputs, outputs and when to use it guide the model's choice."
+            },
+            {
+              type: "mc",
+              question: "When the model requests two independent tool calls in one turn, what should you do?",
+              options: [
+                "Run them (ideally in parallel) and return both results together",
+                "Run only the first",
+                "Return the results in two separate turns",
+                "Ask the user to pick one"
+              ],
+              answer: 0,
+              explain: "Returning all results together preserves the model's plan."
             }
           ]
         },
@@ -284,6 +527,58 @@ COURSES.push({
               ],
               answer: 0,
               explain: "Most RAG failures are retrieval failures. If the right text isn't in the prompt, the model can't use it."
+            },
+            {
+              type: "mc",
+              question: "Why split documents into chunks for RAG?",
+              options: [
+                "So retrieval can return just the relevant parts",
+                "Because models can't read paragraphs",
+                "To make files smaller on disk",
+                "To hide information"
+              ],
+              answer: 0,
+              explain: "Smaller, focused chunks improve retrieval precision and save context."
+            },
+            {
+              type: "tf",
+              question: "Combining keyword search with embedding search often improves retrieval.",
+              answer: true,
+              explain: "Hybrid search catches exact terms (like product codes) that embeddings can miss."
+            },
+            {
+              type: "mc",
+              question: "What's a common cause of poor RAG answers?",
+              options: [
+                "Chunks that cut important context in half",
+                "Too many colours in the UI",
+                "Using HTTPS",
+                "A short system prompt"
+              ],
+              answer: 0,
+              explain: "Bad chunk boundaries separate facts from the context that explains them."
+            },
+            {
+              type: "better",
+              question: "Which RAG answer instruction is better?",
+              options: [
+                "Answer using only the passages provided. Cite the passage id for each claim. If the answer isn't in them, say you don't know.",
+                "Answer the question."
+              ],
+              answer: 0,
+              explain: "Grounding, citations and an \"I don't know\" path improve trust and debuggability."
+            },
+            {
+              type: "mc",
+              question: "Your docs change weekly. What does your RAG pipeline need?",
+              options: [
+                "Re-indexing of changed documents",
+                "Nothing; embeddings update themselves",
+                "A bigger model",
+                "Higher temperature"
+              ],
+              answer: 0,
+              explain: "Stale indexes return stale answers."
             }
           ]
         },
@@ -328,6 +623,59 @@ COURSES.push({
               ],
               answer: 0,
               explain: "Full traces let you see where and why the agent went wrong."
+            },
+            {
+              type: "mc",
+              question: "What's a good stop condition for an agent loop?",
+              options: [
+                "The model returns a final answer with no tool calls, or a step/budget limit is hit",
+                "When the user closes the browser",
+                "After exactly one step",
+                "Never stop"
+              ],
+              answer: 0,
+              explain: "Combine a natural end with hard limits."
+            },
+            {
+              type: "tf",
+              question: "Giving an agent fewer, well-designed tools usually works better than dozens of overlapping ones.",
+              answer: true,
+              explain: "Overlapping tools confuse selection and waste context."
+            },
+            {
+              type: "order",
+              question: "Order the safety layers for an agent that can modify data:",
+              pieces: [
+                "Scope its permissions to what the task needs",
+                "Validate every tool argument",
+                "Require confirmation for destructive actions",
+                "Log and review its actions"
+              ],
+              explain: "Limit, validate, gate, then observe."
+            },
+            {
+              type: "mc",
+              question: "Long agent runs fill up the context window. What's a common technique?",
+              options: [
+                "Summarise or clear old tool results as the run progresses",
+                "Stop using tools",
+                "Increase temperature",
+                "Restart from scratch every step"
+              ],
+              answer: 0,
+              explain: "Context management keeps long runs within limits without losing the thread."
+            },
+            {
+              type: "mc",
+              question: "When is a fixed workflow better than an agent?",
+              options: [
+                "When the steps are known in advance",
+                "When the task is completely open-ended",
+                "When you want unpredictable behaviour",
+                "Never"
+              ],
+              answer: 0,
+              explain: "Known steps are cheaper and easier to test as code-controlled chains."
             }
           ]
         }
@@ -374,6 +722,58 @@ COURSES.push({
               question: "Code from an AI assistant can be merged without review if the tests pass.",
               answer: false,
               explain: "Tests may be incomplete, or even modified by the agent. Review for correctness, security and maintainability."
+            },
+            {
+              type: "mc",
+              question: "What belongs in a project instructions file for a coding agent?",
+              options: [
+                "Build and test commands, conventions, and where key code lives",
+                "Your production passwords",
+                "Your holiday photos",
+                "Nothing"
+              ],
+              answer: 0,
+              explain: "It saves the agent rediscovering basics each session. Never put secrets there."
+            },
+            {
+              type: "tf",
+              question: "Asking a coding agent to write a failing test before fixing a bug helps prove the fix works.",
+              answer: true,
+              explain: "A test that fails before and passes after shows the bug is really fixed."
+            },
+            {
+              type: "mc",
+              question: "A coding agent suggests installing an unfamiliar package. What should you do?",
+              options: [
+                "Check it exists, is maintained and is the one you meant",
+                "Install it immediately",
+                "Install every similar package",
+                "Rename it"
+              ],
+              answer: 0,
+              explain: "Typosquatted and hallucinated packages are a real supply-chain risk."
+            },
+            {
+              type: "mc",
+              question: "The agent changed 40 files for a small bug fix. What's the best response?",
+              options: [
+                "Ask it to explain and narrow the change to what's needed",
+                "Merge it",
+                "Delete the repo",
+                "Ask for 40 more"
+              ],
+              answer: 0,
+              explain: "Large unexplained diffs hide mistakes; keep changes focused."
+            },
+            {
+              type: "better",
+              question: "Which instruction gives a coding agent better guardrails?",
+              options: [
+                "Fix the null-pointer in parseDate. Don't change public APIs. Run the unit tests and show the results.",
+                "Fix the code."
+              ],
+              answer: 0,
+              explain: "Scope, constraints and verification steps keep the agent on track."
             }
           ]
         }
@@ -423,6 +823,60 @@ COURSES.push({
               ],
               answer: 0,
               explain: "Use code checks where you can; use model graders with clear rubrics for subjective qualities."
+            },
+            {
+              type: "mc",
+              question: "What makes a good eval set?",
+              options: [
+                "Representative real inputs, including hard and past failure cases",
+                "Only easy examples",
+                "Only one example",
+                "Random internet text"
+              ],
+              answer: 0,
+              explain: "Coverage of realistic and tricky cases is what makes evals predictive."
+            },
+            {
+              type: "tf",
+              question: "An LLM judge should be given a clear rubric and checked against some human-graded examples.",
+              answer: true,
+              explain: "Calibrating the judge ensures its scores mean what you think."
+            },
+            {
+              type: "mc",
+              question: "You switch to a new model. What should happen before production?",
+              options: [
+                "Run the eval suite and compare scores, cost and latency",
+                "Ship and watch Twitter",
+                "Change all prompts at once without testing",
+                "Nothing"
+              ],
+              answer: 0,
+              explain: "Model changes affect behaviour; evals reveal regressions."
+            },
+            {
+              type: "mc",
+              question: "Which check is best done in code rather than with an LLM judge?",
+              options: [
+                "Whether the output is valid JSON with required fields",
+                "Whether the tone is friendly",
+                "Whether the summary is insightful",
+                "Whether the reply is empathetic"
+              ],
+              answer: 0,
+              explain: "Deterministic checks are cheaper and exact."
+            },
+            {
+              type: "mc",
+              question: "How should you treat evals over time?",
+              options: [
+                "Keep adding cases from real failures",
+                "Freeze them forever",
+                "Delete failing cases",
+                "Run them once a year"
+              ],
+              answer: 0,
+              explain: "Evals improve as they absorb what went wrong in production."
             }
           ]
         },
@@ -465,6 +919,58 @@ COURSES.push({
               ],
               answer: 0,
               explain: "Any external content the model reads is a possible injection vector, including text in images."
+            },
+            {
+              type: "mc",
+              question: "Which is an indirect prompt injection?",
+              options: [
+                "A webpage the agent reads contains hidden instructions",
+                "A user typing a normal question",
+                "A slow API response",
+                "A typo in your code"
+              ],
+              answer: 0,
+              explain: "Indirect injection arrives through content the model processes, not the user."
+            },
+            {
+              type: "tf",
+              question: "An agent that can both read untrusted content and send data externally is a higher-risk combination.",
+              answer: true,
+              explain: "Untrusted input plus an exfiltration path is the classic injection danger."
+            },
+            {
+              type: "mc",
+              question: "How should model output be treated before inserting into HTML?",
+              options: [
+                "Escape or sanitise it like any user input",
+                "Insert it raw",
+                "Execute it",
+                "Base64 it and trust it"
+              ],
+              answer: 0,
+              explain: "Unescaped model output can create cross-site scripting holes."
+            },
+            {
+              type: "better",
+              question: "Which agent design is safer for an email assistant?",
+              options: [
+                "It can draft replies, but sending requires the user to click Send",
+                "It can read, draft and send anything automatically"
+              ],
+              answer: 0,
+              explain: "A human approval step blocks injected instructions from acting."
+            },
+            {
+              type: "mc",
+              question: "Where should secrets for tools live?",
+              options: [
+                "In your backend's secret store, never in prompts or client code",
+                "In the system prompt",
+                "In the front-end JavaScript",
+                "In a public repository"
+              ],
+              answer: 0,
+              explain: "Prompts and client code can be extracted."
             }
           ]
         },
@@ -507,6 +1013,60 @@ COURSES.push({
               question: "Streaming the response reduces the total tokens you pay for.",
               answer: false,
               explain: "Streaming improves perceived speed (time to first token), not cost."
+            },
+            {
+              type: "mc",
+              question: "What usually drives cost most in a long-document Q&A app?",
+              options: [
+                "Input tokens from repeatedly sending the document",
+                "The colour of the UI",
+                "Number of developers",
+                "HTTP headers"
+              ],
+              answer: 0,
+              explain: "Large repeated inputs dominate; caching and retrieval reduce them."
+            },
+            {
+              type: "tf",
+              question: "Measuring cost per completed task gives a truer picture than cost per API call.",
+              answer: true,
+              explain: "Retries and extra turns count toward what a result really costs."
+            },
+            {
+              type: "mc",
+              question: "What's a quick win for latency in a chat product?",
+              options: [
+                "Stream tokens and keep prompts lean",
+                "Add more tools to every request",
+                "Raise max_tokens to the maximum",
+                "Send the whole database each time"
+              ],
+              answer: 0,
+              explain: "Streaming and smaller prompts reduce time to first visible output."
+            },
+            {
+              type: "mc",
+              question: "When is a batch API the right choice?",
+              options: [
+                "Large, non-urgent jobs like overnight classification",
+                "Live chat replies",
+                "Autocomplete in an editor",
+                "Voice assistants"
+              ],
+              answer: 0,
+              explain: "Batches trade immediacy for lower cost and higher throughput."
+            },
+            {
+              type: "mc",
+              question: "What breaks prompt caching most often?",
+              options: [
+                "Changing content (like a timestamp) early in the prompt",
+                "Using a long system prompt",
+                "Asking short questions",
+                "Using streaming"
+              ],
+              answer: 0,
+              explain: "Any change in the cached prefix invalidates everything after it."
             }
           ]
         }
@@ -580,6 +1140,31 @@ COURSES.push({
               question: "Compare model cost per completed task, not cost per request.",
               answer: true,
               explain: "Why: a cheaper model that needs more turns, retries or human fixes can cost more overall."
+            },
+            {
+              type: "mc",
+              question: "Why might you choose a model available through your cloud provider (e.g. Bedrock or Vertex AI)?",
+              options: [
+                "To keep billing, data residency and access controls within your existing cloud",
+                "Because it's always more capable",
+                "Because no API key is ever needed anywhere",
+                "Because it's offline"
+              ],
+              answer: 0,
+              explain: "Cloud platforms can simplify procurement and compliance."
+            },
+            {
+              type: "tf",
+              question: "A model's context window size should be checked against your largest realistic input.",
+              answer: true,
+              explain: "If inputs don't fit, you'll need chunking or a different model."
+            },
+            {
+              type: "mc",
+              question: "You need vision (reading screenshots). What should you check first?",
+              options: ["That the model supports image input", "Its logo", "Its release month only", "Nothing"],
+              answer: 0,
+              explain: "Not every model or endpoint supports every modality."
             }
           ]
         },
@@ -633,6 +1218,46 @@ COURSES.push({
                 "Log outcomes and tune the thresholds"
               ],
               explain: "Why: logging which route produced good or bad results is how you tune the router over time."
+            },
+            {
+              type: "mc",
+              question: "What's a risk of routing between different models?",
+              options: [
+                "Prompts and outputs may behave differently on each model",
+                "It's illegal",
+                "It always lowers quality",
+                "It disables streaming"
+              ],
+              answer: 0,
+              explain: "Each model needs its prompts tested; behaviour isn't identical."
+            },
+            {
+              type: "tf",
+              question: "Inline completion is best for small, local suggestions while typing, not multi-file refactors.",
+              answer: true,
+              explain: "Use agentic tools for work spanning many files and commands."
+            },
+            {
+              type: "mc",
+              question: "Which signal can help decide whether a request is \"hard\"?",
+              options: [
+                "Input length, task type, or a cheap classifier's prediction",
+                "The user's name",
+                "The time of day only",
+                "The colour of the UI"
+              ],
+              answer: 0,
+              explain: "Simple features or a small classifier can route reliably."
+            },
+            {
+              type: "better",
+              question: "Which fallback design is better?",
+              options: [
+                "On 429/5xx, retry with backoff, then fall back to a tested alternative model and log it",
+                "On any error, silently return an empty answer"
+              ],
+              answer: 0,
+              explain: "Retries plus a tested fallback keep users served and give you visibility."
             }
           ]
         }

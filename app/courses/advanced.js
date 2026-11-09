@@ -53,6 +53,58 @@ COURSES.push({
               question: "You should regularly check what an AI's memory has saved about you, and delete anything you don't want kept.",
               answer: true,
               explain: "Memories can be outdated or include things you'd rather not store. Most apps let you review and delete them."
+            },
+            {
+              type: "mc",
+              question: "Which belongs in custom instructions rather than a single prompt?",
+              options: [
+                "\"Always use British spelling.\"",
+                "\"Summarise this one article.\"",
+                "\"What's 12 × 14?\"",
+                "\"Translate this sentence.\""
+              ],
+              answer: 0,
+              explain: "Custom instructions are for preferences that apply to every chat. One-off tasks go in the prompt."
+            },
+            {
+              type: "tf",
+              question: "If your situation changes, for example a new job, you should update your custom instructions.",
+              answer: true,
+              explain: "Outdated instructions lead to answers aimed at the old you."
+            },
+            {
+              type: "better",
+              question: "Which custom instruction is more useful?",
+              options: [
+                "When I ask for recipes, assume 2 people, vegetarian, and list ingredients first.",
+                "I like food."
+              ],
+              answer: 0,
+              explain: "A specific rule changes every relevant answer. A vague one changes nothing."
+            },
+            {
+              type: "mc",
+              question: "The AI keeps assuming something wrong about you. What's the likely cause?",
+              options: [
+                "An outdated memory or custom instruction",
+                "The AI is broken",
+                "Your internet is slow",
+                "You're using dark mode"
+              ],
+              answer: 0,
+              explain: "Check saved memories and instructions, then correct or delete the wrong one."
+            },
+            {
+              type: "mc",
+              question: "What's a good custom instruction for honesty?",
+              options: [
+                "\"If you're not sure, say so instead of guessing.\"",
+                "\"Always sound certain.\"",
+                "\"Never admit mistakes.\"",
+                "\"Answer in one word.\""
+              ],
+              answer: 0,
+              explain: "Inviting the AI to flag uncertainty reduces confident-sounding errors."
             }
           ]
         },
@@ -94,6 +146,58 @@ COURSES.push({
                 "Start chats inside the project"
               ],
               explain: "Set up the instructions and files first so every chat benefits."
+            },
+            {
+              type: "mc",
+              question: "Which is a good use of a project?",
+              options: [
+                "Your job search: CV, cover letters and interview prep in one place",
+                "A single question about the weather",
+                "A one-line translation",
+                "Checking the time"
+              ],
+              answer: 0,
+              explain: "Projects suit ongoing work with shared files and repeated chats."
+            },
+            {
+              type: "tf",
+              question: "Instructions you add to a project apply to every chat inside that project.",
+              answer: true,
+              explain: "That's the main advantage: set them once for that topic."
+            },
+            {
+              type: "mc",
+              question: "You upload an old price list to a project, then prices change. What should you do?",
+              options: [
+                "Replace the file with the new price list",
+                "Leave both and hope it picks the right one",
+                "Tell it the new prices in every chat",
+                "Delete the project"
+              ],
+              answer: 0,
+              explain: "The AI uses whatever files are there. Out-of-date files give out-of-date answers."
+            },
+            {
+              type: "better",
+              question: "Which project instruction is better for a house renovation project?",
+              options: [
+                "Our budget is £25,000. The house is a 1930s semi. Always flag if a suggestion might need planning permission.",
+                "Help with the house."
+              ],
+              answer: 0,
+              explain: "Budget, house type and a standing rule make every answer in the project more relevant."
+            },
+            {
+              type: "mc",
+              question: "Why keep separate projects for separate topics?",
+              options: [
+                "Files and instructions from one topic don't confuse another",
+                "It uses less battery",
+                "The AI only allows one chat per project",
+                "It's required by law"
+              ],
+              answer: 0,
+              explain: "Keeping topics apart keeps answers focused."
             }
           ]
         }
@@ -142,6 +246,53 @@ COURSES.push({
               question: "Before uploading a file, you should remove anything sensitive, like account numbers, that the AI doesn't need.",
               answer: true,
               explain: "Only share what the task needs. Delete or blank out columns with private data."
+            },
+            {
+              type: "mc",
+              question: "Which file can most AI assistants read?",
+              options: ["All of these", "PDF", "Spreadsheet (CSV or Excel)", "Word document"],
+              answer: 0,
+              explain: "Most assistants accept common document and spreadsheet formats."
+            },
+            {
+              type: "better",
+              question: "Which prompt is better for a spreadsheet of customer orders?",
+              options: [
+                "This sheet lists orders from Jan–Jun. Which 3 products grew most month to month? Show a table and a chart.",
+                "Look at my data."
+              ],
+              answer: 0,
+              explain: "Saying what the data is and the question to answer gets a focused analysis."
+            },
+            {
+              type: "tf",
+              question: "When an AI runs code on your spreadsheet, its sums are usually more reliable than when it just reads the numbers.",
+              answer: true,
+              explain: "Code calculates exactly. Reading and estimating can go wrong."
+            },
+            {
+              type: "mc",
+              question: "The AI's chart looks wrong. What's a good first question?",
+              options: [
+                "\"Which columns and rows did you use?\"",
+                "\"Why are you stupid?\"",
+                "\"Make it prettier.\"",
+                "\"Draw it again in red.\""
+              ],
+              answer: 0,
+              explain: "Often the AI picked the wrong column or skipped rows. Asking reveals it."
+            },
+            {
+              type: "mc",
+              question: "You need a cleaned-up version of a messy spreadsheet. What can you ask for?",
+              options: [
+                "A downloadable file with the fixes, plus a list of what changed",
+                "A poem about the spreadsheet",
+                "A screenshot only",
+                "Nothing; AI can't edit files"
+              ],
+              answer: 0,
+              explain: "Many assistants can return a corrected file, and a change list lets you check it."
             }
           ]
         },
@@ -184,6 +335,58 @@ COURSES.push({
               question: "AI image recognition is always right, so you can rely on it to tell you whether a wild mushroom is safe to eat.",
               answer: false,
               explain: "Never rely on AI for safety-critical identification. It can be confidently wrong."
+            },
+            {
+              type: "mc",
+              question: "You photograph a menu in another language. What can you ask?",
+              options: [
+                "\"Translate this and suggest vegetarian options.\"",
+                "\"Is this a photo?\"",
+                "\"Make it black and white.\"",
+                "\"Delete it.\""
+              ],
+              answer: 0,
+              explain: "Image understanding plus translation turns a photo into useful help."
+            },
+            {
+              type: "tf",
+              question: "When generating images, describing style, lighting and setting usually gives better results.",
+              answer: true,
+              explain: "Specific visual details give the generator a clearer target."
+            },
+            {
+              type: "better",
+              question: "Which image prompt is better?",
+              options: [
+                "A friendly cartoon owl reading a book, soft pastel colours, white background, for a children's library poster.",
+                "Owl."
+              ],
+              answer: 0,
+              explain: "Subject, style, colours and purpose all shape the image."
+            },
+            {
+              type: "mc",
+              question: "What's a risk of uploading a screenshot of your banking app?",
+              options: [
+                "It may show account numbers or personal details",
+                "None at all",
+                "It will improve your credit score",
+                "It makes the AI faster"
+              ],
+              answer: 0,
+              explain: "Crop or blur sensitive details before sharing any screenshot."
+            },
+            {
+              type: "mc",
+              question: "Voice mode is especially useful for...",
+              options: [
+                "Practising a language conversation",
+                "Sending your bank details",
+                "Editing a spreadsheet cell by cell",
+                "Reading tiny print on screen"
+              ],
+              answer: 0,
+              explain: "Speaking and listening practice is where voice shines."
             }
           ]
         }
@@ -231,6 +434,58 @@ COURSES.push({
               question: "Asking \"what are the strongest arguments AGAINST this?\" is a good way to avoid one-sided research.",
               answer: true,
               explain: "AI tends to agree with how a question is framed. Asking for the other side balances it."
+            },
+            {
+              type: "mc",
+              question: "What's the difference between a quick web search answer and deep research?",
+              options: [
+                "Deep research reads many more sources and takes longer",
+                "There's no difference",
+                "Deep research doesn't use the web",
+                "Quick answers are always more accurate"
+              ],
+              answer: 0,
+              explain: "Deep research trades time for thoroughness."
+            },
+            {
+              type: "tf",
+              question: "A source being listed doesn't guarantee the AI described it correctly.",
+              answer: true,
+              explain: "AI can misread or overstate what a page says. Check the claims that matter."
+            },
+            {
+              type: "better",
+              question: "Which research prompt is better?",
+              options: [
+                "What are the main pros and cons of a 4-day working week for small UK businesses? Use studies from the last 3 years and link them.",
+                "4 day week good?"
+              ],
+              answer: 0,
+              explain: "A clear question, timeframe and request for sources makes it checkable."
+            },
+            {
+              type: "mc",
+              question: "Which source is usually most reliable for a new law?",
+              options: [
+                "The official government website",
+                "A random social media post",
+                "An AI's memory with no source",
+                "A forum comment"
+              ],
+              answer: 0,
+              explain: "Primary, official sources beat second-hand summaries."
+            },
+            {
+              type: "mc",
+              question: "The AI gives two conflicting facts from two sources. What should you do?",
+              options: [
+                "Open both sources and see which is more recent and reliable",
+                "Pick the one you like",
+                "Average them",
+                "Ignore both"
+              ],
+              answer: 0,
+              explain: "Checking recency and authority resolves most conflicts."
             }
           ]
         },
@@ -279,6 +534,57 @@ COURSES.push({
               ],
               answer: 0,
               explain: "Leading questions get agreeable answers. Ask explicitly for criticism."
+            },
+            {
+              type: "mc",
+              question: "Which prompt invites the AI to reason carefully?",
+              options: [
+                "\"Work through this step by step and check your maths at the end.\"",
+                "\"Answer instantly.\"",
+                "\"Just guess.\"",
+                "\"One word only.\""
+              ],
+              answer: 0,
+              explain: "Asking for steps and a check reduces careless errors."
+            },
+            {
+              type: "tf",
+              question: "Asking the AI \"what could go wrong with this plan?\" is a useful way to stress-test it.",
+              answer: true,
+              explain: "It surfaces risks you might not have considered."
+            },
+            {
+              type: "order",
+              question: "Put the \"red team\" review in order:",
+              pieces: [
+                "Share your plan",
+                "Ask the AI to argue against it",
+                "Ask which objections are strongest",
+                "Decide what to change"
+              ],
+              explain: "Hearing the strongest objections first helps you improve the plan where it matters."
+            },
+            {
+              type: "better",
+              question: "Which prompt gives more honest feedback on your idea?",
+              options: [
+                "Rate my business idea 1–10 on demand, competition and cost, and give the 3 biggest reasons it could fail.",
+                "Isn't my idea great?"
+              ],
+              answer: 0,
+              explain: "A neutral, structured question avoids the AI simply agreeing with you."
+            },
+            {
+              type: "mc",
+              question: "Thinking mode answered a maths problem. What's still wise?",
+              options: [
+                "Check the key numbers yourself",
+                "Assume it's perfect",
+                "Ask for the answer in Roman numerals",
+                "Delete the chat"
+              ],
+              answer: 0,
+              explain: "Thinking reduces errors, but it doesn't remove them."
             }
           ]
         }
@@ -328,6 +634,59 @@ COURSES.push({
               ],
               answer: 0,
               explain: "Reusable prompt templates turn a good chat into a repeatable routine."
+            },
+            {
+              type: "mc",
+              question: "What's prompt chaining?",
+              options: [
+                "Using the output of one step as the input for the next",
+                "Writing one very long prompt",
+                "Asking the same question repeatedly",
+                "Linking two AI apps with a cable"
+              ],
+              answer: 0,
+              explain: "Each step builds on the last, keeping each part manageable."
+            },
+            {
+              type: "tf",
+              question: "A chain lets you check and correct each step before moving on.",
+              answer: true,
+              explain: "That's the main advantage over one giant prompt."
+            },
+            {
+              type: "order",
+              question: "Put this blog-writing chain in order:",
+              pieces: [
+                "Agree a topic and audience",
+                "Get an outline",
+                "Write each section",
+                "Edit the whole post for tone and length"
+              ],
+              explain: "Structure first, details next, polish last."
+            },
+            {
+              type: "mc",
+              question: "What's a good way to save a chain you'll reuse?",
+              options: [
+                "Write each step's prompt in a document as a template",
+                "Rely on memory",
+                "Screenshot one answer",
+                "Start from scratch each time"
+              ],
+              answer: 0,
+              explain: "A written set of steps makes the routine repeatable and shareable."
+            },
+            {
+              type: "mc",
+              question: "Step 2 of your chain produced something off-track. What should you do?",
+              options: [
+                "Fix step 2 before continuing",
+                "Carry on and fix it at the end",
+                "Start a new chain from step 5",
+                "Ignore it"
+              ],
+              answer: 0,
+              explain: "Errors carry forward. Fix them where they happen."
             }
           ]
         },
@@ -369,6 +728,58 @@ COURSES.push({
               question: "For important topics like medical or legal matters, AI explanations should be confirmed with a qualified professional.",
               answer: true,
               explain: "AI is great for understanding the basics and preparing questions, but not a substitute for professional advice."
+            },
+            {
+              type: "better",
+              question: "Which prompt makes AI a better tutor?",
+              options: [
+                "Teach me Excel pivot tables. Give me a tiny dataset, one task at a time, and check my answers.",
+                "Explain pivot tables."
+              ],
+              answer: 0,
+              explain: "Hands-on tasks with feedback teach more than a long explanation."
+            },
+            {
+              type: "tf",
+              question: "Asking the AI to explain something \"in three different ways\" can help a tricky idea click.",
+              answer: true,
+              explain: "Different explanations suit different people."
+            },
+            {
+              type: "mc",
+              question: "You want to remember what you learned. What's the best follow-up?",
+              options: [
+                "Ask for a short quiz tomorrow on the same topic",
+                "Read the explanation once more",
+                "Copy it into a notebook word for word",
+                "Never revisit it"
+              ],
+              answer: 0,
+              explain: "Testing yourself after a gap strengthens memory."
+            },
+            {
+              type: "mc",
+              question: "What's a good way to learn vocabulary in a new language with AI?",
+              options: [
+                "Ask it to use new words in short dialogues and quiz you",
+                "Ask for a list of 1,000 words",
+                "Translate whole books",
+                "Only read grammar rules"
+              ],
+              answer: 0,
+              explain: "Words in context, plus practice, stick better than long lists."
+            },
+            {
+              type: "mc",
+              question: "When learning with AI, what should you do if something seems wrong?",
+              options: [
+                "Check it in a trusted textbook or source",
+                "Assume the AI is right",
+                "Stop learning",
+                "Ask the AI to promise it's right"
+              ],
+              answer: 0,
+              explain: "AI tutors can make mistakes too. Cross-check important facts."
             }
           ]
         }
@@ -430,6 +841,43 @@ COURSES.push({
               question: "The newest, biggest model is always the best choice.",
               answer: false,
               explain: "Why: on simple tasks it's no better, just slower and it uses more of your limits. Match the model to how hard the task is."
+            },
+            {
+              type: "mc",
+              question: "Anthropic's Claude Opus is generally aimed at...",
+              options: [
+                "The hardest, most complex tasks",
+                "The fastest simple replies",
+                "Image generation only",
+                "Offline use"
+              ],
+              answer: 0,
+              explain: "Larger tiers trade speed for capability on demanding work."
+            },
+            {
+              type: "tf",
+              question: "A small, fast model can be the right choice for a long but simple task, like sorting thousands of short messages.",
+              answer: true,
+              explain: "Simple, repetitive work doesn't need the biggest model, and speed matters at volume."
+            },
+            {
+              type: "mc",
+              question: "What does a model's knowledge cut-off affect?",
+              options: [
+                "How up to date its built-in knowledge is",
+                "How fast it types",
+                "How many images it can draw",
+                "Its colour scheme"
+              ],
+              answer: 0,
+              explain: "After the cut-off, it needs web search to know about new events."
+            },
+            {
+              type: "mc",
+              question: "You need to analyse a 200-page contract in one go. What matters most?",
+              options: ["A large enough context window", "The model's name", "Image generation", "Voice mode"],
+              answer: 0,
+              explain: "The whole document has to fit in the model's working memory."
             }
           ]
         },
@@ -489,6 +937,48 @@ COURSES.push({
                 "Test the same prompt in two and compare"
               ],
               explain: "Why: starting from the task, not the brand, stops you choosing a tool that's missing a feature you need."
+            },
+            {
+              type: "mc",
+              question: "You want a short animated explainer for social media. What kind of tool?",
+              options: [
+                "An AI video or animation generator",
+                "A spreadsheet tool",
+                "A meeting note-taker",
+                "A plain text chat"
+              ],
+              answer: 0,
+              explain: "Video tools are built for moving images."
+            },
+            {
+              type: "tf",
+              question: "The same AI model can give very different results depending on whether it has web search, code tools or file access turned on.",
+              answer: true,
+              explain: "Tools add abilities. Turning them on or off changes what the AI can do."
+            },
+            {
+              type: "mc",
+              question: "You want to build a simple booking form without code. Which tool type fits?",
+              options: [
+                "An AI app builder that previews the result",
+                "A voice assistant",
+                "An image generator",
+                "A dictionary"
+              ],
+              answer: 0,
+              explain: "App builders turn a description into a working app you can test."
+            },
+            {
+              type: "mc",
+              question: "Which question should you ask before trusting a new AI tool with your data?",
+              options: [
+                "\"How is my data stored and used?\"",
+                "\"What colour is the logo?\"",
+                "\"How many emojis does it support?\"",
+                "\"Is it popular on social media?\""
+              ],
+              answer: 0,
+              explain: "Data handling matters more than popularity, especially for work."
             }
           ]
         }

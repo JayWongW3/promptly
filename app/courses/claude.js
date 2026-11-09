@@ -7,7 +7,7 @@
 COURSES.push({
   id: "claude",
   group: "tool",
-  levelJump: true, // learners can start at any level
+  levelJump: true,
   icon: "🟠",
   title: "Mastering Claude",
   audience: "Tool course · Claude by Anthropic",
@@ -52,6 +52,45 @@ COURSES.push({
               question: "You can upload a PDF or a photo and ask Claude questions about it.",
               answer: true,
               explain: "Why: Claude reads documents and images. Use the paperclip or + button in the message box, or drag the file in."
+            },
+            {
+              type: "mc",
+              question: "Which company makes Claude?",
+              options: ["Anthropic", "OpenAI", "xAI", "Google"],
+              answer: 0,
+              explain: "Claude is made by Anthropic. ChatGPT is OpenAI's, Grok is xAI's and Gemini is Google's."
+            },
+            {
+              type: "mc",
+              question: "Which Claude model family is built for speed on simpler tasks?",
+              options: ["Haiku", "Opus", "Sonnet", "None of them"],
+              answer: 0,
+              explain: "Why: Haiku is the fastest tier. Sonnet balances speed and capability; Opus is the most capable."
+            },
+            {
+              type: "tf",
+              question: "Chats you start on the Claude phone app can be continued on claude.ai on your computer.",
+              answer: true,
+              explain: "Why: your chats sync across web, desktop and mobile when you're signed in to the same account."
+            },
+            {
+              type: "mc",
+              question: "For most everyday tasks, which Claude family is a good default?",
+              options: ["Sonnet", "Haiku for everything", "Opus for everything", "Whichever is slowest"],
+              answer: 0,
+              explain: "Why: Sonnet balances quality and speed. Switch to Opus for very hard problems, or Haiku for quick simple ones."
+            },
+            {
+              type: "mc",
+              question: "You hit your usage limit on the free plan. What are your options?",
+              options: [
+                "Wait for the limit to reset, or upgrade to a paid plan",
+                "Make a new account every hour",
+                "Delete all your chats",
+                "Nothing ever resets"
+              ],
+              answer: 0,
+              explain: "Why: limits reset after a period of time, and paid plans raise them."
             }
           ]
         },
@@ -91,9 +130,66 @@ COURSES.push({
             {
               type: "mc",
               question: "You always want shorter, more direct answers. Which feature helps?",
-              options: ["Choosing a concise Style", "Uploading a photo", "Switching to a dark theme", "Deleting old chats"],
+              options: [
+                "Choosing a concise Style",
+                "Uploading a photo",
+                "Switching to a dark theme",
+                "Deleting old chats"
+              ],
               answer: 0,
               explain: "Why: Styles change how Claude writes across your chats, so you don't have to say \"be concise\" every time."
+            },
+            {
+              type: "better",
+              question: "Which prompt is better for a tricky email?",
+              options: [
+                "I need to tell a long-standing client we're ending our contract in 3 months. Keep it warm, clear and under 150 words. Offer a handover call.",
+                "Write a break-up email to a client."
+              ],
+              answer: 0,
+              explain: "Why: the situation, tone, length and offer give Claude what it needs to write something you can send."
+            },
+            {
+              type: "tf",
+              question: "You can tell Claude what you don't want, such as \"no jargon\" or \"no bullet points\".",
+              answer: true,
+              explain: "Why: saying what to avoid is as useful as saying what to include."
+            },
+            {
+              type: "mc",
+              question: "Claude's answer is good but too long. What's the best follow-up?",
+              options: [
+                "\"Cut this to 80 words and keep the main point.\"",
+                "Start a new account",
+                "\"Wrong.\"",
+                "Copy it into another app"
+              ],
+              answer: 0,
+              explain: "Why: a specific edit request builds on what's already good."
+            },
+            {
+              type: "mc",
+              question: "You want Claude to write in your own voice. What helps most?",
+              options: [
+                "Paste two or three examples of your writing, or create a custom Style from them",
+                "Describe yourself as \"nice\"",
+                "Use capital letters",
+                "Ask it to guess"
+              ],
+              answer: 0,
+              explain: "Why: examples show tone, sentence length and word choice far better than a description."
+            },
+            {
+              type: "mc",
+              question: "What should you do if Claude seems to have misunderstood your goal?",
+              options: [
+                "Explain the goal again with an example of a good result",
+                "Repeat the same words louder",
+                "Give up on the task",
+                "Switch off your phone"
+              ],
+              answer: 0,
+              explain: "Why: an example of what \"good\" looks like quickly realigns the answer."
             }
           ]
         }
@@ -138,6 +234,58 @@ COURSES.push({
               options: ["An incognito chat", "A Project", "A public share link", "A connector"],
               answer: 0,
               explain: "Why: incognito chats aren't saved to your chat history and don't feed into memory."
+            },
+            {
+              type: "mc",
+              question: "What are a Claude Project's \"knowledge\" files for?",
+              options: [
+                "Documents Claude can refer to in every chat in that project",
+                "Storing your passwords",
+                "Backing up your phone",
+                "Changing Claude's language"
+              ],
+              answer: 0,
+              explain: "Why: uploading reference documents once saves pasting them into every chat."
+            },
+            {
+              type: "better",
+              question: "Which project instruction is better for a newsletter project?",
+              options: [
+                "Audience: small café owners. Tone: friendly, practical. Always end with one actionable tip. Use British spelling.",
+                "Write good newsletters."
+              ],
+              answer: 0,
+              explain: "Why: audience, tone and a standing rule shape every chat in the project."
+            },
+            {
+              type: "tf",
+              question: "If a project's files are out of date, Claude's answers in that project may be out of date too.",
+              answer: true,
+              explain: "Why: Claude uses what you've given it. Replace old files when things change."
+            },
+            {
+              type: "mc",
+              question: "You tell Claude \"remember that I prefer short answers\". Where can you check that it saved this?",
+              options: [
+                "In memory settings",
+                "In your phone's photo gallery",
+                "In the Artifacts panel",
+                "Nowhere; it can't remember"
+              ],
+              answer: 0,
+              explain: "Why: memory can be reviewed and edited in Settings."
+            },
+            {
+              type: "mc",
+              question: "When would you NOT want to use a Project?",
+              options: [
+                "For a single, quick, unrelated question",
+                "For an ongoing client account",
+                "For a book you're writing",
+                "For your job search"
+              ],
+              answer: 0,
+              explain: "Why: projects suit ongoing work. A one-off question doesn't need one."
             }
           ]
         },
@@ -155,12 +303,7 @@ COURSES.push({
             {
               type: "mc",
               question: "You want a simple quote calculator you can share with your team, without coding. What should you ask Claude for?",
-              options: [
-                "An interactive Artifact",
-                "A one-line text answer",
-                "A Style",
-                "An incognito chat"
-              ],
+              options: ["An interactive Artifact", "A one-line text answer", "A Style", "An incognito chat"],
               answer: 0,
               explain: "Why: Artifacts can be working mini-apps you test straight away and share by link."
             },
@@ -181,6 +324,58 @@ COURSES.push({
               question: "Claude can create a PowerPoint or Word file you can download.",
               answer: true,
               explain: "Why: Claude can create common office files directly, which saves copying text into templates by hand."
+            },
+            {
+              type: "mc",
+              question: "Which is an example of something Claude can build as an Artifact?",
+              options: [
+                "A simple interactive budgeting calculator",
+                "A physical printed brochure",
+                "A phone call",
+                "A paper letter"
+              ],
+              answer: 0,
+              explain: "Why: Artifacts are digital: documents, code, diagrams and small apps."
+            },
+            {
+              type: "tf",
+              question: "You can ask Claude to change an Artifact, such as \"add a VAT toggle\", and it updates it.",
+              answer: true,
+              explain: "Why: you refine Artifacts in the chat, step by step."
+            },
+            {
+              type: "better",
+              question: "Which prompt is better for an Artifact?",
+              options: [
+                "Build a one-page checklist app for opening my café each morning: 12 tasks, tick boxes, and a reset button.",
+                "Make an app."
+              ],
+              answer: 0,
+              explain: "Why: purpose, contents and controls give Claude a clear build target."
+            },
+            {
+              type: "mc",
+              question: "You need a slide deck for a team meeting. What can you ask Claude for?",
+              options: [
+                "A PowerPoint file you can download and edit",
+                "A video call",
+                "A printed handout delivered to you",
+                "Nothing; decks aren't possible"
+              ],
+              answer: 0,
+              explain: "Why: Claude can create common office files, including presentations."
+            },
+            {
+              type: "mc",
+              question: "Before sharing an Artifact publicly, what should you check?",
+              options: [
+                "That it contains no private or confidential information",
+                "That it has a dark theme",
+                "That it's over 1,000 words",
+                "Nothing"
+              ],
+              answer: 0,
+              explain: "Why: once shared, others can see everything in it."
             }
           ]
         }
@@ -225,6 +420,58 @@ COURSES.push({
               question: "Turning on extended thinking helps most with complex reasoning, not with quick simple questions.",
               answer: true,
               explain: "Why: thinking takes extra time. It pays off on hard problems and is wasted on \"what's the capital of France?\"."
+            },
+            {
+              type: "mc",
+              question: "What does Claude's Research mode return?",
+              options: [
+                "A report with citations from many sources",
+                "A single one-word answer",
+                "An image",
+                "A phone number"
+              ],
+              answer: 0,
+              explain: "Why: Research gathers and cites many sources, so you can check them."
+            },
+            {
+              type: "tf",
+              question: "You can disconnect a connector, such as Gmail, at any time.",
+              answer: true,
+              explain: "Why: you stay in control of which tools Claude can access."
+            },
+            {
+              type: "better",
+              question: "Which request makes better use of connectors?",
+              options: [
+                "Look at my Calendar for tomorrow and my recent emails from each attendee, then give me a one-paragraph brief per meeting.",
+                "What's happening?"
+              ],
+              answer: 0,
+              explain: "Why: naming the sources and the output makes Claude use connectors purposefully."
+            },
+            {
+              type: "mc",
+              question: "Which task benefits most from extended thinking?",
+              options: [
+                "Comparing three pricing models with different costs and margins",
+                "Saying \"good morning\"",
+                "Fixing one typo",
+                "Translating \"hello\""
+              ],
+              answer: 0,
+              explain: "Why: multi-step reasoning with numbers is where thinking pays off."
+            },
+            {
+              type: "mc",
+              question: "Before connecting Claude to work tools, what should you check?",
+              options: [
+                "Your company's policy on which tools may be connected",
+                "Your phone's battery",
+                "Claude's favourite colour",
+                "Nothing"
+              ],
+              answer: 0,
+              explain: "Why: work data may be covered by company rules and client agreements."
             }
           ]
         },
@@ -262,6 +509,58 @@ COURSES.push({
               question: "When an agent like Cowork works on your files, it's wise to point it at a specific folder and check its output.",
               answer: true,
               explain: "Why: limiting access reduces the damage from a mistake, and reviewing catches errors before they matter."
+            },
+            {
+              type: "mc",
+              question: "Where can you use Claude Code?",
+              options: [
+                "In the terminal, code editors, the desktop app and on the web",
+                "Only on paper",
+                "Only in Excel",
+                "Only by phone call"
+              ],
+              answer: 0,
+              explain: "Why: Claude Code is available in several places developers already work."
+            },
+            {
+              type: "tf",
+              question: "Claude Code can run your project's tests to check its own changes.",
+              answer: true,
+              explain: "Why: running tests is how it verifies a fix instead of guessing."
+            },
+            {
+              type: "mc",
+              question: "Which is a good everyday Cowork task for a business owner?",
+              options: [
+                "Turning a folder of receipts into an expenses spreadsheet",
+                "Signing contracts for you",
+                "Moving money between bank accounts",
+                "Hiring staff on its own"
+              ],
+              answer: 0,
+              explain: "Why: file-based admin is useful and low risk, and you review the result."
+            },
+            {
+              type: "better",
+              question: "Which Cowork instruction is better?",
+              options: [
+                "Use only the files in the 'Q3 receipts' folder. Create a spreadsheet with date, supplier, amount and category. Don't delete or move any files.",
+                "Sort my receipts."
+              ],
+              answer: 0,
+              explain: "Why: a defined folder, output and boundary keep the agent safe and on task."
+            },
+            {
+              type: "mc",
+              question: "What's the main benefit of a Skill?",
+              options: [
+                "Claude follows your specific way of doing a task every time",
+                "It makes Claude free",
+                "It removes the need to check work",
+                "It changes Claude's name"
+              ],
+              answer: 0,
+              explain: "Why: Skills package instructions and files for consistent, repeatable results."
             }
           ]
         }
