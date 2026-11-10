@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-06T07:27:49.456Z",
+  "generated_at": "2026-11-10T14:48:16.936Z",
   "today": {
-    "date": "2026-11-06",
-    "name": "poki",
-    "full_name": "JosssphZhou/poki",
-    "owner": "JosssphZhou",
-    "url": "https://github.com/JosssphZhou/poki",
-    "homepage": "https://poki.bot",
-    "stars": 306,
-    "language": "JavaScript",
-    "created_at": "2026-11-05T15:04:31Z",
-    "headline": "Someone made a tool that lets AI tap and type on a real iPhone today!",
-    "summary": "Poki lets an AI assistant use your iPhone the way you would, opening apps, searching, and typing, all run from a Mac. It is aimed at tech-savvy Mac users who want an AI helper to carry out phone tasks for them.",
-    "takeaway": "It shows how AI assistants can be connected to everyday tools to take real actions, and why it matters to stay careful about what you let them do on your accounts.",
+    "date": "2026-11-10",
+    "name": "roblox-studio-mcp",
+    "full_name": "Nanoutrolley/roblox-studio-mcp",
+    "owner": "Nanoutrolley",
+    "url": "https://github.com/Nanoutrolley/roblox-studio-mcp",
+    "homepage": "",
+    "stars": 283,
+    "language": "Python",
+    "created_at": "2026-11-09T08:58:06Z",
+    "headline": "Someone made a project with Claude today!",
+    "summary": "Model Context Protocol (MCP) server for Roblox Studio. Connect AI assistants (Claude, Cursor, Cline) to read object trees, automate Lua scripting, and run playtests safely. Open-source AI bridge.",
+    "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
-    "ai_written": true
+    "ai_written": false
   },
   "others": [
     {
-      "full_name": "HerdBuilderEstimate/roblox-studio-mcp",
-      "url": "https://github.com/HerdBuilderEstimate/roblox-studio-mcp",
-      "stars": 425,
-      "description": "Model Context Protocol server for Roblox Studio. Connect AI assistants (Claude, Cursor) to read object trees, edit scripts, and run playtes…"
+      "full_name": "Dodaios/ste80-humanizer",
+      "url": "https://github.com/Dodaios/ste80-humanizer",
+      "stars": 257,
+      "description": "STE80 Humanizer: agent skill that removes AI tells and rewrites text 80% of the way to ASD-STE100 (Simplified Technical English), the metho…"
     },
     {
-      "full_name": "Glen-Web-App/best-agent-memory-mcp",
-      "url": "https://github.com/Glen-Web-App/best-agent-memory-mcp",
-      "stars": 117,
-      "description": "Best Agent Memory MCP servers, ranked and compared: long-term memory for Claude Code, Codex, Cursor and any MCP client. Glen, Mem0, Superme…"
+      "full_name": "Moh4696/cinematic-skill",
+      "url": "https://github.com/Moh4696/cinematic-skill",
+      "stars": 89,
+      "description": "Agent skill for narrated cinematic films built entirely from code: one continuous camera over photos, maps and cards, timed to the voice. C…"
     },
     {
-      "full_name": "yucezerey/turkish-anti-ai-skill",
-      "url": "https://github.com/yucezerey/turkish-anti-ai-skill",
-      "stars": 126,
-      "description": "Türkçe metinlerdeki yapay zeka izlerini (AI slop, translationese, çeviri kokan cümle mimarisi ve TDK hatalarını) temizleyen Agent Skill ve…"
+      "full_name": "JDhruv14/line-art-animation",
+      "url": "https://github.com/JDhruv14/line-art-animation",
+      "stars": 70,
+      "description": "A Claude skill and TypeScript library for animated line-art SVG components: ink figures that walk and react, scenes with a day/night cycle."
     },
     {
-      "full_name": "ZSeven-W/dsh-game-studio",
-      "url": "https://github.com/ZSeven-W/dsh-game-studio",
-      "stars": 85,
-      "description": "Describe a small game in one sentence, play it in the DeepSeek Harness sidebar, swap in AI art, export one HTML file."
+      "full_name": "fayazara/Lotion",
+      "url": "https://github.com/fayazara/Lotion",
+      "stars": 42,
+      "description": "A local notes app"
     }
   ],
   "history": [
+    {
+      "date": "2026-11-10",
+      "name": "roblox-studio-mcp",
+      "full_name": "Nanoutrolley/roblox-studio-mcp",
+      "owner": "Nanoutrolley",
+      "url": "https://github.com/Nanoutrolley/roblox-studio-mcp",
+      "homepage": "",
+      "stars": 283,
+      "language": "Python",
+      "created_at": "2026-11-09T08:58:06Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "Model Context Protocol (MCP) server for Roblox Studio. Connect AI assistants (Claude, Cursor, Cline) to read object trees, automate Lua scripting, and run playtests safely. Open-source AI bridge.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-06",
       "name": "poki",
