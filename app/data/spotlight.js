@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-10T14:48:16.936Z",
+  "generated_at": "2026-11-11T14:12:51.871Z",
   "today": {
-    "date": "2026-11-10",
-    "name": "roblox-studio-mcp",
-    "full_name": "Nanoutrolley/roblox-studio-mcp",
-    "owner": "Nanoutrolley",
-    "url": "https://github.com/Nanoutrolley/roblox-studio-mcp",
+    "date": "2026-11-11",
+    "name": "line-art-animation",
+    "full_name": "JDhruv14/line-art-animation",
+    "owner": "JDhruv14",
+    "url": "https://github.com/JDhruv14/line-art-animation",
     "homepage": "",
-    "stars": 283,
-    "language": "Python",
-    "created_at": "2026-11-09T08:58:06Z",
+    "stars": 364,
+    "language": "TypeScript",
+    "created_at": "2026-11-10T09:25:25Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "Model Context Protocol (MCP) server for Roblox Studio. Connect AI assistants (Claude, Cursor, Cline) to read object trees, automate Lua scripting, and run playtests safely. Open-source AI bridge.",
+    "summary": "A Claude skill and TypeScript library for animated line-art SVG components: ink figures that walk and react, scenes with a day/night cycle.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "Dodaios/ste80-humanizer",
-      "url": "https://github.com/Dodaios/ste80-humanizer",
-      "stars": 257,
-      "description": "STE80 Humanizer: agent skill that removes AI tells and rewrites text 80% of the way to ASD-STE100 (Simplified Technical English), the metho…"
+      "full_name": "aronhy/pibrowse",
+      "url": "https://github.com/aronhy/pibrowse",
+      "stars": 255,
+      "description": "Open-source browser profile workspaces"
     },
     {
-      "full_name": "Moh4696/cinematic-skill",
-      "url": "https://github.com/Moh4696/cinematic-skill",
-      "stars": 89,
-      "description": "Agent skill for narrated cinematic films built entirely from code: one continuous camera over photos, maps and cards, timed to the voice. C…"
+      "full_name": "setyamickala/fastmint-fcfs-agentic",
+      "url": "https://github.com/setyamickala/fastmint-fcfs-agentic",
+      "stars": 197,
+      "description": "FCFS mint di BNB Smart Chain lewat Binance Agentic Wallet, masuk blok ±2 detik setelah jam buka."
     },
     {
-      "full_name": "JDhruv14/line-art-animation",
-      "url": "https://github.com/JDhruv14/line-art-animation",
-      "stars": 70,
-      "description": "A Claude skill and TypeScript library for animated line-art SVG components: ink figures that walk and react, scenes with a day/night cycle."
+      "full_name": "MZULALI/xj-scanner",
+      "url": "https://github.com/MZULALI/xj-scanner",
+      "stars": 83,
+      "description": "Read a 1991-95 Jeep's engine computer from a laptop with a $3 Arduino Nano, and let an AI agent do the reading."
     },
     {
-      "full_name": "fayazara/Lotion",
-      "url": "https://github.com/fayazara/Lotion",
+      "full_name": "MasterOfVFX2070/xray-mirror",
+      "url": "https://github.com/MasterOfVFX2070/xray-mirror",
       "stars": 42,
-      "description": "A local notes app"
+      "description": "Live webcam X-ray mirror: see the skull, brain and muscles inside your head. Built with Claude Fable 5.2."
     }
   ],
   "history": [
+    {
+      "date": "2026-11-11",
+      "name": "line-art-animation",
+      "full_name": "JDhruv14/line-art-animation",
+      "owner": "JDhruv14",
+      "url": "https://github.com/JDhruv14/line-art-animation",
+      "homepage": "",
+      "stars": 364,
+      "language": "TypeScript",
+      "created_at": "2026-11-10T09:25:25Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "A Claude skill and TypeScript library for animated line-art SVG components: ink figures that walk and react, scenes with a day/night cycle.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-10",
       "name": "roblox-studio-mcp",
