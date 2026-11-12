@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-11T14:12:51.871Z",
+  "generated_at": "2026-11-12T15:06:30.882Z",
   "today": {
-    "date": "2026-11-11",
-    "name": "line-art-animation",
-    "full_name": "JDhruv14/line-art-animation",
-    "owner": "JDhruv14",
-    "url": "https://github.com/JDhruv14/line-art-animation",
-    "homepage": "",
-    "stars": 364,
-    "language": "TypeScript",
-    "created_at": "2026-11-10T09:25:25Z",
+    "date": "2026-11-12",
+    "name": "guizang-game-skill",
+    "full_name": "op7418/guizang-game-skill",
+    "owner": "op7418",
+    "url": "https://github.com/op7418/guizang-game-skill",
+    "homepage": "https://op7418.github.io/guizang-game-skill/",
+    "stars": 206,
+    "language": "JavaScript",
+    "created_at": "2026-11-11T16:28:54Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "A Claude skill and TypeScript library for animated line-art SVG components: ink figures that walk and react, scenes with a day/night cycle.",
+    "summary": "歸藏 Game Skill：让 AI 从零做出能在浏览器里玩的 3D 动作游戏，附可玩演示《雾锁山门》。Agent skill for Claude Code / Codex that builds a playable browser 3D action game with AI-generated assets (three.js, single-HTML). Playable demo included.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "aronhy/pibrowse",
-      "url": "https://github.com/aronhy/pibrowse",
-      "stars": 255,
-      "description": "Open-source browser profile workspaces"
-    },
-    {
       "full_name": "setyamickala/fastmint-fcfs-agentic",
       "url": "https://github.com/setyamickala/fastmint-fcfs-agentic",
-      "stars": 197,
+      "stars": 221,
       "description": "FCFS mint di BNB Smart Chain lewat Binance Agentic Wallet, masuk blok ±2 detik setelah jam buka."
     },
     {
-      "full_name": "MZULALI/xj-scanner",
-      "url": "https://github.com/MZULALI/xj-scanner",
-      "stars": 83,
-      "description": "Read a 1991-95 Jeep's engine computer from a laptop with a $3 Arduino Nano, and let an AI agent do the reading."
+      "full_name": "routerhubSI/kimi-uncensored",
+      "url": "https://github.com/routerhubSI/kimi-uncensored",
+      "stars": 84,
+      "description": "Every uncensored and abliterated Kimi build — Kimi K3.1 Pro Uncensored via API at 0.30/1.50 USD per million tokens, abliterated open-weight…"
     },
     {
-      "full_name": "MasterOfVFX2070/xray-mirror",
-      "url": "https://github.com/MasterOfVFX2070/xray-mirror",
-      "stars": 42,
-      "description": "Live webcam X-ray mirror: see the skull, brain and muscles inside your head. Built with Claude Fable 5.2."
+      "full_name": "routerhubSI/deepseek-uncensored",
+      "url": "https://github.com/routerhubSI/deepseek-uncensored",
+      "stars": 68,
+      "description": "Every uncensored and abliterated DeepSeek build — V4.1 Flash 1017 Abliterated (the pinned, reproducible build that ranks third on the AA Cy…"
+    },
+    {
+      "full_name": "wquguru/fable52-fps-repro",
+      "url": "https://github.com/wquguru/fable52-fps-repro",
+      "stars": 78,
+      "description": "Fable 5.2 一句话生成 3D FPS 复现：4 个单文件演示、提示词与缓存账单 / One-prompt 3D FPS repro with demos, prompts & cost data"
     }
   ],
   "history": [
+    {
+      "date": "2026-11-12",
+      "name": "guizang-game-skill",
+      "full_name": "op7418/guizang-game-skill",
+      "owner": "op7418",
+      "url": "https://github.com/op7418/guizang-game-skill",
+      "homepage": "https://op7418.github.io/guizang-game-skill/",
+      "stars": 206,
+      "language": "JavaScript",
+      "created_at": "2026-11-11T16:28:54Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "歸藏 Game Skill：让 AI 从零做出能在浏览器里玩的 3D 动作游戏，附可玩演示《雾锁山门》。Agent skill for Claude Code / Codex that builds a playable browser 3D action game with AI-generated assets (three.js, single-HTML). Playable demo included.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-11",
       "name": "line-art-animation",
