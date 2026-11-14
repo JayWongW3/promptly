@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-13T14:29:46.812Z",
+  "generated_at": "2026-11-14T13:26:48.934Z",
   "today": {
-    "date": "2026-11-13",
-    "name": "open-orange",
-    "full_name": "rivet-dev/open-orange",
-    "owner": "rivet-dev",
-    "url": "https://github.com/rivet-dev/open-orange",
-    "homepage": "https://openorange.dev",
-    "stars": 347,
+    "date": "2026-11-14",
+    "name": "scarlet",
+    "full_name": "Forward-Future/scarlet",
+    "owner": "Forward-Future",
+    "url": "https://github.com/Forward-Future/scarlet",
+    "homepage": "",
+    "stars": 196,
     "language": "TypeScript",
-    "created_at": "2026-11-12T00:44:12Z",
+    "created_at": "2026-11-13T17:02:31Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "Run Cloudflare Workers and Durable Objects unchanged on AWS, GCP, Azure or your own servers.",
+    "summary": "Scarlet is an AI video editor for macOS and Windows.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "IluvatarLabs/sitrep",
-      "url": "https://github.com/IluvatarLabs/sitrep",
-      "stars": 87,
-      "description": "One live console to monitor Claude Code and Codex agents across machines, track context and spend, and unblock sessions that need you."
+      "full_name": "EunChae1110/mmforge-platform",
+      "url": "https://github.com/EunChae1110/mmforge-platform",
+      "stars": 45,
+      "description": "A skill that turns a brief, screenshot, or copied element into a mod menu you can click through in a local canvas."
     },
     {
-      "full_name": "hitkeeen/blender-ai-mcp-addon",
-      "url": "https://github.com/hitkeeen/blender-ai-mcp-addon",
-      "stars": 110,
-      "description": "AI assistant and MCP server for Blender: visual chat, scene tools, multi-agent workflows. Works with ChatGPT/GPT, Claude, Gemini, Ollama, O…"
+      "full_name": "fazxes/rex-durable",
+      "url": "https://github.com/fazxes/rex-durable",
+      "stars": 42,
+      "description": "Keep the programs in your Rex tabs across server restarts and reboots. fx, Claude Code, and Codex chats reopen on their own conversation."
     },
     {
-      "full_name": "routerhubSI/kimi-uncensored",
-      "url": "https://github.com/routerhubSI/kimi-uncensored",
-      "stars": 84,
-      "description": "Every uncensored and abliterated Kimi build — Kimi K3.1 Pro Uncensored via API at 0.30/1.50 USD per million tokens, abliterated open-weight…"
+      "full_name": "roan-maverick/tradingview-indicator-for-ai-agents",
+      "url": "https://github.com/roan-maverick/tradingview-indicator-for-ai-agents",
+      "stars": 32,
+      "description": "Tradingview IndicatorBuilt for AI agents"
     },
     {
-      "full_name": "jackson-cmd/risk-aware-trading-agents",
-      "url": "https://github.com/jackson-cmd/risk-aware-trading-agents",
-      "stars": 77,
-      "description": "AI trading agents for US stocks with news backtesting that can't see the future: a point-in-time 2026 dataset (prices, VIX, news), a look-a…"
+      "full_name": "niyouqianma/workbuddy2api-hub",
+      "url": "https://github.com/niyouqianma/workbuddy2api-hub",
+      "stars": 20,
+      "description": "WorkBuddy2API-Hub - OpenAI-compatible local gateway"
     }
   ],
   "history": [
+    {
+      "date": "2026-11-14",
+      "name": "scarlet",
+      "full_name": "Forward-Future/scarlet",
+      "owner": "Forward-Future",
+      "url": "https://github.com/Forward-Future/scarlet",
+      "homepage": "",
+      "stars": 196,
+      "language": "TypeScript",
+      "created_at": "2026-11-13T17:02:31Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "Scarlet is an AI video editor for macOS and Windows.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-13",
       "name": "open-orange",
