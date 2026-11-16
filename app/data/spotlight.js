@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-15T13:52:50.232Z",
+  "generated_at": "2026-11-16T15:36:55.966Z",
   "today": {
-    "date": "2026-11-15",
-    "name": "Capri-AI",
-    "full_name": "Outpostkrewhirl86/Capri-AI",
-    "owner": "Outpostkrewhirl86",
-    "url": "https://github.com/Outpostkrewhirl86/Capri-AI",
+    "date": "2026-11-16",
+    "name": "RegisterHub",
+    "full_name": "waw666waw666/RegisterHub",
+    "owner": "waw666waw666",
+    "url": "https://github.com/waw666waw666/RegisterHub",
     "homepage": "",
-    "stars": 345,
-    "language": "",
-    "created_at": "2026-11-14T21:34:40Z",
+    "stars": 88,
+    "language": "Python",
+    "created_at": "2026-11-16T07:10:32Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "Capri: a local-first desktop AI agent with a cyberpunk HUD. Your personal Jarvis for Windows. Controls files, apps, terminal and browser, powered by Claude Code, Codex, Antigravity or any backend. Inspired by Cyberpunk: Edgerunners.",
+    "summary": "万能注册机模板 | Universal Auto-Registration Template.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "vaibhav-space/my-ai-coding-workflow",
-      "url": "https://github.com/vaibhav-space/my-ai-coding-workflow",
-      "stars": 180,
-      "description": "Production-grade AI coding instructions, curated skills, and a 3-stage review pipeline (Planning → Critical Review → Diff Audit) built afte…"
+      "full_name": "davidondrej/superbot",
+      "url": "https://github.com/davidondrej/superbot",
+      "stars": 170,
+      "description": "Open-source, self-hosted Grok Bot alternative"
     },
     {
-      "full_name": "JuneYaooo/rea-toon",
-      "url": "https://github.com/JuneYaooo/rea-toon",
-      "stars": 147,
-      "description": "AI 拆解学习短剧：为什么火、剧本怎么写、每一镜怎么拍 | Break down any short drama with AI: why it works, the script, every shot"
+      "full_name": "finktheartist/sakuga-vfx",
+      "url": "https://github.com/finktheartist/sakuga-vfx",
+      "stars": 94,
+      "description": "Twelve ordinary UI controls that react like anime. One file each, no dependencies."
     },
     {
-      "full_name": "niyouqianma/workbuddy2api-hub",
-      "url": "https://github.com/niyouqianma/workbuddy2api-hub",
-      "stars": 66,
-      "description": "WorkBuddy2API-Hub - OpenAI-compatible local gateway"
+      "full_name": "AI4XE/Parallax",
+      "url": "https://github.com/AI4XE/Parallax",
+      "stars": 102,
+      "description": "A hands-off development plugin for AI coding agents (Claude Code, DeepSeek Harness, GitHub Copilot and more)"
     },
     {
-      "full_name": "Tthanh2k6/turbo-browser-mcp",
-      "url": "https://github.com/Tthanh2k6/turbo-browser-mcp",
-      "stars": 81,
-      "description": "High-speed Playwright MCP server with multi-tab batching, compact delta DOM snapshots, React/Shadow DOM/iframe form filling, disk file uplo…"
+      "full_name": "brianbell-x/codehygiene",
+      "url": "https://github.com/brianbell-x/codehygiene",
+      "stars": 87,
+      "description": "A 33 KB, weight-space programmed System One model for code readability and hygiene."
     }
   ],
   "history": [
+    {
+      "date": "2026-11-16",
+      "name": "RegisterHub",
+      "full_name": "waw666waw666/RegisterHub",
+      "owner": "waw666waw666",
+      "url": "https://github.com/waw666waw666/RegisterHub",
+      "homepage": "",
+      "stars": 88,
+      "language": "Python",
+      "created_at": "2026-11-16T07:10:32Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "万能注册机模板 | Universal Auto-Registration Template.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-15",
       "name": "Capri-AI",
