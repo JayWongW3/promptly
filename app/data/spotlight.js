@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-16T15:36:55.966Z",
+  "generated_at": "2026-11-17T15:56:21.750Z",
   "today": {
-    "date": "2026-11-16",
-    "name": "RegisterHub",
-    "full_name": "waw666waw666/RegisterHub",
-    "owner": "waw666waw666",
-    "url": "https://github.com/waw666waw666/RegisterHub",
+    "date": "2026-11-17",
+    "name": "inference-optimisation-skill",
+    "full_name": "sybil-solutions/inference-optimisation-skill",
+    "owner": "sybil-solutions",
+    "url": "https://github.com/sybil-solutions/inference-optimisation-skill",
     "homepage": "",
-    "stars": 88,
+    "stars": 686,
     "language": "Python",
-    "created_at": "2026-11-16T07:10:32Z",
+    "created_at": "2026-11-16T18:40:04Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "万能注册机模板 | Universal Auto-Registration Template.",
+    "summary": "Agent skill for hill-climbing local LLM serving speed (decode, speculative decoding, prefill, KV, startup, TTFT) on any hardware and quantization.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "davidondrej/superbot",
-      "url": "https://github.com/davidondrej/superbot",
-      "stars": 170,
-      "description": "Open-source, self-hosted Grok Bot alternative"
+      "full_name": "boringmarketer/boring-marketing-skills",
+      "url": "https://github.com/boringmarketer/boring-marketing-skills",
+      "stars": 427,
+      "description": "31 free marketing skills for your AI agent: research, positioning, copy, pages, SEO, AI search, ads, email and content, plus a deep local-b…"
     },
     {
-      "full_name": "finktheartist/sakuga-vfx",
-      "url": "https://github.com/finktheartist/sakuga-vfx",
-      "stars": 94,
-      "description": "Twelve ordinary UI controls that react like anime. One file each, no dependencies."
+      "full_name": "waw666waw666/RegisterHub",
+      "url": "https://github.com/waw666waw666/RegisterHub",
+      "stars": 264,
+      "description": "万能注册机模板 | Universal Auto-Registration Template"
     },
     {
-      "full_name": "AI4XE/Parallax",
-      "url": "https://github.com/AI4XE/Parallax",
-      "stars": 102,
-      "description": "A hands-off development plugin for AI coding agents (Claude Code, DeepSeek Harness, GitHub Copilot and more)"
+      "full_name": "chuanqisun/spaceship",
+      "url": "https://github.com/chuanqisun/spaceship",
+      "stars": 527,
+      "description": "Steer your ideas in realtime"
     },
     {
-      "full_name": "brianbell-x/codehygiene",
-      "url": "https://github.com/brianbell-x/codehygiene",
-      "stars": 87,
-      "description": "A 33 KB, weight-space programmed System One model for code readability and hygiene."
+      "full_name": "erkamyaman/rust-anything",
+      "url": "https://github.com/erkamyaman/rust-anything",
+      "stars": 491,
+      "description": "Rewrite your whole app in Rust, one piece at a time, checked against the original's recorded behavior at every step. CLIs, HTTP servers and…"
     }
   ],
   "history": [
+    {
+      "date": "2026-11-17",
+      "name": "inference-optimisation-skill",
+      "full_name": "sybil-solutions/inference-optimisation-skill",
+      "owner": "sybil-solutions",
+      "url": "https://github.com/sybil-solutions/inference-optimisation-skill",
+      "homepage": "",
+      "stars": 686,
+      "language": "Python",
+      "created_at": "2026-11-16T18:40:04Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "Agent skill for hill-climbing local LLM serving speed (decode, speculative decoding, prefill, KV, startup, TTFT) on any hardware and quantization.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-16",
       "name": "RegisterHub",
