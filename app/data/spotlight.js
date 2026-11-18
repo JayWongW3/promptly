@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-17T15:56:21.750Z",
+  "generated_at": "2026-11-18T15:34:13.120Z",
   "today": {
-    "date": "2026-11-17",
-    "name": "inference-optimisation-skill",
-    "full_name": "sybil-solutions/inference-optimisation-skill",
-    "owner": "sybil-solutions",
-    "url": "https://github.com/sybil-solutions/inference-optimisation-skill",
-    "homepage": "",
-    "stars": 686,
-    "language": "Python",
-    "created_at": "2026-11-16T18:40:04Z",
+    "date": "2026-11-18",
+    "name": "holospot",
+    "full_name": "dmitrykurash/holospot",
+    "owner": "dmitrykurash",
+    "url": "https://github.com/dmitrykurash/holospot",
+    "homepage": "https://www.holo.spot",
+    "stars": 132,
+    "language": "TypeScript",
+    "created_at": "2026-11-17T13:38:59Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "Agent skill for hill-climbing local LLM serving speed (decode, speculative decoding, prefill, KV, startup, TTFT) on any hardware and quantization.",
+    "summary": "The holographic materials of holo.spot for your own three.js scenes, made to be handed to an AI agent.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "boringmarketer/boring-marketing-skills",
-      "url": "https://github.com/boringmarketer/boring-marketing-skills",
-      "stars": 427,
-      "description": "31 free marketing skills for your AI agent: research, positioning, copy, pages, SEO, AI search, ads, email and content, plus a deep local-b…"
+      "full_name": "phasyn/phasyn-studio",
+      "url": "https://github.com/phasyn/phasyn-studio",
+      "stars": 77,
+      "description": "AI filmmaking on your own GPUs: a self-hosted studio that generates short videos with sound and still images."
     },
     {
-      "full_name": "waw666waw666/RegisterHub",
-      "url": "https://github.com/waw666waw666/RegisterHub",
-      "stars": 264,
-      "description": "万能注册机模板 | Universal Auto-Registration Template"
+      "full_name": "VitalityV7/yokuusnwe123133",
+      "url": "https://github.com/VitalityV7/yokuusnwe123133",
+      "stars": 76,
+      "description": "test description "
     },
     {
-      "full_name": "chuanqisun/spaceship",
-      "url": "https://github.com/chuanqisun/spaceship",
-      "stars": 527,
-      "description": "Steer your ideas in realtime"
+      "full_name": "SecFathy/otpkit",
+      "url": "https://github.com/SecFathy/otpkit",
+      "stars": 59,
+      "description": "MCP server for temporary email & SMS — receive OTPs, verification links, and confirmation codes. Zero API keys required."
     },
     {
-      "full_name": "erkamyaman/rust-anything",
-      "url": "https://github.com/erkamyaman/rust-anything",
-      "stars": 491,
-      "description": "Rewrite your whole app in Rust, one piece at a time, checked against the original's recorded behavior at every step. CLIs, HTTP servers and…"
+      "full_name": "trbrnt/Veil",
+      "url": "https://github.com/trbrnt/Veil",
+      "stars": 45,
+      "description": "Private, ad-free launcher for Google TV and Android TV. Works with Nuvio and Trakt."
     }
   ],
   "history": [
+    {
+      "date": "2026-11-18",
+      "name": "holospot",
+      "full_name": "dmitrykurash/holospot",
+      "owner": "dmitrykurash",
+      "url": "https://github.com/dmitrykurash/holospot",
+      "homepage": "https://www.holo.spot",
+      "stars": 132,
+      "language": "TypeScript",
+      "created_at": "2026-11-17T13:38:59Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "The holographic materials of holo.spot for your own three.js scenes, made to be handed to an AI agent.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-17",
       "name": "inference-optimisation-skill",
@@ -249,22 +265,6 @@ window.DAILY_SPOTLIGHT = {
       "headline": "Someone made a tool that turns a sentence about your software into a diagram today!",
       "summary": "You describe the services and tools your app uses in one sentence, and an AI assistant draws a clear picture of how they connect, using each company's real logo. It's for software builders who want to explain or document their setup without drawing it by hand.",
       "takeaway": "Learners can see how a plain-language description given to an AI assistant can become a polished, shareable visual, and practice describing systems clearly.",
-      "course": "developer",
-      "ai_written": true
-    },
-    {
-      "date": "2026-11-01",
-      "name": "craft-anything",
-      "full_name": "storytold/craft-anything",
-      "owner": "storytold",
-      "url": "https://github.com/storytold/craft-anything",
-      "homepage": "",
-      "stars": 768,
-      "language": "Rust",
-      "created_at": "2026-10-31T14:50:00Z",
-      "headline": "Someone made a tool that studies any app or website and helps AI rebuild it today!",
-      "summary": "Craft Anything looks at a website, app or game, then has an AI coding helper build your own version and checks how close it came. It's an early test version aimed at curious makers who want to learn how software is put together.",
-      "takeaway": "You can practice describing what you want in plain words and then comparing the AI's result against a goal, which is a core habit for working well with AI.",
       "course": "developer",
       "ai_written": true
     }
