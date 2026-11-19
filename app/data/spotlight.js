@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-18T15:34:13.120Z",
+  "generated_at": "2026-11-19T15:40:19.581Z",
   "today": {
-    "date": "2026-11-18",
-    "name": "holospot",
-    "full_name": "dmitrykurash/holospot",
-    "owner": "dmitrykurash",
-    "url": "https://github.com/dmitrykurash/holospot",
-    "homepage": "https://www.holo.spot",
-    "stars": 132,
-    "language": "TypeScript",
-    "created_at": "2026-11-17T13:38:59Z",
+    "date": "2026-11-19",
+    "name": "gtavi-claudecode",
+    "full_name": "Bodila51/gtavi-claudecode",
+    "owner": "Bodila51",
+    "url": "https://github.com/Bodila51/gtavi-claudecode",
+    "homepage": "",
+    "stars": 423,
+    "language": "Python",
+    "created_at": "2026-11-18T17:54:29Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "The holographic materials of holo.spot for your own three.js scenes, made to be handed to an AI agent.",
+    "summary": "Claude Code plugin that turns GTA 6 streams into paid vertical clips: live campaigns, trending videos, best moments, 9:16 cuts with hooks, captions and credits.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "phasyn/phasyn-studio",
-      "url": "https://github.com/phasyn/phasyn-studio",
-      "stars": 77,
-      "description": "AI filmmaking on your own GPUs: a self-hosted studio that generates short videos with sound and still images."
+      "full_name": "iamajmeena/neonclipping",
+      "url": "https://github.com/iamajmeena/neonclipping",
+      "stars": 95,
+      "description": "Paste a link, get captioned 9:16 clips in ~2 min. Free, local, open-source clipping engine (audio-first, YouTube captions, local LLM)."
     },
     {
-      "full_name": "VitalityV7/yokuusnwe123133",
-      "url": "https://github.com/VitalityV7/yokuusnwe123133",
-      "stars": 76,
-      "description": "test description "
+      "full_name": "howznguyen/phonedesk",
+      "url": "https://github.com/howznguyen/phonedesk",
+      "stars": 40,
+      "description": "Turn an old phone into a Stream Deck-style control panel and dashboard for your Mac or Windows PC. No app, no account, no cloud."
     },
     {
-      "full_name": "SecFathy/otpkit",
-      "url": "https://github.com/SecFathy/otpkit",
-      "stars": 59,
-      "description": "MCP server for temporary email & SMS — receive OTPs, verification links, and confirmation codes. Zero API keys required."
+      "full_name": "Nyxera0x/simulator",
+      "url": "https://github.com/Nyxera0x/simulator",
+      "stars": 22,
+      "description": "A Claude Code skill that rebuilds any industry as a live simulator in the format of a reference video: toy-scale models built by subagents,…"
     },
     {
-      "full_name": "trbrnt/Veil",
-      "url": "https://github.com/trbrnt/Veil",
-      "stars": 45,
-      "description": "Private, ad-free launcher for Google TV and Android TV. Works with Nuvio and Trakt."
+      "full_name": "naheel0/dev-skills",
+      "url": "https://github.com/naheel0/dev-skills",
+      "stars": 37,
+      "description": "Agent skills for dev.to - write in your voice, audit what worked, feed the results into the next draft."
     }
   ],
   "history": [
+    {
+      "date": "2026-11-19",
+      "name": "gtavi-claudecode",
+      "full_name": "Bodila51/gtavi-claudecode",
+      "owner": "Bodila51",
+      "url": "https://github.com/Bodila51/gtavi-claudecode",
+      "homepage": "",
+      "stars": 423,
+      "language": "Python",
+      "created_at": "2026-11-18T17:54:29Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "Claude Code plugin that turns GTA 6 streams into paid vertical clips: live campaigns, trending videos, best moments, 9:16 cuts with hooks, captions and credits.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-18",
       "name": "holospot",
@@ -249,22 +265,6 @@ window.DAILY_SPOTLIGHT = {
       "headline": "Someone made an AI helper that checks websites against Vietnamese privacy laws today!",
       "summary": "This free add-on for AI coding assistants scans a website or app and lists places where it may break Vietnamese rules on personal data, online shopping, and AI. It is meant for Vietnamese site owners and builders who want a first check before asking a lawyer.",
       "takeaway": "You can learn how to give an AI assistant a clear checklist so it reviews your work step by step and explains what to fix.",
-      "course": "developer",
-      "ai_written": true
-    },
-    {
-      "date": "2026-11-02",
-      "name": "stack-diagram",
-      "full_name": "caru-ini/stack-diagram",
-      "owner": "caru-ini",
-      "url": "https://github.com/caru-ini/stack-diagram",
-      "homepage": "stacks.caru.moe",
-      "stars": 713,
-      "language": "TypeScript",
-      "created_at": "2026-11-01T05:35:12Z",
-      "headline": "Someone made a tool that turns a sentence about your software into a diagram today!",
-      "summary": "You describe the services and tools your app uses in one sentence, and an AI assistant draws a clear picture of how they connect, using each company's real logo. It's for software builders who want to explain or document their setup without drawing it by hand.",
-      "takeaway": "Learners can see how a plain-language description given to an AI assistant can become a polished, shareable visual, and practice describing systems clearly.",
       "course": "developer",
       "ai_written": true
     }
