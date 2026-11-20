@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-19T15:40:19.581Z",
+  "generated_at": "2026-11-20T15:22:13.524Z",
   "today": {
-    "date": "2026-11-19",
-    "name": "gtavi-claudecode",
-    "full_name": "Bodila51/gtavi-claudecode",
-    "owner": "Bodila51",
-    "url": "https://github.com/Bodila51/gtavi-claudecode",
+    "date": "2026-11-20",
+    "name": "neonclipping",
+    "full_name": "iamajmeena/neonclipping",
+    "owner": "iamajmeena",
+    "url": "https://github.com/iamajmeena/neonclipping",
     "homepage": "",
-    "stars": 423,
+    "stars": 1046,
     "language": "Python",
-    "created_at": "2026-11-18T17:54:29Z",
+    "created_at": "2026-11-19T10:00:43Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "Claude Code plugin that turns GTA 6 streams into paid vertical clips: live campaigns, trending videos, best moments, 9:16 cuts with hooks, captions and credits.",
+    "summary": "Paste a link, get captioned 9:16 clips in ~2 min. Free, local, open-source clipping engine (audio-first, YouTube captions, local LLM).",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "iamajmeena/neonclipping",
-      "url": "https://github.com/iamajmeena/neonclipping",
-      "stars": 95,
-      "description": "Paste a link, get captioned 9:16 clips in ~2 min. Free, local, open-source clipping engine (audio-first, YouTube captions, local LLM)."
+      "full_name": "bookwjitchieni1986/blender-ai-mcp-addon",
+      "url": "https://github.com/bookwjitchieni1986/blender-ai-mcp-addon",
+      "stars": 1027,
+      "description": "AI assistant and MCP server for Blender: visual chat, scene tools, multi-agent workflows. Works with ChatGPT/GPT, Claude, Gemini, Ollama, O…"
     },
     {
-      "full_name": "howznguyen/phonedesk",
-      "url": "https://github.com/howznguyen/phonedesk",
-      "stars": 40,
-      "description": "Turn an old phone into a Stream Deck-style control panel and dashboard for your Mac or Windows PC. No app, no account, no cloud."
+      "full_name": "beyondtahir/beyondgtaclips",
+      "url": "https://github.com/beyondtahir/beyondgtaclips",
+      "stars": 80,
+      "description": "Turn long GTA 6 streams into viral 9:16 reels automatically. Free, local, works in Claude and ChatGPT."
     },
     {
-      "full_name": "Nyxera0x/simulator",
-      "url": "https://github.com/Nyxera0x/simulator",
-      "stars": 22,
-      "description": "A Claude Code skill that rebuilds any industry as a live simulator in the format of a reference video: toy-scale models built by subagents,…"
+      "full_name": "trinity-works/frostwind",
+      "url": "https://github.com/trinity-works/frostwind",
+      "stars": 80,
+      "description": "A nature-grounded world compiler for pixel art. Real physics, imaginary worlds."
     },
     {
-      "full_name": "naheel0/dev-skills",
-      "url": "https://github.com/naheel0/dev-skills",
-      "stars": 37,
-      "description": "Agent skills for dev.to - write in your voice, audit what worked, feed the results into the next draft."
+      "full_name": "nestjs/agent-skills",
+      "url": "https://github.com/nestjs/agent-skills",
+      "stars": 45,
+      "description": "Agent skills for Nest framework (node.js) 🕵️‍♂️"
     }
   ],
   "history": [
+    {
+      "date": "2026-11-20",
+      "name": "neonclipping",
+      "full_name": "iamajmeena/neonclipping",
+      "owner": "iamajmeena",
+      "url": "https://github.com/iamajmeena/neonclipping",
+      "homepage": "",
+      "stars": 1046,
+      "language": "Python",
+      "created_at": "2026-11-19T10:00:43Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "Paste a link, get captioned 9:16 clips in ~2 min. Free, local, open-source clipping engine (audio-first, YouTube captions, local LLM).",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-19",
       "name": "gtavi-claudecode",
@@ -249,22 +265,6 @@ window.DAILY_SPOTLIGHT = {
       "headline": "Someone made a helper that lets AI assistants work in the background and ask before big decisions today!",
       "summary": "Agent Autoloop runs AI coding assistants on your own computer to handle tasks like daily briefings or website checks, and sends you a message card only when it needs your decision. It's aimed at people already comfortable using AI tools from the command line.",
       "takeaway": "A good lesson is to let AI handle routine work on its own while keeping a person in charge of risky choices like deleting data or spending money.",
-      "course": "developer",
-      "ai_written": true
-    },
-    {
-      "date": "2026-11-03",
-      "name": "vn-law-check",
-      "full_name": "mhfed/vn-law-check",
-      "owner": "mhfed",
-      "url": "https://github.com/mhfed/vn-law-check",
-      "homepage": "",
-      "stars": 248,
-      "language": "Shell",
-      "created_at": "2026-11-02T09:22:02Z",
-      "headline": "Someone made an AI helper that checks websites against Vietnamese privacy laws today!",
-      "summary": "This free add-on for AI coding assistants scans a website or app and lists places where it may break Vietnamese rules on personal data, online shopping, and AI. It is meant for Vietnamese site owners and builders who want a first check before asking a lawyer.",
-      "takeaway": "You can learn how to give an AI assistant a clear checklist so it reviews your work step by step and explains what to fix.",
       "course": "developer",
       "ai_written": true
     }
