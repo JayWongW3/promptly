@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-20T15:22:13.524Z",
+  "generated_at": "2026-11-21T14:35:27.373Z",
   "today": {
-    "date": "2026-11-20",
-    "name": "neonclipping",
-    "full_name": "iamajmeena/neonclipping",
-    "owner": "iamajmeena",
-    "url": "https://github.com/iamajmeena/neonclipping",
+    "date": "2026-11-21",
+    "name": "sprite-stacking",
+    "full_name": "danielwh2/sprite-stacking",
+    "owner": "danielwh2",
+    "url": "https://github.com/danielwh2/sprite-stacking",
     "homepage": "",
-    "stars": 1046,
-    "language": "Python",
-    "created_at": "2026-11-19T10:00:43Z",
+    "stars": 298,
+    "language": "HTML",
+    "created_at": "2026-11-20T14:32:43Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "Paste a link, get captioned 9:16 clips in ~2 min. Free, local, open-source clipping engine (audio-first, YouTube captions, local LLM).",
+    "summary": "Agent skill: turn four pixel art views into fake-3D sprites you can spin. Works with Claude Code, Codex, Cursor, OpenCode, Gemini CLI, Pi.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "bookwjitchieni1986/blender-ai-mcp-addon",
-      "url": "https://github.com/bookwjitchieni1986/blender-ai-mcp-addon",
-      "stars": 1027,
-      "description": "AI assistant and MCP server for Blender: visual chat, scene tools, multi-agent workflows. Works with ChatGPT/GPT, Claude, Gemini, Ollama, O…"
+      "full_name": "sybil-solutions/skill-distill",
+      "url": "https://github.com/sybil-solutions/skill-distill",
+      "stars": 169,
+      "description": "Distill a good Claude Code / Codex session into a skill an open-weight model can follow to reproduce the task"
     },
     {
-      "full_name": "beyondtahir/beyondgtaclips",
-      "url": "https://github.com/beyondtahir/beyondgtaclips",
-      "stars": 80,
-      "description": "Turn long GTA 6 streams into viral 9:16 reels automatically. Free, local, works in Claude and ChatGPT."
-    },
-    {
-      "full_name": "trinity-works/frostwind",
-      "url": "https://github.com/trinity-works/frostwind",
-      "stars": 80,
-      "description": "A nature-grounded world compiler for pixel art. Real physics, imaginary worlds."
+      "full_name": "zavi2997-droid/claude-code-agent-workspace",
+      "url": "https://github.com/zavi2997-droid/claude-code-agent-workspace",
+      "stars": 152,
+      "description": "Orchestrates composable Claude Code agent workflows across isolated workspace contexts."
     },
     {
       "full_name": "nestjs/agent-skills",
       "url": "https://github.com/nestjs/agent-skills",
-      "stars": 45,
+      "stars": 118,
       "description": "Agent skills for Nest framework (node.js) 🕵️‍♂️"
+    },
+    {
+      "full_name": "AI4XE/ai4ai",
+      "url": "https://github.com/AI4XE/ai4ai",
+      "stars": 98,
+      "description": "Let AI manage itself — a cross-harness kit for runtime status, context renewal, self-duplication and more"
     }
   ],
   "history": [
+    {
+      "date": "2026-11-21",
+      "name": "sprite-stacking",
+      "full_name": "danielwh2/sprite-stacking",
+      "owner": "danielwh2",
+      "url": "https://github.com/danielwh2/sprite-stacking",
+      "homepage": "",
+      "stars": 298,
+      "language": "HTML",
+      "created_at": "2026-11-20T14:32:43Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "Agent skill: turn four pixel art views into fake-3D sprites you can spin. Works with Claude Code, Codex, Cursor, OpenCode, Gemini CLI, Pi.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-20",
       "name": "neonclipping",
@@ -249,22 +265,6 @@ window.DAILY_SPOTLIGHT = {
       "headline": "Someone made a kit that helps an AI assistant build narrated short videos today!",
       "summary": "You tell an AI assistant a topic, and this kit guides it through checking facts, writing a script, adding a voice, and building a vertical video for TikTok, YouTube Shorts or Reels. It's for people who want to make short explainer videos and are comfortable installing a few tools.",
       "takeaway": "Breaking a big creative task into clear steps, with facts checked first and your own review at each stage, is a good habit for getting reliable results from AI.",
-      "course": "developer",
-      "ai_written": true
-    },
-    {
-      "date": "2026-11-04",
-      "name": "agent-autoloop",
-      "full_name": "KKKKhazix/agent-autoloop",
-      "owner": "KKKKhazix",
-      "url": "https://github.com/KKKKhazix/agent-autoloop",
-      "homepage": "",
-      "stars": 1408,
-      "language": "TypeScript",
-      "created_at": "2026-11-03T08:02:11Z",
-      "headline": "Someone made a helper that lets AI assistants work in the background and ask before big decisions today!",
-      "summary": "Agent Autoloop runs AI coding assistants on your own computer to handle tasks like daily briefings or website checks, and sends you a message card only when it needs your decision. It's aimed at people already comfortable using AI tools from the command line.",
-      "takeaway": "A good lesson is to let AI handle routine work on its own while keeping a person in charge of risky choices like deleting data or spending money.",
       "course": "developer",
       "ai_written": true
     }
