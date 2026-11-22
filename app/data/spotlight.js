@@ -1,18 +1,18 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-21T14:35:27.373Z",
+  "generated_at": "2026-11-22T14:29:50.808Z",
   "today": {
-    "date": "2026-11-21",
-    "name": "sprite-stacking",
-    "full_name": "danielwh2/sprite-stacking",
-    "owner": "danielwh2",
-    "url": "https://github.com/danielwh2/sprite-stacking",
-    "homepage": "",
-    "stars": 298,
-    "language": "HTML",
-    "created_at": "2026-11-20T14:32:43Z",
+    "date": "2026-11-22",
+    "name": "fast-anything",
+    "full_name": "EL4CTEO/fast-anything",
+    "owner": "EL4CTEO",
+    "url": "https://github.com/EL4CTEO/fast-anything",
+    "homepage": "https://www.npmjs.com/package/@el4cteo/fast-anything",
+    "stars": 1023,
+    "language": "Rust",
+    "created_at": "2026-11-21T14:40:27Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "Agent skill: turn four pixel art views into fake-3D sprites you can spin. Works with Claude Code, Codex, Cursor, OpenCode, Gemini CLI, Pi.",
+    "summary": "Don't rewrite it in Rust. Rewrite the 5% that's slow: profile Python, Node or Ruby apps, port the hot functions with your coding agent, prove they behave the same.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
@@ -21,29 +21,45 @@ window.DAILY_SPOTLIGHT = {
     {
       "full_name": "sybil-solutions/skill-distill",
       "url": "https://github.com/sybil-solutions/skill-distill",
-      "stars": 169,
+      "stars": 432,
       "description": "Distill a good Claude Code / Codex session into a skill an open-weight model can follow to reproduce the task"
     },
     {
-      "full_name": "zavi2997-droid/claude-code-agent-workspace",
-      "url": "https://github.com/zavi2997-droid/claude-code-agent-workspace",
-      "stars": 152,
-      "description": "Orchestrates composable Claude Code agent workflows across isolated workspace contexts."
+      "full_name": "christinesoft17/claude-desktop-app-win",
+      "url": "https://github.com/christinesoft17/claude-desktop-app-win",
+      "stars": 272,
+      "description": "Anthropic Claude Desktop App - AI assistant application for conversational interaction, document analysis and task automation on Windows 10…"
     },
     {
-      "full_name": "nestjs/agent-skills",
-      "url": "https://github.com/nestjs/agent-skills",
-      "stars": 118,
-      "description": "Agent skills for Nest framework (node.js) 🕵️‍♂️"
+      "full_name": "pritamux/gridlines",
+      "url": "https://github.com/pritamux/gridlines",
+      "stars": 154,
+      "description": "An agent skill for alignment passes: draw guide lines down an interface, find every item that misses its line, fix the padding."
     },
     {
-      "full_name": "AI4XE/ai4ai",
-      "url": "https://github.com/AI4XE/ai4ai",
-      "stars": 98,
-      "description": "Let AI manage itself — a cross-harness kit for runtime status, context renewal, self-duplication and more"
+      "full_name": "xikhar/papercraft",
+      "url": "https://github.com/xikhar/papercraft",
+      "stars": 133,
+      "description": "Agent skill to build games, interactive scenes, web pages and animations in a handcrafted pop-up papercraft style"
     }
   ],
   "history": [
+    {
+      "date": "2026-11-22",
+      "name": "fast-anything",
+      "full_name": "EL4CTEO/fast-anything",
+      "owner": "EL4CTEO",
+      "url": "https://github.com/EL4CTEO/fast-anything",
+      "homepage": "https://www.npmjs.com/package/@el4cteo/fast-anything",
+      "stars": 1023,
+      "language": "Rust",
+      "created_at": "2026-11-21T14:40:27Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "Don't rewrite it in Rust. Rewrite the 5% that's slow: profile Python, Node or Ruby apps, port the hot functions with your coding agent, prove they behave the same.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-21",
       "name": "sprite-stacking",
@@ -249,22 +265,6 @@ window.DAILY_SPOTLIGHT = {
       "headline": "Someone made a tool that lets AI tap and type on a real iPhone today!",
       "summary": "Poki lets an AI assistant use your iPhone the way you would, opening apps, searching, and typing, all run from a Mac. It is aimed at tech-savvy Mac users who want an AI helper to carry out phone tasks for them.",
       "takeaway": "It shows how AI assistants can be connected to everyday tools to take real actions, and why it matters to stay careful about what you let them do on your accounts.",
-      "course": "developer",
-      "ai_written": true
-    },
-    {
-      "date": "2026-11-05",
-      "name": "shorts-kit",
-      "full_name": "howznguyen/shorts-kit",
-      "owner": "howznguyen",
-      "url": "https://github.com/howznguyen/shorts-kit",
-      "homepage": "https://howznguyen.dev/projects/shorts-kit",
-      "stars": 27,
-      "language": "TypeScript",
-      "created_at": "2026-11-04T19:41:42Z",
-      "headline": "Someone made a kit that helps an AI assistant build narrated short videos today!",
-      "summary": "You tell an AI assistant a topic, and this kit guides it through checking facts, writing a script, adding a voice, and building a vertical video for TikTok, YouTube Shorts or Reels. It's for people who want to make short explainer videos and are comfortable installing a few tools.",
-      "takeaway": "Breaking a big creative task into clear steps, with facts checked first and your own review at each stage, is a good habit for getting reliable results from AI.",
       "course": "developer",
       "ai_written": true
     }
