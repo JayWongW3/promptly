@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-22T14:29:50.808Z",
+  "generated_at": "2026-11-23T17:58:25.875Z",
   "today": {
-    "date": "2026-11-22",
-    "name": "fast-anything",
-    "full_name": "EL4CTEO/fast-anything",
-    "owner": "EL4CTEO",
-    "url": "https://github.com/EL4CTEO/fast-anything",
-    "homepage": "https://www.npmjs.com/package/@el4cteo/fast-anything",
-    "stars": 1023,
+    "date": "2026-11-23",
+    "name": "safe-anything",
+    "full_name": "erkamyaman/safe-anything",
+    "owner": "erkamyaman",
+    "url": "https://github.com/erkamyaman/safe-anything",
+    "homepage": "",
+    "stars": 403,
     "language": "Rust",
-    "created_at": "2026-11-21T14:40:27Z",
+    "created_at": "2026-11-22T16:44:10Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "Don't rewrite it in Rust. Rewrite the 5% that's slow: profile Python, Node or Ruby apps, port the hot functions with your coding agent, prove they behave the same.",
+    "summary": "Find the holes before someone else does. A fast, 100% Rust vulnerability scanner: XSS, SQL injection, leaked secrets, dependency CVEs and AI agent setups.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "sybil-solutions/skill-distill",
-      "url": "https://github.com/sybil-solutions/skill-distill",
-      "stars": 432,
-      "description": "Distill a good Claude Code / Codex session into a skill an open-weight model can follow to reproduce the task"
+      "full_name": "duwqijlk/browser-capture",
+      "url": "https://github.com/duwqijlk/browser-capture",
+      "stars": 111,
+      "description": "Zero-dependency browser CDP + stealth Hook capture & reverse-engineering AI Skill / CLI for BitBrowser, AdsPower, and Chrome/VisibleV8"
     },
     {
-      "full_name": "christinesoft17/claude-desktop-app-win",
-      "url": "https://github.com/christinesoft17/claude-desktop-app-win",
-      "stars": 272,
-      "description": "Anthropic Claude Desktop App - AI assistant application for conversational interaction, document analysis and task automation on Windows 10…"
+      "full_name": "shnfatih-hash/devlet-arsivleri-soykutugu",
+      "url": "https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu",
+      "stars": 143,
+      "description": "e-Devlet Alt-Üst Soy Bilgisi + T.C. Cumhurbaşkanlığı Devlet Arşivleri (Osmanlı & Cumhuriyet) üzerinden 1500'lere kadar 1:1 kanıtlı soy kütü…"
     },
     {
-      "full_name": "pritamux/gridlines",
-      "url": "https://github.com/pritamux/gridlines",
-      "stars": 154,
-      "description": "An agent skill for alignment passes: draw guide lines down an interface, find every item that misses its line, fix the padding."
+      "full_name": "memoryoffish/film-director-skill-plugin",
+      "url": "https://github.com/memoryoffish/film-director-skill-plugin",
+      "stars": 105,
+      "description": "Agent as Director: cuts, Blender proxies and sound, from script to film. One skill and one plugin for coding agents."
     },
     {
-      "full_name": "xikhar/papercraft",
-      "url": "https://github.com/xikhar/papercraft",
-      "stars": 133,
-      "description": "Agent skill to build games, interactive scenes, web pages and animations in a handcrafted pop-up papercraft style"
+      "full_name": "Leobai03/t3code-quota-ui",
+      "url": "https://github.com/Leobai03/t3code-quota-ui",
+      "stars": 69,
+      "description": "One-command macOS UI & multi-account quota enhancement pack for T3 Code (2-column compact Limits grid, side-by-side multi-account bars, con…"
     }
   ],
   "history": [
+    {
+      "date": "2026-11-23",
+      "name": "safe-anything",
+      "full_name": "erkamyaman/safe-anything",
+      "owner": "erkamyaman",
+      "url": "https://github.com/erkamyaman/safe-anything",
+      "homepage": "",
+      "stars": 403,
+      "language": "Rust",
+      "created_at": "2026-11-22T16:44:10Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "Find the holes before someone else does. A fast, 100% Rust vulnerability scanner: XSS, SQL injection, leaked secrets, dependency CVEs and AI agent setups.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-22",
       "name": "fast-anything",
@@ -251,22 +267,6 @@ window.DAILY_SPOTLIGHT = {
       "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
       "course": "developer",
       "ai_written": false
-    },
-    {
-      "date": "2026-11-06",
-      "name": "poki",
-      "full_name": "JosssphZhou/poki",
-      "owner": "JosssphZhou",
-      "url": "https://github.com/JosssphZhou/poki",
-      "homepage": "https://poki.bot",
-      "stars": 306,
-      "language": "JavaScript",
-      "created_at": "2026-11-05T15:04:31Z",
-      "headline": "Someone made a tool that lets AI tap and type on a real iPhone today!",
-      "summary": "Poki lets an AI assistant use your iPhone the way you would, opening apps, searching, and typing, all run from a Mac. It is aimed at tech-savvy Mac users who want an AI helper to carry out phone tasks for them.",
-      "takeaway": "It shows how AI assistants can be connected to everyday tools to take real actions, and why it matters to stay careful about what you let them do on your accounts.",
-      "course": "developer",
-      "ai_written": true
     }
   ]
 };
