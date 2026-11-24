@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-23T17:58:25.875Z",
+  "generated_at": "2026-11-24T17:36:54.454Z",
   "today": {
-    "date": "2026-11-23",
-    "name": "safe-anything",
-    "full_name": "erkamyaman/safe-anything",
-    "owner": "erkamyaman",
-    "url": "https://github.com/erkamyaman/safe-anything",
+    "date": "2026-11-24",
+    "name": "browser-capture",
+    "full_name": "duwqijlk/browser-capture",
+    "owner": "duwqijlk",
+    "url": "https://github.com/duwqijlk/browser-capture",
     "homepage": "",
-    "stars": 403,
-    "language": "Rust",
-    "created_at": "2026-11-22T16:44:10Z",
+    "stars": 190,
+    "language": "JavaScript",
+    "created_at": "2026-11-23T08:19:43Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "Find the holes before someone else does. A fast, 100% Rust vulnerability scanner: XSS, SQL injection, leaked secrets, dependency CVEs and AI agent setups.",
+    "summary": "Zero-dependency browser CDP + stealth Hook capture & reverse-engineering AI Skill / CLI for BitBrowser, AdsPower, and Chrome/VisibleV8.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "duwqijlk/browser-capture",
-      "url": "https://github.com/duwqijlk/browser-capture",
-      "stars": 111,
-      "description": "Zero-dependency browser CDP + stealth Hook capture & reverse-engineering AI Skill / CLI for BitBrowser, AdsPower, and Chrome/VisibleV8"
+      "full_name": "AyushRajSinghParihar/weaponized-curiosity",
+      "url": "https://github.com/AyushRajSinghParihar/weaponized-curiosity",
+      "stars": 139,
+      "description": "Portable Agent Skill for evidence-driven research, experimentation, and bounded optimization"
     },
     {
-      "full_name": "shnfatih-hash/devlet-arsivleri-soykutugu",
-      "url": "https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu",
-      "stars": 143,
-      "description": "e-Devlet Alt-Üst Soy Bilgisi + T.C. Cumhurbaşkanlığı Devlet Arşivleri (Osmanlı & Cumhuriyet) üzerinden 1500'lere kadar 1:1 kanıtlı soy kütü…"
+      "full_name": "uxpilot-ai/user-interview-skill",
+      "url": "https://github.com/uxpilot-ai/user-interview-skill",
+      "stars": 119,
+      "description": "Free agent skill that writes neutral 1:1 user interview guides for Claude Code, Codex and Cursor"
     },
     {
-      "full_name": "memoryoffish/film-director-skill-plugin",
-      "url": "https://github.com/memoryoffish/film-director-skill-plugin",
-      "stars": 105,
-      "description": "Agent as Director: cuts, Blender proxies and sound, from script to film. One skill and one plugin for coding agents."
+      "full_name": "EL4CTEO/shrink-anything",
+      "url": "https://github.com/EL4CTEO/shrink-anything",
+      "stars": 103,
+      "description": "Less code, same tests passing: delete the dead code, files, dependencies and assets in any codebase, and keep each cut only if your own tes…"
     },
     {
-      "full_name": "Leobai03/t3code-quota-ui",
-      "url": "https://github.com/Leobai03/t3code-quota-ui",
-      "stars": 69,
-      "description": "One-command macOS UI & multi-account quota enhancement pack for T3 Code (2-column compact Limits grid, side-by-side multi-account bars, con…"
+      "full_name": "wc4440222/google-ai-offer-subscription",
+      "url": "https://github.com/wc4440222/google-ai-offer-subscription",
+      "stars": 70,
+      "description": "Cross-agent skill: query and subscribe Google AI hidden offers via Play Billing on rooted Android emulator"
     }
   ],
   "history": [
+    {
+      "date": "2026-11-24",
+      "name": "browser-capture",
+      "full_name": "duwqijlk/browser-capture",
+      "owner": "duwqijlk",
+      "url": "https://github.com/duwqijlk/browser-capture",
+      "homepage": "",
+      "stars": 190,
+      "language": "JavaScript",
+      "created_at": "2026-11-23T08:19:43Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "Zero-dependency browser CDP + stealth Hook capture & reverse-engineering AI Skill / CLI for BitBrowser, AdsPower, and Chrome/VisibleV8.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-23",
       "name": "safe-anything",
@@ -248,22 +264,6 @@ window.DAILY_SPOTLIGHT = {
       "created_at": "2026-11-10T09:25:25Z",
       "headline": "Someone made a project with Claude today!",
       "summary": "A Claude skill and TypeScript library for animated line-art SVG components: ink figures that walk and react, scenes with a day/night cycle.",
-      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
-      "course": "developer",
-      "ai_written": false
-    },
-    {
-      "date": "2026-11-10",
-      "name": "roblox-studio-mcp",
-      "full_name": "Nanoutrolley/roblox-studio-mcp",
-      "owner": "Nanoutrolley",
-      "url": "https://github.com/Nanoutrolley/roblox-studio-mcp",
-      "homepage": "",
-      "stars": 283,
-      "language": "Python",
-      "created_at": "2026-11-09T08:58:06Z",
-      "headline": "Someone made a project with Claude today!",
-      "summary": "Model Context Protocol (MCP) server for Roblox Studio. Connect AI assistants (Claude, Cursor, Cline) to read object trees, automate Lua scripting, and run playtests safely. Open-source AI bridge.",
       "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
       "course": "developer",
       "ai_written": false
