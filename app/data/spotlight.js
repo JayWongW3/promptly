@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-24T17:36:54.454Z",
+  "generated_at": "2026-11-25T17:08:05.682Z",
   "today": {
-    "date": "2026-11-24",
-    "name": "browser-capture",
-    "full_name": "duwqijlk/browser-capture",
-    "owner": "duwqijlk",
-    "url": "https://github.com/duwqijlk/browser-capture",
+    "date": "2026-11-25",
+    "name": "victory-fork",
+    "full_name": "fxceless/victory-fork",
+    "owner": "fxceless",
+    "url": "https://github.com/fxceless/victory-fork",
     "homepage": "",
-    "stars": 190,
-    "language": "JavaScript",
-    "created_at": "2026-11-23T08:19:43Z",
+    "stars": 2865,
+    "language": "Rust",
+    "created_at": "2026-11-24T18:02:37Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "Zero-dependency browser CDP + stealth Hook capture & reverse-engineering AI Skill / CLI for BitBrowser, AdsPower, and Chrome/VisibleV8.",
+    "summary": "Work-in-progress fork of VIctory: getting an Xbox Series title to render and run on a Windows PC. No game files.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "AyushRajSinghParihar/weaponized-curiosity",
-      "url": "https://github.com/AyushRajSinghParihar/weaponized-curiosity",
-      "stars": 139,
-      "description": "Portable Agent Skill for evidence-driven research, experimentation, and bounded optimization"
+      "full_name": "matheusmongarde/garimpo",
+      "url": "https://github.com/matheusmongarde/garimpo",
+      "stars": 151,
+      "description": "Prospecção open source do Google Maps ao Pix: acha negócios no Maps, gera um site-prévia com o nome de cada um, conversa no WhatsApp e cobr…"
     },
     {
-      "full_name": "uxpilot-ai/user-interview-skill",
-      "url": "https://github.com/uxpilot-ai/user-interview-skill",
-      "stars": 119,
-      "description": "Free agent skill that writes neutral 1:1 user interview guides for Claude Code, Codex and Cursor"
+      "full_name": "pragyaangaur/VIctory-macOS",
+      "url": "https://github.com/pragyaangaur/VIctory-macOS",
+      "stars": 124,
+      "description": "Attempting to run GTA VI on macOS."
     },
     {
-      "full_name": "EL4CTEO/shrink-anything",
-      "url": "https://github.com/EL4CTEO/shrink-anything",
-      "stars": 103,
-      "description": "Less code, same tests passing: delete the dead code, files, dependencies and assets in any codebase, and keep each cut only if your own tes…"
+      "full_name": "erkamyaman/rea-games",
+      "url": "https://github.com/erkamyaman/rea-games",
+      "stars": 115,
+      "description": "Reverse-engineer any game, rebuild it in any engine (web, Rust, Godot) and prove the rebuild plays the same, frame by frame. Behavior specs…"
     },
     {
-      "full_name": "wc4440222/google-ai-offer-subscription",
-      "url": "https://github.com/wc4440222/google-ai-offer-subscription",
-      "stars": 70,
-      "description": "Cross-agent skill: query and subscribe Google AI hidden offers via Play Billing on rooted Android emulator"
+      "full_name": "ZSlayerHQ/zslayer-pc-port-runtime",
+      "url": "https://github.com/ZSlayerHQ/zslayer-pc-port-runtime",
+      "stars": 85,
+      "description": "The program that runs a console game on a Windows PC. Our fork of the open-source VIctory runtime, with fixes. Holds no game files. GPL-3.0."
     }
   ],
   "history": [
+    {
+      "date": "2026-11-25",
+      "name": "victory-fork",
+      "full_name": "fxceless/victory-fork",
+      "owner": "fxceless",
+      "url": "https://github.com/fxceless/victory-fork",
+      "homepage": "",
+      "stars": 2865,
+      "language": "Rust",
+      "created_at": "2026-11-24T18:02:37Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "Work-in-progress fork of VIctory: getting an Xbox Series title to render and run on a Windows PC. No game files.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-24",
       "name": "browser-capture",
@@ -248,22 +264,6 @@ window.DAILY_SPOTLIGHT = {
       "created_at": "2026-11-11T16:28:54Z",
       "headline": "Someone made a project with Claude today!",
       "summary": "歸藏 Game Skill：让 AI 从零做出能在浏览器里玩的 3D 动作游戏，附可玩演示《雾锁山门》。Agent skill for Claude Code / Codex that builds a playable browser 3D action game with AI-generated assets (three.js, single-HTML). Playable demo included.",
-      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
-      "course": "developer",
-      "ai_written": false
-    },
-    {
-      "date": "2026-11-11",
-      "name": "line-art-animation",
-      "full_name": "JDhruv14/line-art-animation",
-      "owner": "JDhruv14",
-      "url": "https://github.com/JDhruv14/line-art-animation",
-      "homepage": "",
-      "stars": 364,
-      "language": "TypeScript",
-      "created_at": "2026-11-10T09:25:25Z",
-      "headline": "Someone made a project with Claude today!",
-      "summary": "A Claude skill and TypeScript library for animated line-art SVG components: ink figures that walk and react, scenes with a day/night cycle.",
       "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
       "course": "developer",
       "ai_written": false
