@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-25T17:08:05.682Z",
+  "generated_at": "2026-11-26T16:48:52.381Z",
   "today": {
-    "date": "2026-11-25",
-    "name": "victory-fork",
-    "full_name": "fxceless/victory-fork",
-    "owner": "fxceless",
-    "url": "https://github.com/fxceless/victory-fork",
+    "date": "2026-11-26",
+    "name": "VIctory-7900XTX",
+    "full_name": "avatarmanz/VIctory-7900XTX",
+    "owner": "avatarmanz",
+    "url": "https://github.com/avatarmanz/VIctory-7900XTX",
     "homepage": "",
-    "stars": 2865,
+    "stars": 1730,
     "language": "Rust",
-    "created_at": "2026-11-24T18:02:37Z",
+    "created_at": "2026-11-25T22:18:14Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "Work-in-progress fork of VIctory: getting an Xbox Series title to render and run on a Windows PC. No game files.",
+    "summary": "Goal: an Xbox Series title (your own dump) at a stable 30+ fps on PC without ray tracing, then higher. Porting, not emulating: renderer patches + ahead-of-time shaders, RX 7900 XTX first. No game files.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "matheusmongarde/garimpo",
-      "url": "https://github.com/matheusmongarde/garimpo",
-      "stars": 151,
-      "description": "Prospecção open source do Google Maps ao Pix: acha negócios no Maps, gera um site-prévia com o nome de cada um, conversa no WhatsApp e cobr…"
+      "full_name": "DoubleGhosty/cool_fox",
+      "url": "https://github.com/DoubleGhosty/cool_fox",
+      "stars": 534,
+      "description": "cool_fox: Leading CGBJ runtime continuation for GTA VI PC - Pareto residency, Wine/Vulkan fixes, FPS unlock, Port 5 CBV"
     },
     {
-      "full_name": "pragyaangaur/VIctory-macOS",
-      "url": "https://github.com/pragyaangaur/VIctory-macOS",
-      "stars": 124,
-      "description": "Attempting to run GTA VI on macOS."
+      "full_name": "nexu-io/opengame",
+      "url": "https://github.com/nexu-io/opengame",
+      "stars": 555,
+      "description": "The Super Game Agent — the Unity & Unreal for AI agents, with 100+ viral games to remix. Turn 20+ coding agents (Claude Code, Codex, DeepSe…"
+    },
+    {
+      "full_name": "Moh4696/inkworks-skill",
+      "url": "https://github.com/Moh4696/inkworks-skill",
+      "stars": 399,
+      "description": "Inkworks: an agent skill for interactive 3D how-it-works pages drawn like an engineering sheet."
     },
     {
       "full_name": "erkamyaman/rea-games",
       "url": "https://github.com/erkamyaman/rea-games",
-      "stars": 115,
+      "stars": 289,
       "description": "Reverse-engineer any game, rebuild it in any engine (web, Rust, Godot) and prove the rebuild plays the same, frame by frame. Behavior specs…"
-    },
-    {
-      "full_name": "ZSlayerHQ/zslayer-pc-port-runtime",
-      "url": "https://github.com/ZSlayerHQ/zslayer-pc-port-runtime",
-      "stars": 85,
-      "description": "The program that runs a console game on a Windows PC. Our fork of the open-source VIctory runtime, with fixes. Holds no game files. GPL-3.0."
     }
   ],
   "history": [
+    {
+      "date": "2026-11-26",
+      "name": "VIctory-7900XTX",
+      "full_name": "avatarmanz/VIctory-7900XTX",
+      "owner": "avatarmanz",
+      "url": "https://github.com/avatarmanz/VIctory-7900XTX",
+      "homepage": "",
+      "stars": 1730,
+      "language": "Rust",
+      "created_at": "2026-11-25T22:18:14Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "Goal: an Xbox Series title (your own dump) at a stable 30+ fps on PC without ray tracing, then higher. Porting, not emulating: renderer patches + ahead-of-time shaders, RX 7900 XTX first. No game files.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-25",
       "name": "victory-fork",
@@ -248,22 +264,6 @@ window.DAILY_SPOTLIGHT = {
       "created_at": "2026-11-12T00:44:12Z",
       "headline": "Someone made a project with Claude today!",
       "summary": "Run Cloudflare Workers and Durable Objects unchanged on AWS, GCP, Azure or your own servers.",
-      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
-      "course": "developer",
-      "ai_written": false
-    },
-    {
-      "date": "2026-11-12",
-      "name": "guizang-game-skill",
-      "full_name": "op7418/guizang-game-skill",
-      "owner": "op7418",
-      "url": "https://github.com/op7418/guizang-game-skill",
-      "homepage": "https://op7418.github.io/guizang-game-skill/",
-      "stars": 206,
-      "language": "JavaScript",
-      "created_at": "2026-11-11T16:28:54Z",
-      "headline": "Someone made a project with Claude today!",
-      "summary": "歸藏 Game Skill：让 AI 从零做出能在浏览器里玩的 3D 动作游戏，附可玩演示《雾锁山门》。Agent skill for Claude Code / Codex that builds a playable browser 3D action game with AI-generated assets (three.js, single-HTML). Playable demo included.",
       "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
       "course": "developer",
       "ai_written": false
