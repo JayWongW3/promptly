@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-26T16:48:52.381Z",
+  "generated_at": "2026-11-27T16:34:14.433Z",
   "today": {
-    "date": "2026-11-26",
-    "name": "VIctory-7900XTX",
-    "full_name": "avatarmanz/VIctory-7900XTX",
-    "owner": "avatarmanz",
-    "url": "https://github.com/avatarmanz/VIctory-7900XTX",
+    "date": "2026-11-27",
+    "name": "victory-nvidia-megafork",
+    "full_name": "rorodev6/victory-nvidia-megafork",
+    "owner": "rorodev6",
+    "url": "https://github.com/rorodev6/victory-nvidia-megafork",
     "homepage": "",
-    "stars": 1730,
+    "stars": 175,
     "language": "Rust",
-    "created_at": "2026-11-25T22:18:14Z",
+    "created_at": "2026-11-26T20:57:46Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "Goal: an Xbox Series title (your own dump) at a stable 30+ fps on PC without ray tracing, then higher. Porting, not emulating: renderer patches + ahead-of-time shaders, RX 7900 XTX first. No game files.",
+    "summary": "NVIDIA experimental development line for Victory Megafork.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "DoubleGhosty/cool_fox",
-      "url": "https://github.com/DoubleGhosty/cool_fox",
-      "stars": 534,
-      "description": "cool_fox: Leading CGBJ runtime continuation for GTA VI PC - Pareto residency, Wine/Vulkan fixes, FPS unlock, Port 5 CBV"
+      "full_name": "cputroll/cgbj-reupload",
+      "url": "https://github.com/cputroll/cgbj-reupload",
+      "stars": 55,
+      "description": "refork and download me before im gone :D boohoo rockstar - shouldn't gatekeep pc"
     },
     {
-      "full_name": "nexu-io/opengame",
-      "url": "https://github.com/nexu-io/opengame",
-      "stars": 555,
-      "description": "The Super Game Agent — the Unity & Unreal for AI agents, with 100+ viral games to remix. Turn 20+ coding agents (Claude Code, Codex, DeepSe…"
+      "full_name": "es-ine/mcp",
+      "url": "https://github.com/es-ine/mcp",
+      "stars": 190,
+      "description": "MCP server connecting AI assistants to the Spanish National Statistics Institute (INE) public API. Enables access to official demographic,…"
     },
     {
-      "full_name": "Moh4696/inkworks-skill",
-      "url": "https://github.com/Moh4696/inkworks-skill",
-      "stars": 399,
-      "description": "Inkworks: an agent skill for interactive 3D how-it-works pages drawn like an engineering sheet."
+      "full_name": "sergiobanhos/generate-icons",
+      "url": "https://github.com/sergiobanhos/generate-icons",
+      "stars": 162,
+      "description": "Agent skill that draws an original icon library matching your design system (React, Vue, Svelte, React Native, SVG)."
     },
     {
-      "full_name": "erkamyaman/rea-games",
-      "url": "https://github.com/erkamyaman/rea-games",
-      "stars": 289,
-      "description": "Reverse-engineer any game, rebuild it in any engine (web, Rust, Godot) and prove the rebuild plays the same, frame by frame. Behavior specs…"
+      "full_name": "huangserva/manhattan-free-roam",
+      "url": "https://github.com/huangserva/manhattan-free-roam",
+      "stars": 102,
+      "description": "Midtown Manhattan you can walk, drive and fly through in the browser (Three.js + OpenStreetMap), plus the Blender pipeline that rendered it…"
     }
   ],
   "history": [
+    {
+      "date": "2026-11-27",
+      "name": "victory-nvidia-megafork",
+      "full_name": "rorodev6/victory-nvidia-megafork",
+      "owner": "rorodev6",
+      "url": "https://github.com/rorodev6/victory-nvidia-megafork",
+      "homepage": "",
+      "stars": 175,
+      "language": "Rust",
+      "created_at": "2026-11-26T20:57:46Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "NVIDIA experimental development line for Victory Megafork.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-26",
       "name": "VIctory-7900XTX",
@@ -248,22 +264,6 @@ window.DAILY_SPOTLIGHT = {
       "created_at": "2026-11-13T17:02:31Z",
       "headline": "Someone made a project with Claude today!",
       "summary": "Scarlet is an AI video editor for macOS and Windows.",
-      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
-      "course": "developer",
-      "ai_written": false
-    },
-    {
-      "date": "2026-11-13",
-      "name": "open-orange",
-      "full_name": "rivet-dev/open-orange",
-      "owner": "rivet-dev",
-      "url": "https://github.com/rivet-dev/open-orange",
-      "homepage": "https://openorange.dev",
-      "stars": 347,
-      "language": "TypeScript",
-      "created_at": "2026-11-12T00:44:12Z",
-      "headline": "Someone made a project with Claude today!",
-      "summary": "Run Cloudflare Workers and Durable Objects unchanged on AWS, GCP, Azure or your own servers.",
       "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
       "course": "developer",
       "ai_written": false
