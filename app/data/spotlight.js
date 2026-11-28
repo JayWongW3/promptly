@@ -1,49 +1,65 @@
 // Generated daily by scripts/daily-spotlight. Do not edit by hand.
 window.DAILY_SPOTLIGHT = {
-  "generated_at": "2026-11-27T16:34:14.433Z",
+  "generated_at": "2026-11-28T15:26:30.889Z",
   "today": {
-    "date": "2026-11-27",
-    "name": "victory-nvidia-megafork",
-    "full_name": "rorodev6/victory-nvidia-megafork",
-    "owner": "rorodev6",
-    "url": "https://github.com/rorodev6/victory-nvidia-megafork",
+    "date": "2026-11-28",
+    "name": "cursor-pro-trial-reset",
+    "full_name": "RenjunLefevre/cursor-pro-trial-reset",
+    "owner": "RenjunLefevre",
+    "url": "https://github.com/RenjunLefevre/cursor-pro-trial-reset",
     "homepage": "",
-    "stars": 175,
-    "language": "Rust",
-    "created_at": "2026-11-26T20:57:46Z",
+    "stars": 202,
+    "language": "Go",
+    "created_at": "2026-11-28T02:46:41Z",
     "headline": "Someone made a project with Claude today!",
-    "summary": "NVIDIA experimental development line for Victory Megafork.",
+    "summary": "Cursor Pro Trial Reset — Cursor Pro Trial Reset & Machine ID.",
     "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
     "course": "developer",
     "ai_written": false
   },
   "others": [
     {
-      "full_name": "cputroll/cgbj-reupload",
-      "url": "https://github.com/cputroll/cgbj-reupload",
-      "stars": 55,
-      "description": "refork and download me before im gone :D boohoo rockstar - shouldn't gatekeep pc"
+      "full_name": "RerakuKovi80/windsurf-reset",
+      "url": "https://github.com/RerakuKovi80/windsurf-reset",
+      "stars": 202,
+      "description": "Windsurf Reset — Windsurf Pro Trial Reset"
     },
     {
-      "full_name": "es-ine/mcp",
-      "url": "https://github.com/es-ine/mcp",
-      "stars": 190,
-      "description": "MCP server connecting AI assistants to the Spanish National Statistics Institute (INE) public API. Enables access to official demographic,…"
+      "full_name": "volkanschulz24/claude-code-cli-windows-native-installer",
+      "url": "https://github.com/volkanschulz24/claude-code-cli-windows-native-installer",
+      "stars": 214,
+      "description": "Claude Code CLI Windows Native Installer — Claude Code CLI Windows Native Pro Trial Reset & Machine ID"
     },
     {
-      "full_name": "sergiobanhos/generate-icons",
-      "url": "https://github.com/sergiobanhos/generate-icons",
-      "stars": 162,
-      "description": "Agent skill that draws an original icon library matching your design system (React, Vue, Svelte, React Native, SVG)."
+      "full_name": "thu5617/trae-ai-ide-pro-patcher-installer",
+      "url": "https://github.com/thu5617/trae-ai-ide-pro-patcher-installer",
+      "stars": 218,
+      "description": "Trae AI IDE — Trae  IDE Pro Trial Reset & Machine ID"
     },
     {
-      "full_name": "huangserva/manhattan-free-roam",
-      "url": "https://github.com/huangserva/manhattan-free-roam",
-      "stars": 102,
-      "description": "Midtown Manhattan you can walk, drive and fly through in the browser (Three.js + OpenStreetMap), plus the Blender pipeline that rendered it…"
+      "full_name": "lawrencec8996/claude-code-desktop-suite",
+      "url": "https://github.com/lawrencec8996/claude-code-desktop-suite",
+      "stars": 195,
+      "description": "Claude Code — Claude Code Pro Trial Reset & Machine ID"
     }
   ],
   "history": [
+    {
+      "date": "2026-11-28",
+      "name": "cursor-pro-trial-reset",
+      "full_name": "RenjunLefevre/cursor-pro-trial-reset",
+      "owner": "RenjunLefevre",
+      "url": "https://github.com/RenjunLefevre/cursor-pro-trial-reset",
+      "homepage": "",
+      "stars": 202,
+      "language": "Go",
+      "created_at": "2026-11-28T02:46:41Z",
+      "headline": "Someone made a project with Claude today!",
+      "summary": "Cursor Pro Trial Reset — Cursor Pro Trial Reset & Machine ID.",
+      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
+      "course": "developer",
+      "ai_written": false
+    },
     {
       "date": "2026-11-27",
       "name": "victory-nvidia-megafork",
@@ -248,22 +264,6 @@ window.DAILY_SPOTLIGHT = {
       "created_at": "2026-11-14T21:34:40Z",
       "headline": "Someone made a project with Claude today!",
       "summary": "Capri: a local-first desktop AI agent with a cyberpunk HUD. Your personal Jarvis for Windows. Controls files, apps, terminal and browser, powered by Claude Code, Codex, Antigravity or any backend. Inspired by Cyberpunk: Edgerunners.",
-      "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
-      "course": "developer",
-      "ai_written": false
-    },
-    {
-      "date": "2026-11-14",
-      "name": "scarlet",
-      "full_name": "Forward-Future/scarlet",
-      "owner": "Forward-Future",
-      "url": "https://github.com/Forward-Future/scarlet",
-      "homepage": "",
-      "stars": 196,
-      "language": "TypeScript",
-      "created_at": "2026-11-13T17:02:31Z",
-      "headline": "Someone made a project with Claude today!",
-      "summary": "Scarlet is an AI video editor for macOS and Windows.",
       "takeaway": "Projects like this start with a clear description of what you want, which is exactly what this app teaches.",
       "course": "developer",
       "ai_written": false
